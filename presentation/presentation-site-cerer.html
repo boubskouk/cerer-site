@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Présentation du site CERER</title>
+<style>
+	@page { size: A4; margin: 20mm 18mm; }
+	* { box-sizing: border-box; }
+	body {
+		font-family: 'Segoe UI', Arial, sans-serif;
+		color: #1A2233;
+		font-size: 12.5px;
+		line-height: 1.55;
+		margin: 0;
+	}
+	h1, h2, h3 { font-family: 'Segoe UI', Arial, sans-serif; color: #003F70; margin: 0 0 8px; }
+	.cover {
+		height: 257mm;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		background: linear-gradient(160deg, #005B9A 0%, #003F70 100%);
+		color: #fff;
+		margin: -20mm -18mm 0;
+		padding: 0 24mm;
+		page-break-after: always;
+	}
+	.cover .eyebrow {
+		font-size: 13px;
+		letter-spacing: .18em;
+		text-transform: uppercase;
+		color: #B7D8EE;
+		margin-bottom: 18px;
+	}
+	.cover h1 {
+		color: #fff;
+		font-size: 34px;
+		line-height: 1.25;
+		max-width: 480px;
+		margin-bottom: 16px;
+	}
+	.cover p { color: rgba(255,255,255,.85); font-size: 14px; max-width: 420px; }
+	.cover .meta { margin-top: 60px; font-size: 12px; color: rgba(255,255,255,.65); }
+
+	section { page-break-inside: avoid; margin-bottom: 26px; }
+	h2 {
+		font-size: 17px;
+		border-bottom: 2px solid #4CB848;
+		padding-bottom: 6px;
+		margin-top: 30px;
+		margin-bottom: 14px;
+	}
+	h3 { font-size: 13.5px; color: #1A2233; margin-top: 16px; }
+
+	.badge {
+		display: inline-block;
+		font-size: 10px;
+		font-weight: 600;
+		padding: 2px 8px;
+		border-radius: 10px;
+		margin-left: 6px;
+	}
+	.badge--live { background: #EAF6E9; color: #3FA23C; }
+	.badge--exemple { background: #FDF3E3; color: #B4740E; }
+
+	.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+	.card {
+		border: 1px solid #E0E2E6;
+		border-radius: 8px;
+		padding: 12px 14px;
+		background: #F9FAFB;
+	}
+	.card strong { display: block; color: #003F70; margin-bottom: 3px; }
+
+	table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin-top: 8px; }
+	th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #E0E2E6; vertical-align: top; }
+	th { background: #F0F7E4; color: #1A2233; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; }
+
+	.tree { font-size: 12px; }
+	.tree ul { list-style: none; margin: 4px 0 4px 18px; padding: 0; }
+	.tree > ul { margin-left: 0; }
+	.tree li { margin: 3px 0; position: relative; padding-left: 14px; }
+	.tree li::before { content: '›'; position: absolute; left: 0; color: #4CB848; font-weight: 700; }
+	.tree .lvl1 { font-weight: 600; color: #003F70; }
+
+	.checklist, .todolist { list-style: none; padding: 0; margin: 8px 0; }
+	.checklist li, .todolist li { margin: 5px 0; padding-left: 22px; position: relative; }
+	.checklist li::before {
+		content: '✓'; position: absolute; left: 0; top: 0;
+		width: 15px; height: 15px; line-height: 15px; text-align: center;
+		border-radius: 50%; background: #4CB848; color: #fff; font-size: 10px;
+	}
+	.todolist li::before {
+		content: ''; position: absolute; left: 2px; top: 3px;
+		width: 10px; height: 10px; border-radius: 3px;
+		border: 2px solid #E08A1E;
+	}
+
+	footer.pagefoot { font-size: 10px; color: #98A0AC; text-align: center; margin-top: 40px; border-top: 1px solid #E0E2E6; padding-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+	<div class="eyebrow">Centre d'Études et de Recherches sur les Énergies Renouvelables</div>
+	<h1>Présentation du site web du CERER</h1>
+	<p>Site institutionnel bilingue (français / anglais), bâti sur WordPress, entièrement administrable depuis l'interface d'administration — architecture, contenu et état d'avancement.</p>
+	<div class="meta">Document préparé le 13 septembre 2026</div>
+</div>
+
+<section>
+<h2>1. En bref</h2>
+<div class="grid2">
+	<div class="card"><strong>Technologie</strong>WordPress + thème sur mesure "cerer-child" (basé sur Blocksy), plugins Polylang (bilingue) et Advanced Custom Fields.</div>
+	<div class="card"><strong>Langues</strong>Français (langue par défaut) et Anglais, avec bascule automatique et repli intelligent sur le français quand un contenu n'est pas encore traduit.</div>
+	<div class="card"><strong>Administration</strong>Tout le contenu (textes, images, fiches, menus) se modifie depuis l'admin WordPress, sans toucher au code.</div>
+	<div class="card"><strong>État</strong>Design et structure finalisés ; une partie du contenu est encore un exemple de présentation, à enrichir par le CERER.</div>
+</div>
+</section>
+
+<section>
+<h2>2. Plan du site — menu principal</h2>
+<div class="tree">
+<ul>
+	<li class="lvl1">Accueil<span class="badge badge--live">actif</span>
+		<ul><li>Chiffres clés, projets phares, départements, webinaires, dernières actualités</li></ul>
+	</li>
+	<li class="lvl1">À propos
+		<ul>
+			<li>Qui sommes-nous — mission, vision, valeurs, forces, historique, vidéos, équipe, tutelles</li>
+			<li>Mot du Directeur (ancre sur la même page)</li>
+		</ul>
+	</li>
+	<li class="lvl1">Formations
+		<ul>
+			<li>Licence en Énergie Renouvelable <span class="badge badge--exemple">exemple</span></li>
+			<li>Master en Énergie Renouvelable <span class="badge badge--exemple">exemple</span></li>
+			<li>Certifications professionnelles <span class="badge badge--exemple">exemple</span></li>
+			<li>Soutenances &amp; mémoires (liste dynamique)</li>
+			<li>Offres de stage &amp; emploi <span class="badge badge--exemple">exemple</span></li>
+			<li>Formation continue (liste dynamique des sessions)</li>
+		</ul>
+	</li>
+	<li class="lvl1">Départements
+		<ul>
+			<li>Photovoltaïque, Biomasse &amp; Bioénergie, Éolien, Thermique</li>
+			<li>Services transversaux : SSIN, Scolarité, Atelier</li>
+		</ul>
+	</li>
+	<li class="lvl1">Publications<ul><li>Archive filtrable des publications scientifiques</li></ul></li>
+	<li class="lvl1">Webinaires<ul><li>Prochain webinaire, inscriptions, replays</li></ul></li>
+	<li class="lvl1">Données &amp; Outils
+		<ul><li>Atlas solaire, atlas éolien, simulateur PV, jeux de données <span class="badge badge--exemple">exemple</span></li></ul>
+	</li>
+	<li class="lvl1">Actualités<ul><li>Articles filtrables par catégorie</li></ul></li>
+	<li class="lvl1">Contact<ul><li>Formulaire, coordonnées, carte Google Maps, liens utiles</li></ul></li>
+</ul>
+</div>
+<p style="margin-top:10px; font-size:11px; color:#555B6A;">L'ensemble de ce menu existe à l'identique en anglais (bascule FR/EN en un clic, visible sur toutes les pages).</p>
+</section>
+
+<section>
+<h2>3. Contenu actuellement en ligne</h2>
+<table>
+<tr><th>Type de contenu</th><th>Nombre de fiches</th><th>Statut</th></tr>
+<tr><td>Articles / actualités</td><td>5</td><td>Contenu réel</td></tr>
+<tr><td>Webinaires</td><td>8</td><td>Mélange réel / exemple</td></tr>
+<tr><td>Projets de recherche</td><td>6</td><td>Contenu réel</td></tr>
+<tr><td>Publications scientifiques</td><td>6</td><td>Contenu réel</td></tr>
+<tr><td>Chercheurs (équipe)</td><td>6</td><td>Contenu réel</td></tr>
+<tr><td>Sessions de formation</td><td>6</td><td>Contenu réel</td></tr>
+<tr><td>Soutenances &amp; mémoires</td><td>6</td><td>Contenu réel</td></tr>
+<tr><td>Programmes de formation</td><td>12 (FR+EN)</td><td>Exemple, à valider par l'équipe pédagogique</td></tr>
+<tr><td>Ressources (Données &amp; Outils)</td><td>8 (FR+EN)</td><td>Exemple, liens à renseigner</td></tr>
+<tr><td>Partenaires</td><td>0</td><td>À renseigner (section masquée tant qu'elle est vide)</td></tr>
+</table>
+</section>
+
+<section>
+<h2>4. Fonctionnalités notables</h2>
+<ul class="checklist">
+	<li>Bascule bilingue FR/EN sur chaque page, avec repli automatique sur le français si une traduction anglaise n'existe pas encore (jamais de page vide)</li>
+	<li>Filtrage dynamique des actualités et des webinaires par catégorie, sans rechargement de page</li>
+	<li>Miniatures YouTube récupérées et mises en cache automatiquement (aucun appel externe répété)</li>
+	<li>Formulaires (contact, inscription webinaire, newsletter) avec protection anti-spam intégrée</li>
+	<li>Carte Google Maps sur la page Contact, basée sur l'adresse renseignée dans l'admin</li>
+	<li>Assistant CERER (FAQ) et bouton WhatsApp flottants, visibles sur tout le site</li>
+	<li>Mode contraste élevé (accessibilité), activable depuis le haut de chaque page</li>
+	<li>Design responsive (mobile, tablette, desktop) sur l'ensemble du site</li>
+</ul>
+</section>
+
+<section>
+<h2>5. Ce que le CERER peut modifier seul, sans développeur</h2>
+<div class="grid2">
+	<div class="card"><strong>Textes</strong>Tous les titres, paragraphes, chapôs, listes à puces de chaque page.</div>
+	<div class="card"><strong>Images</strong>Photos d'équipe, portraits, logos de tutelles, miniatures, illustrations.</div>
+	<div class="card"><strong>Fiches</strong>Chercheurs, webinaires, publications, projets, actualités, programmes de formation, ressources, partenaires — ajout, modification, suppression, réorganisation.</div>
+	<div class="card"><strong>Menus &amp; liens</strong>Structure de la navigation, libellés, liens (via l'éditeur de menus WordPress).</div>
+</div>
+<p style="margin-top:10px; font-size:11px; color:#555B6A;">Chaque page personnalisée affiche un rappel dans l'admin indiquant où saisir le contenu (l'éditeur de blocs standard n'est volontairement pas utilisé sur ces pages).</p>
+</section>
+
+<section>
+<h2>6. Prochaines étapes</h2>
+<h3 style="color:#3FA23C; margin-top:6px;">Déjà fait</h3>
+<ul class="checklist">
+	<li>Dépôt Git initialisé — historique du code du thème prêt pour le transfert</li>
+	<li>Export de la base de données et guide de migration préparés pour l'hébergement Hostinger</li>
+</ul>
+<h3 style="color:#B4740E;">Reste à faire</h3>
+<ul class="todolist">
+	<li>Remplacement du contenu d'exemple (programmes de formation, ressources) par le contenu définitif du CERER</li>
+	<li>Ajout des logos de tutelles manquants (Ministère de l'Énergie, une fois fourni par le client)</li>
+	<li>Choix éventuel : section gouvernance (organigramme) et carte des partenaires mondiaux, non traitées à ce stade</li>
+	<li>Exécution de la migration vers Hostinger (domaine, hébergement et accès à fournir par le CERER)</li>
+</ul>
+</section>
+
+<footer class="pagefoot">CERER — Centre d'Études et de Recherches sur les Énergies Renouvelables · Université Cheikh Anta Diop de Dakar</footer>
+
+</body>
+</html>

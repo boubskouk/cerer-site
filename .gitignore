@@ -13,6 +13,13 @@
 !/.htaccess
 !/wp-config-sample.php
 !/wp-content
+!/migration
+!/presentation
+
+# Dossier migration : le guide est utile en dépôt, mais pas l'export SQL
+# (volumineux, périmé dès le prochain contenu ajouté — en refaire un frais
+# au moment réel de la migration, cf. MIGRATION-HOSTINGER.md §3.4).
+/migration/*.sql
 
 /wp-content/*
 !/wp-content/themes
