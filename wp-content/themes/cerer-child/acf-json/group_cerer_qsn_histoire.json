@@ -1,0 +1,49 @@
+{
+	"key": "group_cerer_qsn_histoire",
+	"title": "Qui sommes-nous — Notre histoire",
+	"fields": [
+		{
+			"key": "field_cerer_qsn_histoire_intro",
+			"label": "Frise des jalons",
+			"name": "jalons_histoire_intro",
+			"type": "message",
+			"message": "6 jalons maximum, affichés dans l'ordre ci-dessous. Laisser l'année vide pour ne pas afficher un jalon.\n\nLe DERNIER jalon renseigné reçoit automatiquement le style \"étape actuelle\" (pastille plus grande, halo vert) : inutile de cocher quoi que ce soit."
+		},
+
+		{ "key": "field_cerer_qsn_j1_annee", "label": "Jalon 1 — Année", "name": "jalons_histoire_1_annee", "type": "text", "default_value": "1980" },
+		{ "key": "field_cerer_qsn_j1_libelle", "label": "Jalon 1 — Libellé", "name": "jalons_histoire_1_libelle", "type": "text", "default_value": "Création du CERER comme institut de l'UCAD" },
+
+		{ "key": "field_cerer_qsn_j2_annee", "label": "Jalon 2 — Année", "name": "jalons_histoire_2_annee", "type": "text", "default_value": "1995" },
+		{ "key": "field_cerer_qsn_j2_libelle", "label": "Jalon 2 — Libellé", "name": "jalons_histoire_2_libelle", "type": "text", "default_value": "Premiers projets solaires déployés en milieu rural" },
+
+		{ "key": "field_cerer_qsn_j3_annee", "label": "Jalon 3 — Année", "name": "jalons_histoire_3_annee", "type": "text", "default_value": "2005" },
+		{ "key": "field_cerer_qsn_j3_libelle", "label": "Jalon 3 — Libellé", "name": "jalons_histoire_3_libelle", "type": "text", "default_value": "Ouverture des partenariats scientifiques internationaux" },
+
+		{ "key": "field_cerer_qsn_j4_annee", "label": "Jalon 4 — Année", "name": "jalons_histoire_4_annee", "type": "text", "default_value": "2015" },
+		{ "key": "field_cerer_qsn_j4_libelle", "label": "Jalon 4 — Libellé", "name": "jalons_histoire_4_libelle", "type": "text", "default_value": "Lancement de la Licence en Énergie Renouvelable" },
+
+		{ "key": "field_cerer_qsn_j5_annee", "label": "Jalon 5 — Année", "name": "jalons_histoire_5_annee", "type": "text", "default_value": "2024" },
+		{ "key": "field_cerer_qsn_j5_libelle", "label": "Jalon 5 — Libellé", "name": "jalons_histoire_5_libelle", "type": "text", "default_value": "Extension vers le Master et les certifications professionnelles" },
+
+		{ "key": "field_cerer_qsn_j6_annee", "label": "Jalon 6 — Année", "name": "jalons_histoire_6_annee", "type": "text" },
+		{ "key": "field_cerer_qsn_j6_libelle", "label": "Jalon 6 — Libellé", "name": "jalons_histoire_6_libelle", "type": "text" }
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": 3,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "PROMPT-15, section 4. 5 jalons de départ à confirmer par le client.",
+	"show_in_rest": 1
+}

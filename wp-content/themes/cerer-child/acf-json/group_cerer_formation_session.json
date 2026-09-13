@@ -1,0 +1,78 @@
+{
+	"key": "group_cerer_formation_session",
+	"title": "Session de formation",
+	"fields": [
+		{
+			"key": "field_cerer_fs_programme",
+			"label": "Programme",
+			"name": "programme",
+			"type": "select",
+			"choices": {
+				"licence_enr": "Licence en Énergie Renouvelable",
+				"master_enr": "Master en Énergie Renouvelable",
+				"certifications": "Certifications professionnelles",
+				"formation_continue": "Formation continue"
+			},
+			"return_format": "value",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_fs_date_debut",
+			"label": "Date de début",
+			"name": "date_debut",
+			"type": "date_picker",
+			"display_format": "d/m/Y",
+			"return_format": "Y-m-d",
+			"first_day": 1
+		},
+		{
+			"key": "field_cerer_fs_date_fin",
+			"label": "Date de fin",
+			"name": "date_fin",
+			"type": "date_picker",
+			"display_format": "d/m/Y",
+			"return_format": "Y-m-d",
+			"first_day": 1
+		},
+		{
+			"key": "field_cerer_fs_lieu",
+			"label": "Lieu",
+			"name": "lieu",
+			"type": "text",
+			"default_value": "Campus UCAD"
+		},
+		{
+			"key": "field_cerer_fs_places",
+			"label": "Places disponibles",
+			"name": "places_dispo",
+			"type": "number",
+			"min": 0
+		},
+		{
+			"key": "field_cerer_fs_lien_inscription",
+			"label": "Lien d'inscription",
+			"name": "lien_inscription",
+			"type": "url"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "formation_session"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

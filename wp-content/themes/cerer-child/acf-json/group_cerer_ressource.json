@@ -1,0 +1,45 @@
+{
+	"key": "group_cerer_ressource",
+	"title": "Ressource (Données & Outils)",
+	"fields": [
+		{
+			"key": "field_cerer_res_icone",
+			"label": "Icône (emoji)",
+			"name": "icone_emoji",
+			"type": "text",
+			"placeholder": "📈"
+		},
+		{
+			"key": "field_cerer_res_description",
+			"label": "Description",
+			"name": "description",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_res_lien",
+			"label": "Lien vers la ressource",
+			"name": "lien",
+			"type": "url",
+			"instructions": "Laisser vide pour afficher le badge \"Lien à venir\" plutôt qu'un lien cassé."
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "ressource"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

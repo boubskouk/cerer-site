@@ -1,0 +1,171 @@
+/*
+ * Feuille de base CERER — reset léger, échelle typographique, conteneur,
+ * utilitaires d'espacement de section. Écrit mobile-first : les règles hors
+ * media query s'appliquent dès 0px (couvrent le repère 375px), puis on
+ * surcharge vers le haut à 768px et 1280px. Cf. README §2.
+ *
+ * Ne contient aucun composant (boutons, cartes, badges…) : ça, c'est
+ * assets/css/components.css, à venir en Prompt 3.
+ */
+
+/* --- Reset léger --- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--cerer-bg);
+	color: var(--cerer-ink);
+	font-family: var(--cerer-font-body);
+	font-weight: 400;
+	font-size: var(--cerer-fs-body);
+	line-height: var(--cerer-lh-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	color: var(--cerer-ink);
+}
+
+p, ul, ol, dl, figure {
+	margin: 0;
+}
+
+ul, ol {
+	padding: 0;
+	list-style: none;
+}
+
+img, picture, svg, video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+}
+
+/* Focus clavier visible partout — README §6.2 Accessibilité */
+:focus-visible {
+	outline: 2px solid var(--cerer-green);
+	outline-offset: 2px;
+}
+
+/* Animation désactivée si l'utilisateur le demande — README §6.4 */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: .001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* --- Échelle typographique --- */
+/* Mobile d'abord (< 768px) */
+
+h1, .cerer-h1 {
+	font-size: var(--cerer-fs-h1-mobile);
+	line-height: var(--cerer-lh-heading-h1);
+}
+
+h2, .cerer-h2 {
+	font-size: var(--cerer-fs-h2-mobile);
+	line-height: var(--cerer-lh-heading-h2);
+}
+
+h3, .cerer-h3 {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: var(--cerer-lh-heading-h3);
+}
+
+.cerer-label {
+	font-family: var(--cerer-font-body);
+	font-size: var(--cerer-fs-label);
+	font-weight: 500;
+	line-height: var(--cerer-lh-label);
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.cerer-meta {
+	font-family: var(--cerer-font-body);
+	font-size: var(--cerer-fs-meta);
+	font-weight: 400;
+	line-height: var(--cerer-lh-meta);
+	color: var(--cerer-ink-2);
+}
+
+/* Tablette et plus (≥768px) */
+@media (min-width: 768px) {
+	body {
+		font-size: var(--cerer-fs-body);
+	}
+
+	h1, .cerer-h1 {
+		font-size: 36px;
+	}
+
+	h2, .cerer-h2 {
+		font-size: var(--cerer-fs-h2);
+	}
+
+	h3, .cerer-h3 {
+		font-size: var(--cerer-fs-h3);
+	}
+}
+
+/* Desktop large (≥1280px) */
+@media (min-width: 1280px) {
+	h1, .cerer-h1 {
+		font-size: var(--cerer-fs-h1);
+	}
+}
+
+/* --- Conteneur --- */
+
+.cerer-container {
+	width: 100%;
+	max-width: var(--cerer-container-max);
+	margin-inline: auto;
+	padding-inline: var(--cerer-container-gutter);
+}
+
+/* --- Rythme vertical entre sections --- */
+/* 56px mobile, 96px desktop (≥768px) — README §2 "Grille et rythme" */
+
+.cerer-section {
+	padding-block: var(--cerer-section-gap-mobile);
+}
+
+@media (min-width: 768px) {
+	.cerer-section {
+		padding-block: var(--cerer-section-gap);
+	}
+}
+
+/* --- Grille de cartes --- */
+/* repeat(auto-fit, minmax(260px, 1fr)), gap 20px — réutilisée par les composants */
+
+.cerer-card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--cerer-card-grid-min), 1fr));
+	gap: var(--cerer-card-grid-gap);
+}

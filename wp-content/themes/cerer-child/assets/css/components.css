@@ -1,0 +1,422 @@
+/*
+ * Bibliothèque de composants CERER — README §4.4 à §4.6.
+ * Préfixe de classe .cerer- partout, cf. Prompt 3.
+ */
+
+/* =========================================================
+   BOUTONS — §4.4
+   ========================================================= */
+
+.cerer-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	font-family: var(--cerer-font-body);
+	font-weight: 500;
+	border-radius: var(--cerer-radius-control);
+	border: 1px solid transparent;
+	cursor: pointer;
+	text-align: center;
+	transition: var(--cerer-transition);
+	min-height: 44px; /* hauteur de frappe minimale mobile */
+}
+
+@media (min-width: 768px) {
+	.cerer-btn {
+		min-height: 0;
+	}
+}
+
+/* Tailles */
+.cerer-btn--l {
+	padding: 12px 22px;
+	font-size: 15px;
+}
+
+.cerer-btn--s {
+	padding: 9px 16px;
+	font-size: 13px;
+}
+
+/* Variantes
+ * Sélecteurs à deux classes (.cerer-btn.cerer-btn--xxx) volontairement :
+ * Blocksy (main.min.css, chargé après nous dans le <head> pour des raisons
+ * de priorité de hook) définit `[type=submit]{background-color:…}` à la
+ * même spécificité qu'un simple `.cerer-btn--primary` — à spécificité égale
+ * la règle la plus tardive dans la source gagne, donc Blocksy écrasait notre
+ * vert sur tout bouton <button type="submit"> (constaté à l'écran : bouton
+ * "S'abonner" rendu bleu). Les deux classes sont de toute façon toujours
+ * posées ensemble dans le HTML, donc ce durcissement ne casse rien. */
+.cerer-btn.cerer-btn--primary {
+	background: var(--cerer-green);
+	/* Texte blanc sur #4CB848 ne passe pas WCAG AA (2,54:1, cf. rapport de
+	   recette Prompt 6, point 3). --cerer-ink sur ce même vert donne 6,25:1
+	   (4,88:1 au survol) : on garde le fond exactement tel que défini au
+	   README §4.4 et on corrige uniquement la couleur du texte. */
+	color: var(--cerer-ink);
+}
+.cerer-btn.cerer-btn--primary:hover {
+	background: var(--cerer-green-hover);
+	transform: var(--cerer-hover-lift);
+}
+
+.cerer-btn.cerer-btn--secondary {
+	background: var(--cerer-surface);
+	color: var(--cerer-blue);
+	border-color: var(--cerer-blue);
+}
+.cerer-btn.cerer-btn--secondary:hover {
+	transform: var(--cerer-hover-lift);
+}
+
+.cerer-btn.cerer-btn--secondary-blue {
+	background: transparent;
+	color: #fff;
+	border-color: rgba(255, 255, 255, .85);
+}
+.cerer-btn.cerer-btn--secondary-blue:hover {
+	transform: var(--cerer-hover-lift);
+}
+
+.cerer-btn.cerer-btn--tertiary {
+	background: var(--cerer-bg);
+	color: var(--cerer-ink);
+	border-color: var(--cerer-border);
+}
+.cerer-btn.cerer-btn--tertiary:hover {
+	transform: var(--cerer-hover-lift);
+}
+
+.cerer-btn.cerer-btn--link {
+	background: none;
+	border: none;
+	color: var(--cerer-blue-2);
+	padding: 0;
+	min-height: 0;
+	font-weight: 500;
+}
+.cerer-btn.cerer-btn--link:hover {
+	text-decoration: underline;
+}
+
+/* États communs */
+.cerer-btn:focus-visible {
+	outline: 2px solid var(--cerer-green);
+	outline-offset: 2px;
+}
+
+.cerer-btn:disabled,
+.cerer-btn.is-disabled {
+	opacity: .55;
+	cursor: not-allowed;
+	transform: none;
+}
+
+/* =========================================================
+   BADGES DE STATUT — §4.5 (pill, radius 99, 12px/500)
+   ========================================================= */
+
+.cerer-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 12px;
+	border-radius: var(--cerer-radius-pill);
+	font-family: var(--cerer-font-body);
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.cerer-badge--en-cours {
+	background: var(--cerer-green-soft);
+	color: #2E7D2A;
+}
+
+.cerer-badge--a-venir {
+	background: #FDF1E0;
+	/* #A96410 ne passait qu'à 4,17:1 sur ce fond (échec AA texte normal,
+	   cf. rapport de recette Prompt 6, point 3) — #A05E0F est visuellement
+	   quasi identique et passe à 4,59:1. */
+	color: #A05E0F;
+}
+
+.cerer-badge--termine {
+	background: #EFF0F2;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-badge--inscriptions-ouvertes {
+	background: #E5F1FA;
+	color: var(--cerer-blue);
+}
+
+/* Badge hero — §4.5 dernier paragraphe */
+.cerer-badge-hero {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 12px;
+	border-radius: var(--cerer-radius-pill);
+	background: rgba(76, 184, 72, .18);
+	border: 1px solid var(--cerer-green);
+	color: #fff;
+	font-size: 13px;
+}
+
+/* =========================================================
+   TAGS DE TYPE DE CONTENU — §4.5 (rectangle, radius 6, majuscules)
+   ========================================================= */
+
+.cerer-tag {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 10px;
+	border-radius: var(--cerer-radius-tag);
+	font-family: var(--cerer-font-body);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	color: #fff;
+	white-space: nowrap;
+}
+
+.cerer-tag--publication { background: var(--cerer-blue-2); }
+.cerer-tag--distinction  { background: var(--cerer-violet); }
+.cerer-tag--partenariat  { background: var(--cerer-blue); }
+
+/* Catégories vidéo (page Qui sommes-nous) — "formation"/"evenement"
+   réutilisent déjà les variantes ci-dessus/ci-dessous ; ajoutées ici
+   pour "presentation" et "recherche", sans équivalent existant. */
+.cerer-tag--presentation { background: var(--cerer-blue); }
+.cerer-tag--recherche    { background: var(--cerer-blue-2); }
+
+/* #4CB848 et #E08A1E sont trop clairs pour du texte blanc (2,54:1 et 2,68:1,
+   cf. rapport de recette Prompt 6, point 3) : fond inchangé (README §4.5),
+   texte en --cerer-ink à la place (6,25:1 et 5,92:1, AA ok). */
+.cerer-tag--evenement {
+	background: var(--cerer-green);
+	color: var(--cerer-ink);
+}
+.cerer-tag--formation {
+	background: var(--cerer-orange);
+	color: var(--cerer-ink);
+}
+
+/* =========================================================
+   PILLS DE FILTRE — §4.5
+   ========================================================= */
+
+.cerer-filter-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 16px;
+	border-radius: var(--cerer-radius-pill);
+	background: var(--cerer-surface);
+	border: 1px solid var(--cerer-border);
+	color: var(--cerer-ink-2);
+	font-family: var(--cerer-font-body);
+	font-size: 13px;
+	cursor: pointer;
+	transition: var(--cerer-transition);
+	min-height: 44px;
+}
+
+@media (min-width: 768px) {
+	.cerer-filter-pill {
+		min-height: 0;
+	}
+}
+
+.cerer-filter-pill:hover {
+	border-color: var(--cerer-blue);
+	color: var(--cerer-blue);
+}
+
+.cerer-filter-pill.is-active {
+	background: var(--cerer-blue);
+	border-color: var(--cerer-blue);
+	color: #fff;
+}
+
+.cerer-filter-pill:focus-visible {
+	outline: 2px solid var(--cerer-green);
+	outline-offset: 2px;
+}
+
+/* =========================================================
+   CARTES — §4.6
+   ========================================================= */
+
+.cerer-card {
+	display: block;
+	background: var(--cerer-surface);
+	border: 1px solid var(--cerer-border);
+	border-radius: var(--cerer-radius-card);
+	padding: 24px;
+	transition: var(--cerer-transition);
+}
+
+.cerer-card:hover {
+	transform: var(--cerer-hover-lift);
+	box-shadow: var(--cerer-shadow-card);
+}
+
+/* --- Carte thématique (département) --- */
+/* --cerer-card-accent est fixée en style inline par carte-departement.php,
+   une couleur par département (README §4.3 pastilles). */
+
+.cerer-card--theme {
+	--cerer-card-accent: var(--cerer-blue);
+	border-top: 3px solid var(--cerer-card-accent);
+	border-top-left-radius: var(--cerer-radius-card);
+	border-top-right-radius: var(--cerer-radius-card);
+}
+
+/* Modificateurs de couleur par département — pratiques pour les patterns
+   Gutenberg (pas d'inline style possible depuis l'éditeur de blocs) ;
+   carte-departement.php utilise plutôt --cerer-card-accent en style inline. */
+.cerer-card--solaire     { --cerer-card-accent: var(--cerer-green); }
+.cerer-card--biomasse    { --cerer-card-accent: var(--cerer-blue-2); }
+.cerer-card--eolien      { --cerer-card-accent: var(--cerer-blue); }
+.cerer-card--efficacite  { --cerer-card-accent: var(--cerer-violet); }
+
+.cerer-card--theme .cerer-card__icon {
+	width: 40px;
+	height: 40px;
+	border-radius: var(--cerer-radius-control);
+	background: color-mix(in srgb, var(--cerer-card-accent) 15%, white);
+	color: var(--cerer-card-accent);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 16px;
+	font-size: 20px;
+}
+
+.cerer-card--theme h3 {
+	margin-bottom: 8px;
+}
+
+.cerer-card--theme p {
+	font-size: 15px;
+	color: var(--cerer-ink-2);
+}
+
+/* --- Carte actualité --- */
+
+.cerer-card--news {
+	padding: 0;
+	overflow: hidden;
+}
+
+.cerer-card--news .cerer-card__media {
+	aspect-ratio: 16 / 9;
+	width: 100%;
+	background: var(--cerer-bg);
+	overflow: hidden;
+}
+
+.cerer-card--news .cerer-card__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Placeholder rayé — README §1 "images de contenu... sont des placeholders
+   rayés, à remplacer par les médias réels". */
+.cerer-card__media.is-placeholder {
+	background-image: repeating-linear-gradient(
+		45deg,
+		var(--cerer-border),
+		var(--cerer-border) 1px,
+		transparent 1px,
+		transparent 12px
+	);
+	background-color: var(--cerer-bg);
+}
+
+.cerer-card--news .cerer-card__body {
+	padding: 20px;
+}
+
+.cerer-card--news .cerer-tag {
+	margin-bottom: 12px;
+}
+
+.cerer-card--news h3 {
+	font-family: var(--cerer-font-heading);
+	font-size: 17px;
+	font-weight: 500;
+	margin-bottom: 8px;
+}
+
+.cerer-card--news .cerer-card__date {
+	font-size: 13px;
+	color: var(--cerer-ink-2);
+}
+
+/* --- Carte horizontale formation --- */
+
+.cerer-card--formation {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.cerer-card--formation .cerer-card__icon {
+	width: 52px;
+	height: 52px;
+	border-radius: var(--cerer-radius-control);
+	background: color-mix(in srgb, var(--cerer-blue) 12%, white);
+	color: var(--cerer-blue);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	font-size: 22px;
+}
+
+.cerer-card--formation .cerer-card__content {
+	flex: 1;
+	min-width: 0;
+}
+
+.cerer-card--formation .cerer-card__heading {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 6px;
+}
+
+.cerer-card--formation .cerer-card__meta {
+	font-size: 13px;
+	color: var(--cerer-ink-2);
+	margin-bottom: 8px;
+}
+
+.cerer-card--formation .cerer-card__description {
+	font-size: 15px;
+	margin-bottom: 12px;
+}
+
+.cerer-card--formation .cerer-card__action {
+	display: flex;
+	justify-content: flex-end;
+}
+
+@media (max-width: 767.98px) {
+	.cerer-card--formation {
+		flex-direction: column;
+	}
+
+	.cerer-card--formation .cerer-card__action {
+		justify-content: flex-start;
+		width: 100%;
+	}
+
+	.cerer-card--formation .cerer-card__action .cerer-btn {
+		width: 100%;
+	}
+}

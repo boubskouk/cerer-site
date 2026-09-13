@@ -1,0 +1,43 @@
+{
+	"key": "group_cerer_home_departments",
+	"title": "Accueil — Départements de recherche",
+	"fields": [
+		{
+			"key": "field_cerer_hd_eyebrow",
+			"label": "Surtitre",
+			"name": "home_departments_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hd_title",
+			"label": "Titre",
+			"name": "home_departments_title",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hd_intro",
+			"label": "Chapô",
+			"name": "home_departments_intro",
+			"type": "textarea",
+			"rows": 3
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 3,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Section \"Nos départements de recherche\" (PROMPT-11 départements-accueil).",
+	"show_in_rest": 1
+}

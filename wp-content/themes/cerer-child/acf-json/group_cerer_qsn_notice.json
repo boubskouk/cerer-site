@@ -1,0 +1,32 @@
+{
+	"key": "group_cerer_qsn_notice",
+	"title": "Qui sommes-nous — Où modifier le contenu",
+	"fields": [
+		{
+			"key": "field_cerer_qsn_notice_msg",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page utilise un gabarit personnalisé : tout son contenu se modifie dans les encadrés ci-dessous (Mission & vision, Le CERER en images, Notre histoire, Nos tutelles, Mot du Directeur…), PAS dans l'éditeur de blocs juste en dessous. L'éditeur de blocs WordPress n'est pas utilisé sur cette page — il peut rester vide, c'est normal.",
+			"esc_html": 0
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": -10,
+	"position": "acf_after_title",
+	"style": "seamless",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Note d'orientation pour l'administrateur du site (pas un champ de contenu).",
+	"show_in_rest": 0
+}

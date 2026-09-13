@@ -1,0 +1,16 @@
+/*
+Theme Name:   CERER Child
+Theme URI:    https://cerer.ucad.sn
+Description:  Thème enfant Blocksy pour le site du CERER (Centre d'Études et de Recherches sur les Énergies Renouvelables), UCAD Dakar. Implémente la charte graphique du handoff de design (Phase 1).
+Author:       CERER / UCAD
+Template:     blocksy
+Version:      0.1.0
+Text Domain:  cerer-child
+*/
+
+/*
+Ce fichier reste volontairement vide de règles CSS : toutes les déclarations
+vivent dans assets/css/ (tokens.css, fonts.css, base.css, components.css…),
+chargées via functions.php avec un numéro de version basé sur filemtime().
+Aucun @import n'est utilisé ici pour ne pas bloquer le rendu.
+*/

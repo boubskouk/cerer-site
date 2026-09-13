@@ -1,0 +1,207 @@
+/*
+ * Pages de contenu simples : Contact, Formations, Départements,
+ * Données & Outils. Formulaires + petit en-tête de page partagé.
+ * Mobile-first.
+ */
+
+.cerer-page-hero {
+	background: var(--cerer-bg);
+	border-bottom: 1px solid var(--cerer-border);
+	padding-block: 40px;
+}
+
+@media (min-width: 768px) {
+	.cerer-page-hero {
+		padding-block: 56px;
+	}
+}
+
+.cerer-page-hero p {
+	margin-top: 12px;
+	max-width: 720px;
+	font-size: 16px;
+	color: var(--cerer-ink-2);
+}
+
+/* --- Pagination (page Actualités) --- */
+
+.cerer-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 40px;
+}
+
+.cerer-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 40px;
+	height: 40px;
+	padding-inline: 12px;
+	border: 1px solid var(--cerer-border);
+	border-radius: 8px;
+	font-size: 14px;
+	color: var(--cerer-ink);
+	transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.cerer-pagination .page-numbers:hover {
+	border-color: var(--cerer-blue);
+	color: var(--cerer-blue);
+}
+
+.cerer-pagination .page-numbers.current {
+	background: var(--cerer-blue);
+	border-color: var(--cerer-blue);
+	color: #fff;
+}
+
+.cerer-pagination .page-numbers.dots {
+	border-color: transparent;
+}
+
+/* --- Formulaires (contact) --- */
+
+.cerer-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 640px;
+}
+
+.cerer-form__row {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.cerer-form__row label {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--cerer-ink);
+}
+
+.cerer-form__row input,
+.cerer-form__row select,
+.cerer-form__row textarea {
+	font: inherit;
+	padding: 12px 14px;
+	border: 1px solid var(--cerer-border);
+	border-radius: var(--cerer-radius-control);
+	background: var(--cerer-surface);
+	color: var(--cerer-ink);
+	min-height: 44px;
+}
+
+.cerer-form__row textarea {
+	resize: vertical;
+	min-height: 120px;
+}
+
+.cerer-form__row input:focus-visible,
+.cerer-form__row select:focus-visible,
+.cerer-form__row textarea:focus-visible {
+	outline: 2px solid var(--cerer-green);
+	outline-offset: 2px;
+	border-color: var(--cerer-green);
+}
+
+.cerer-form__hp {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+}
+
+.cerer-form__feedback {
+	font-size: 14px;
+}
+
+.cerer-form__feedback.is-error {
+	color: #B3261E;
+}
+
+.cerer-form__feedback.is-success {
+	color: #2E7D2A;
+}
+
+/* --- Colonnes contact (formulaire + coordonnées) --- */
+
+.cerer-contact-layout {
+	display: grid;
+	gap: 40px;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+	.cerer-contact-layout {
+		grid-template-columns: 1.3fr 1fr;
+	}
+}
+
+.cerer-contact-sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.cerer-contact-sidebar__block {
+	background: var(--cerer-surface);
+	border: 1px solid var(--cerer-border);
+	border-radius: var(--cerer-radius-card);
+	padding: 20px;
+}
+
+.cerer-contact-sidebar__block h3 {
+	margin-bottom: 8px;
+}
+
+.cerer-contact-sidebar__block address {
+	font-style: normal;
+	font-size: 14px;
+	color: var(--cerer-ink-2);
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.cerer-contact-map {
+	margin-top: 40px;
+	aspect-ratio: 16 / 6;
+	border-radius: var(--cerer-radius-card);
+	overflow: hidden;
+	border: 1px solid var(--cerer-border);
+}
+
+@media (max-width: 767.98px) {
+	.cerer-contact-map {
+		aspect-ratio: 4 / 3;
+	}
+}
+
+.cerer-contact-map iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	display: block;
+}
+
+/* --- Services transversaux (page Départements) --- */
+
+.cerer-services-list {
+	display: grid;
+	gap: 12px;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	margin-top: 16px;
+}
+
+.cerer-services-list li {
+	padding: 16px;
+	background: var(--cerer-bg);
+	border-radius: var(--cerer-radius-control);
+	font-weight: 500;
+	font-size: 14px;
+}

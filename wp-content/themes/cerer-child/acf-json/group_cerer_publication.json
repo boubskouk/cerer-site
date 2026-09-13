@@ -1,0 +1,86 @@
+{
+	"key": "group_cerer_publication",
+	"title": "Publication",
+	"fields": [
+		{
+			"key": "field_cerer_pub_type",
+			"label": "Type",
+			"name": "type",
+			"type": "select",
+			"choices": {
+				"article": "Article scientifique",
+				"rapport": "Rapport",
+				"actes": "Actes de conférence",
+				"these": "Thèse"
+			},
+			"default_value": "article",
+			"return_format": "value",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_pub_auteurs",
+			"label": "Auteurs",
+			"name": "auteurs",
+			"type": "text",
+			"instructions": "Séparés par des virgules.",
+			"placeholder": "A. Diop, M. Fall"
+		},
+		{
+			"key": "field_cerer_pub_revue",
+			"label": "Revue",
+			"name": "revue",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_pub_annee",
+			"label": "Année",
+			"name": "annee",
+			"type": "number",
+			"min": 1990,
+			"max": 2100,
+			"step": 1
+		},
+		{
+			"key": "field_cerer_pub_resume",
+			"label": "Résumé",
+			"name": "resume",
+			"type": "textarea",
+			"rows": 4,
+			"new_lines": "wpautop"
+		},
+		{
+			"key": "field_cerer_pub_lien_pdf",
+			"label": "Lien PDF",
+			"name": "lien_pdf",
+			"type": "url",
+			"instructions": "URL externe uniquement (Drive, etc.) — aucun fichier n'est hébergé sur le serveur."
+		},
+		{
+			"key": "field_cerer_pub_doi",
+			"label": "DOI",
+			"name": "doi",
+			"type": "text",
+			"placeholder": "10.xxxx/xxxxx"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "publication"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

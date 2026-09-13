@@ -1,0 +1,48 @@
+{
+	"key": "group_cerer_departement_meta",
+	"title": "Département — apparence",
+	"fields": [
+		{
+			"key": "field_cerer_dept_icone",
+			"label": "Icône",
+			"name": "icone",
+			"type": "image",
+			"instructions": "Carrée, fond transparent, ~64×64px affichés. Vide : un émoji de repli s'affiche à la place (PROMPT-11 en attente des PNG définitifs).",
+			"return_format": "array",
+			"preview_size": "thumbnail",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_dept_couleur",
+			"label": "Couleur (filet de carte, code hex)",
+			"name": "couleur",
+			"type": "text",
+			"placeholder": "#1565A3"
+		},
+		{
+			"key": "field_cerer_dept_teinte",
+			"label": "Teinte de la tuile d'icône (code hex)",
+			"name": "teinte",
+			"type": "text",
+			"placeholder": "#EDF3F9"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "taxonomy",
+				"operator": "==",
+				"value": "departement"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

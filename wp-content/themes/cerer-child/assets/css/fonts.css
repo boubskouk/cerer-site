@@ -1,0 +1,52 @@
+/*
+ * Polices self-hostées — README §2 "Charger en display=swap, self-hosted de préférence
+ * (RGPD + performance)". Aucun appel à fonts.googleapis.com.
+ *
+ * Sous-ensemble "latin" uniquement (couvre tous les caractères accentués du français,
+ * U+0000-00FF) : le site est mono-langue FR/EN latin, inutile de charger cyrillic/greek/
+ * vietnamese/devanagari.
+ *
+ * Inter est distribuée par Google Fonts comme police variable : un seul fichier
+ * couvre les graisses 400/500/600, d'où les trois règles ci-dessous pointant vers
+ * le même fichier physique.
+ */
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/inter-latin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('../fonts/inter-latin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('../fonts/inter-latin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('../fonts/poppins-500-latin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('../fonts/poppins-600-latin.woff2') format('woff2');
+}

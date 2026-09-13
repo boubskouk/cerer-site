@@ -1,0 +1,43 @@
+{
+	"key": "group_cerer_home_webinars",
+	"title": "Accueil — Webinaires",
+	"fields": [
+		{
+			"key": "field_cerer_hw_eyebrow",
+			"label": "Surtitre",
+			"name": "home_webinars_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hw_title",
+			"label": "Titre",
+			"name": "home_webinars_title",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hw_intro",
+			"label": "Chapô",
+			"name": "home_webinars_intro",
+			"type": "textarea",
+			"rows": 3
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 4,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Section \"Webinaires\" (PROMPT-13).",
+	"show_in_rest": 1
+}

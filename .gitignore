@@ -1,0 +1,41 @@
+# Dépôt volontairement minimal (à la demande du client) : uniquement le
+# travail spécifique à ce site, pas le cœur WordPress ni les plugins tiers
+# (réinstallables depuis wordpress.org — versions exactes documentées dans
+# MIGRATION-HOSTINGER.md), ni les fichiers de travail internes (PROMPT-*.txt,
+# design_handoff_cerer_phase1/, scripts de débogage).
+#
+# On ignore tout à la racine, puis on rouvre explicitement ce qui est
+# nécessaire (thème enfant, médias, traduction compilée).
+
+/*
+
+!/.gitignore
+!/.htaccess
+!/wp-config-sample.php
+!/wp-content
+
+/wp-content/*
+!/wp-content/themes
+!/wp-content/uploads
+!/wp-content/languages
+
+/wp-content/themes/*
+!/wp-content/themes/cerer-child
+
+/wp-content/languages/*
+!/wp-content/languages/themes
+
+# Le dossier languages/themes contient aussi les caches de traduction
+# auto-générés par Blocksy / WordPress (blocksy-fr_FR-*.json, twentytwenty*)
+# — seule notre traduction anglaise compilée (build-mo.php) est à nous.
+/wp-content/languages/themes/*
+!/wp-content/languages/themes/cerer-child-en_US.mo
+
+# Sauvegardes locales d'anciens logos (pas nécessaires au site déployé).
+/wp-content/themes/cerer-child/assets/img/_backup/
+
+# Divers, au cas où ils apparaîtraient sous les dossiers rouverts ci-dessus.
+.DS_Store
+Thumbs.db
+*.log
+node_modules/

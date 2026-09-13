@@ -1,0 +1,965 @@
+/*
+ * Page "Qui sommes-nous" (PROMPT-15) : en-tête, Mission & vision, Le CERER
+ * en images, Notre histoire, Notre équipe, Nos tutelles, Mot du Directeur,
+ * Coordonnées. Mobile-first. Alternance stricte des fonds de section :
+ * bleu (en-tête), blanc, #F0F7E4, blanc, #F0F7E4, blanc, #F0F7E4 (Mot du
+ * Directeur, conservée hors périmètre du prompt), blanc (Coordonnées).
+ */
+
+/* =========================================================
+   STRUCTURE DE SECTION COMMUNE
+   ========================================================= */
+
+.cerer-about-section {
+	background: #FFFFFF;
+	padding: 56px 24px;
+}
+
+@media (min-width: 768px) {
+	.cerer-about-section {
+		padding: 80px 24px;
+	}
+}
+
+.cerer-about-section--tint {
+	background: #F0F7E4;
+}
+
+.cerer-about-section h2 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 26px;
+	line-height: 1.2;
+	color: #1A2233;
+	margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+	.cerer-about-section h2 {
+		font-size: 34px;
+	}
+}
+
+/* Surtitre de section, identique à celui de l'accueil (.cerer-stats__eyebrow) —
+   dupliqué ici plutôt qu'importé, home.css n'étant chargé que sur l'accueil. */
+.cerer-about__eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-family: var(--cerer-font-body);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: #4F7A16;
+}
+
+.cerer-about__eyebrow-rule {
+	width: 28px;
+	height: 2px;
+	background: var(--cerer-green);
+	flex-shrink: 0;
+}
+
+.cerer-about__chapo {
+	margin-top: 12px;
+	font-size: 15.5px;
+	line-height: 1.7;
+	color: var(--cerer-ink-2);
+	max-width: 520px;
+}
+
+.cerer-about__empty {
+	margin-top: 24px;
+	color: var(--cerer-ink-2);
+}
+
+/* =========================================================
+   1. EN-TÊTE DE PAGE
+   ========================================================= */
+
+.cerer-about-hero {
+	position: relative;
+	overflow: hidden;
+	background: #14568F;
+	padding: 52px 24px 56px;
+}
+
+.cerer-about-hero__blob {
+	position: absolute;
+	right: -120px;
+	top: -140px;
+	width: 380px;
+	height: 380px;
+	border-radius: 50%;
+	background: #1B6099;
+	pointer-events: none;
+}
+
+.cerer-about-hero__inner {
+	position: relative;
+	z-index: 1;
+}
+
+.cerer-about-hero__breadcrumb {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13.5px;
+	color: #DCEBF7;
+	margin-bottom: 16px;
+}
+
+.cerer-about-hero__breadcrumb a {
+	color: #DCEBF7;
+	text-decoration: none;
+}
+
+.cerer-about-hero__breadcrumb a:hover,
+.cerer-about-hero__breadcrumb a:focus-visible {
+	text-decoration: underline;
+}
+
+.cerer-about-hero__sep {
+	opacity: .7;
+}
+
+.cerer-about-hero__current {
+	color: #FFFFFF;
+}
+
+.cerer-about-hero h1 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 32px;
+	line-height: 1.15;
+	color: #FFFFFF;
+}
+
+@media (min-width: 768px) {
+	.cerer-about-hero h1 {
+		font-size: 42px;
+	}
+}
+
+.cerer-about-hero__chapo {
+	margin-top: 14px;
+	font-size: 17.5px;
+	line-height: 1.7;
+	color: #FFFFFF;
+	max-width: 700px;
+}
+
+/* =========================================================
+   2. MISSION, VISION, VALEURS & FORCES
+   ========================================================= */
+
+.cerer-about-mv {
+	display: grid;
+	/* Figée en 2x2 (PROMPT-18) : avec 4 blocs, un auto-fit(minmax(320px,…))
+	   dépend trop de la largeur réelle des textes et peut retomber à une
+	   seule colonne effective — jamais d'auto-fit sur cette grille. Un bloc
+	   masqué (valeurs/forces vides) laisse simplement 3 ou 2 cases, sans
+	   recalcul de colonnes : c'est voulu. */
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px;
+	margin-top: 32px;
+}
+
+@media (max-width: 700px) {
+	.cerer-about-mv {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-about-mv__box {
+	padding: 34px 32px;
+	border-radius: 12px;
+}
+
+.cerer-about-mv__box h3 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 22px;
+	margin-top: 8px;
+}
+
+.cerer-about-mv__box p:not(.cerer-about-mv__label) {
+	margin-top: 14px;
+	font-size: 15.5px;
+	line-height: 1.75;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-about-mv__label {
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+.cerer-about-mv__box--mission,
+.cerer-about-mv__box--valeurs {
+	background: #F7F9F3;
+	border-left: 3px solid #4F7A16;
+}
+
+.cerer-about-mv__box--mission .cerer-about-mv__label,
+.cerer-about-mv__box--valeurs .cerer-about-mv__label {
+	color: #4F7A16;
+}
+
+.cerer-about-mv__box--vision,
+.cerer-about-mv__box--forces {
+	background: #F4F7FA;
+	border-left: 3px solid #1565A3;
+}
+
+.cerer-about-mv__box--vision .cerer-about-mv__label,
+.cerer-about-mv__box--forces .cerer-about-mv__label {
+	color: #14568F;
+}
+
+/* =========================================================
+   3. LE CERER EN IMAGES
+   ========================================================= */
+
+.cerer-about-videos__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.cerer-about-videos__head-text {
+	flex: 1 1 380px;
+	min-width: 0;
+}
+
+.cerer-about-videos__channel {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	background: #FFFFFF;
+	color: #14568F;
+	border: 1px solid #14568F;
+	padding: 12px 22px;
+	border-radius: 8px;
+	font-size: 14.5px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background .2s ease, transform .2s ease;
+}
+
+.cerer-about-videos__channel:hover {
+	background: #EAF3FA;
+	transform: translateY(-2px);
+}
+
+.cerer-about-videos__grid {
+	display: grid;
+	/* Figée à 3 colonnes (PROMPT-18) : avec 3 vidéos ou plus, un
+	   repeat(2, …) laissait la 3e carte seule sur sa ligne, la moitié droite
+	   restant vide — jamais d'auto-fit ici non plus. */
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 22px;
+	margin-top: 32px;
+}
+
+@media (max-width: 1080px) {
+	.cerer-about-videos__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 800px) {
+	.cerer-about-videos__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-about-video-card {
+	display: block;
+	background: #FFFFFF;
+	border-radius: 12px;
+	overflow: hidden;
+	text-decoration: none;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.cerer-about-video-card:hover,
+.cerer-about-video-card:focus-visible {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 26px rgba(26, 34, 51, .1);
+}
+
+.cerer-about-video-card__media {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	background: #1A2233;
+	/* PROMPT-19 : le badge (position absolute) doit rester dans les angles
+	   arrondis de la miniature, pas seulement ceux de la carte. */
+	overflow: hidden;
+	border-radius: 12px;
+}
+
+.cerer-about-video-card__media img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-about-video-card__play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 68px;
+	height: 68px;
+	border-radius: 50%;
+	background: rgba(20, 86, 143, .92);
+	box-shadow: 0 4px 16px rgba(10, 30, 50, .35);
+}
+
+.cerer-about-video-card__play::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 54%;
+	transform: translate(-50%, -50%);
+	border-style: solid;
+	border-width: 10px 0 10px 16px;
+	border-color: transparent transparent transparent #FFFFFF;
+}
+
+.cerer-about-video-card__badge {
+	position: absolute;
+	left: 14px;
+	top: 14px;
+	padding: 4px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.cerer-about-video-card__body {
+	padding: 26px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.cerer-about-video-card__body h3 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 21px;
+	line-height: 1.3;
+	color: #1A2233;
+}
+
+.cerer-about-video-card__body p {
+	font-size: 14.5px;
+	line-height: 1.65;
+	color: #555B6A;
+}
+
+.cerer-about-video-card__footer {
+	margin-top: 4px;
+	padding-top: 14px;
+	border-top: 1px solid #EDEFF2;
+	font-size: 14.5px;
+	font-weight: 500;
+	color: #1565A3;
+}
+
+/* =========================================================
+   4. NOTRE HISTOIRE
+   ========================================================= */
+
+.cerer-about-timeline {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	margin-top: 40px;
+}
+
+.cerer-about-timeline__item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-right: 16px;
+}
+
+.cerer-about-timeline__item::after {
+	content: '';
+	position: absolute;
+	top: 6px;
+	left: 19px;
+	width: calc(100% - 19px);
+	height: 2px;
+	background: #E4EAD7;
+}
+
+.cerer-about-timeline__item:last-child::after {
+	content: none;
+}
+
+.cerer-about-timeline__dot {
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: #4F7A16;
+	position: relative;
+	z-index: 1;
+}
+
+.cerer-about-timeline__item.is-current .cerer-about-timeline__dot {
+	background: #8CC63F;
+	box-shadow: 0 0 0 4px #EDF6E0;
+}
+
+.cerer-about-timeline__year {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 26px;
+	color: #14568F;
+}
+
+.cerer-about-timeline__label {
+	font-size: 15px;
+	line-height: 1.6;
+	color: #555B6A;
+	max-width: 220px;
+}
+
+@media (max-width: 767.98px) {
+	.cerer-about-timeline {
+		display: flex;
+		flex-direction: column;
+		gap: 28px;
+	}
+
+	.cerer-about-timeline__item {
+		padding-right: 0;
+		padding-left: 28px;
+	}
+
+	.cerer-about-timeline__item::after {
+		top: 19px;
+		left: 6px;
+		width: 2px;
+		height: calc(100% + 16px);
+	}
+
+	.cerer-about-timeline__dot {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	.cerer-about-timeline__label {
+		max-width: none;
+	}
+}
+
+/* =========================================================
+   5. NOTRE ÉQUIPE
+   ========================================================= */
+
+.cerer-about-team__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.cerer-about-team__all {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	background: #fff;
+	color: var(--cerer-blue-dark);
+	border: 1px solid var(--cerer-blue-dark);
+	padding: 12px 22px;
+	border-radius: 8px;
+	font-size: 14.5px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background .2s ease, transform .2s ease;
+}
+
+.cerer-about-team__all:hover {
+	/* PROMPT-20 : #E7F2FB (bleu très pâle) se voit à peine sur le fond
+	   blanc désormais utilisé par cette section. */
+	background: #F4F7FA;
+	transform: translateY(-2px);
+}
+
+.cerer-about-team__grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 20px;
+	margin-top: 32px;
+}
+
+@media (min-width: 700px) and (max-width: 999.98px) {
+	.cerer-about-team__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 699.98px) {
+	.cerer-about-team__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-about-team__card {
+	background: #FFFFFF;
+	/* PROMPT-20 : la section est passée au fond blanc — l'ombre seule ne
+	   suffit plus à détacher une carte blanche, d'où cette bordure. */
+	border: 1px solid #E0E2E6;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+}
+
+.cerer-about-team__photo {
+	aspect-ratio: 1 / 1;
+	background: var(--cerer-bg);
+}
+
+.cerer-about-team__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-about-team__body {
+	padding: 20px;
+}
+
+.cerer-about-team__body h3 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 17px;
+}
+
+.cerer-about-team__fonction {
+	margin-top: 4px;
+	font-size: 13.5px;
+	color: #555B6A;
+}
+
+.cerer-about-team__pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 12px;
+}
+
+.cerer-about-team__pill {
+	padding: 4px 9px;
+	border-radius: 5px;
+	background: #F4F5F7;
+	color: #14568F;
+	font-size: 11.5px;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.cerer-about-team__pill:hover {
+	background: #E7F2FB;
+}
+
+/* =========================================================
+   6. NOS TUTELLES
+   ========================================================= */
+
+.cerer-about-tutelles__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 20px;
+	margin-top: 32px;
+}
+
+.cerer-about-tutelle {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	border: 1px solid #E0E2E6;
+	border-radius: 12px;
+	padding: 28px;
+	text-decoration: none;
+}
+
+.cerer-about-tutelle__logo {
+	flex: none;
+	height: 56px;
+	width: auto;
+}
+
+.cerer-about-tutelle__logo--placeholder {
+	width: 56px;
+	background: #E6E8EC;
+	border-radius: 4px;
+}
+
+/* PROMPT-19 : traitement "drapeau" — largeur fixe (pas hauteur) + cadre,
+   pour un visuel qui n'a pas le fond transparent d'un logo. */
+.cerer-about-tutelle__logo--encadre {
+	width: 56px;
+	height: auto;
+	border-radius: 3px;
+	box-shadow: 0 0 0 1px #E0E2E6;
+}
+
+.cerer-about-tutelle__sigle {
+	display: block;
+	font-size: 16px;
+	font-weight: 600;
+	color: #1A2233;
+}
+
+.cerer-about-tutelle__intitule {
+	display: block;
+	margin-top: 4px;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: #555B6A;
+}
+
+/* =========================================================
+   MOT DU DIRECTEUR — PROMPT-20 (repositionnée entre "Notre histoire" et
+   "Notre équipe", fond #F0F7E4 porté par .cerer-about-section--tint).
+   ========================================================= */
+
+.cerer-director-section {
+	position: relative;
+	overflow: hidden;
+}
+
+.cerer-director-section__blob {
+	position: absolute;
+	left: -160px;
+	bottom: -180px;
+	width: 420px;
+	height: 420px;
+	border-radius: 50%;
+	background: #E4F1D2;
+	pointer-events: none;
+}
+
+.cerer-director-section__inner {
+	position: relative;
+	z-index: 1;
+}
+
+.cerer-director-card {
+	margin-top: 32px;
+	background: #FFFFFF;
+	border-radius: 12px;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	padding: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+}
+
+.cerer-director-card__left {
+	flex: 0 0 260px;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.cerer-director-card__portrait {
+	aspect-ratio: 1 / 1;
+	border-radius: 12px;
+	overflow: hidden;
+	background: var(--cerer-bg);
+}
+
+.cerer-director-card__portrait img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-director-card__portrait.is-placeholder {
+	background-image: repeating-linear-gradient(
+		45deg, var(--cerer-border), var(--cerer-border) 1px, transparent 1px, transparent 12px
+	);
+}
+
+@media (max-width: 899.98px) {
+	.cerer-director-card__portrait {
+		max-width: 220px;
+	}
+}
+
+.cerer-director-card__name {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 1.3;
+	color: #1A2233;
+}
+
+.cerer-director-card__role {
+	margin-top: 2px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #555B6A;
+}
+
+.cerer-director-card__social-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: #555B6A;
+	margin-bottom: 8px;
+}
+
+.cerer-director-card__pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.cerer-director-card__pill {
+	padding: 7px 13px;
+	border-radius: 6px;
+	background: #F4F5F7;
+	color: #14568F;
+	font-size: 12.5px;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.cerer-director-card__pill:hover {
+	background: #E7F2FB;
+}
+
+.cerer-director-card__right {
+	flex: 1 1 420px;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+}
+
+.cerer-director-card__message p {
+	font-size: 15.5px;
+	line-height: 1.75;
+	color: #555B6A;
+}
+
+.cerer-director-card__message p:first-child {
+	font-size: 16.5px;
+	color: #1A2233;
+}
+
+.cerer-director-card__message p + p {
+	margin-top: 14px;
+}
+
+/* --- Carte vidéo du message du Directeur --- */
+
+.cerer-director-video {
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid #EDEFF2;
+	text-decoration: none;
+	transition: box-shadow .2s ease;
+}
+
+.cerer-director-video:hover {
+	box-shadow: 0 8px 24px rgba(26, 34, 51, .09);
+}
+
+.cerer-director-video__media {
+	flex: 1 1 300px;
+	position: relative;
+	aspect-ratio: 16 / 9;
+	background: #1A2233;
+}
+
+.cerer-director-video__media img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-director-video__play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 62px;
+	height: 62px;
+	border-radius: 50%;
+	background: rgba(20, 86, 143, .92);
+	box-shadow: 0 4px 16px rgba(10, 30, 50, .35);
+}
+
+.cerer-director-video__play::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 54%;
+	transform: translate(-50%, -50%);
+	border-style: solid;
+	border-width: 9px 0 9px 14px;
+	border-color: transparent transparent transparent #FFFFFF;
+}
+
+.cerer-director-video__badge {
+	position: absolute;
+	left: 14px;
+	top: 14px;
+	padding: 4px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	font-weight: 600;
+	background: #8CC63F;
+	color: #22350A;
+}
+
+.cerer-director-video__body {
+	flex: 1 1 240px;
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.cerer-director-video__body h3 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 19px;
+	color: #1A2233;
+}
+
+.cerer-director-video__meta {
+	margin-top: 6px;
+	font-size: 14px;
+	color: #555B6A;
+}
+
+.cerer-director-video__cta {
+	margin-top: 12px;
+	font-size: 14.5px;
+	font-weight: 500;
+	color: #1565A3;
+}
+
+/* =========================================================
+   PAGE GÉNÉRIQUE (page-templates/page-generique.php) — même système
+   visuel que "Qui sommes-nous", contenu libre.
+   ========================================================= */
+
+.cerer-page-generique__contenu {
+	max-width: 780px;
+}
+
+.cerer-page-generique__contenu :is(h2, h3) {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	color: #1A2233;
+	margin-top: 32px;
+	margin-bottom: 12px;
+}
+
+.cerer-page-generique__contenu p {
+	font-size: 15.5px;
+	line-height: 1.75;
+	color: #555B6A;
+}
+
+.cerer-page-generique__contenu p + p {
+	margin-top: 14px;
+}
+
+.cerer-page-generique__contenu ul,
+.cerer-page-generique__contenu ol {
+	margin-top: 12px;
+	padding-left: 20px;
+	color: #555B6A;
+	font-size: 15.5px;
+	line-height: 1.75;
+}
+
+.cerer-page-generique__points {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+	margin-top: 24px;
+}
+
+@media (max-width: 699.98px) {
+	.cerer-page-generique__points {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-page-generique__points li {
+	position: relative;
+	padding: 16px 16px 16px 44px;
+	background: #FFFFFF;
+	border-radius: 10px;
+	font-size: 15px;
+	color: #1A2233;
+}
+
+.cerer-page-generique__points li::before {
+	content: '✓';
+	position: absolute;
+	left: 16px;
+	top: 16px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--cerer-green);
+	color: #fff;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.cerer-page-generique__cta {
+	background: #F7F9F3;
+	border-left: 3px solid #4F7A16;
+	border-radius: 12px;
+	padding: 32px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.cerer-page-generique__cta h2 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 22px;
+	color: #1A2233;
+}
+
+.cerer-page-generique__cta p {
+	margin-top: 8px;
+	font-size: 15px;
+	color: #555B6A;
+	max-width: 520px;
+}

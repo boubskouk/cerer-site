@@ -1,0 +1,474 @@
+/*
+ * Topbar + navbar CERER — README §4.1 à §4.3.
+ * Mobile-first : règles hors media query = <768px, puis surcharge ≥768px.
+ */
+
+/* =========================================================
+   Container Blocksy — neutralise ses propres limites de largeur
+   pour laisser nos .cerer-container piloter le 1240px.
+   ========================================================= */
+
+#cerer-topbar, #cerer-navbar {
+	width: 100%;
+}
+
+/* =========================================================
+   TOPBAR — §4.2
+   ========================================================= */
+
+.cerer-topbar {
+	background: var(--cerer-blue-dark);
+	/* PROMPT-10 : blanc plein partout sur fond bleu — un blanc à 75-85%
+	   d'opacité (l'ancien réglage) tombe sous 4.5:1 sur nos bleus, échec AA. */
+	color: var(--cerer-on-dark);
+	font-family: var(--cerer-font-body);
+	font-size: 11.5px;
+	overflow: hidden;
+	max-height: 34px;
+	opacity: 1;
+	transition: max-height var(--cerer-transition), opacity var(--cerer-transition);
+}
+
+html.is-scrolled .cerer-topbar {
+	max-height: 0;
+	opacity: 0;
+}
+
+.cerer-topbar__inner {
+	height: 34px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.cerer-topbar__left {
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.cerer-topbar__right {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	white-space: nowrap;
+}
+
+.cerer-lang {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.cerer-lang__item {
+	color: var(--cerer-on-dark);
+}
+
+.cerer-lang__item.is-active {
+	font-weight: 500;
+}
+
+.cerer-lang__sep {
+	color: rgba(255, 255, 255, .35);
+}
+
+.cerer-topbar__divider {
+	width: 1px;
+	height: 16px;
+	background: rgba(255, 255, 255, .25);
+}
+
+.cerer-topbar__action {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: none;
+	border: none;
+	color: var(--cerer-on-dark);
+	font: inherit;
+	cursor: pointer;
+	padding: 4px 2px;
+}
+
+.cerer-topbar__action:hover {
+	opacity: .8;
+}
+
+.cerer-topbar__contact {
+	color: var(--cerer-on-dark);
+	font-weight: 500;
+}
+
+.cerer-search-panel {
+	background: var(--cerer-surface);
+	box-shadow: var(--cerer-shadow-menu);
+}
+
+.cerer-search-panel__form {
+	display: flex;
+	gap: 8px;
+	padding-block: 16px;
+}
+
+.cerer-search-panel__form input[type='search'] {
+	flex: 1;
+	padding: 10px 14px;
+	border: 1px solid var(--cerer-border);
+	border-radius: var(--cerer-radius-control);
+	font: inherit;
+}
+
+.cerer-search-panel__form button {
+	padding: 10px 18px;
+	border: none;
+	border-radius: var(--cerer-radius-control);
+	background: var(--cerer-green);
+	color: #fff;
+	font: inherit;
+	cursor: pointer;
+}
+
+/* <768px : topbar masquée, fonctions reprises dans le burger (point 6) */
+@media (max-width: 767.98px) {
+	.cerer-topbar {
+		display: none;
+	}
+}
+
+/* =========================================================
+   NAVBAR — §4.3 + lockup des logos §4.1
+   ========================================================= */
+
+.cerer-navbar {
+	background: var(--cerer-blue);
+	/* Non collante sur demande explicite : le menu ne doit plus rester
+	   visible pendant la lecture d'une page, quelle qu'elle soit (avant :
+	   position sticky + rétractation de la topbar au scroll, README §4.3).
+	   z-index conservé au cas où un élément du menu (mega-menu) doive
+	   passer au-dessus d'un contenu qui suit juste en dessous. */
+	position: relative;
+	z-index: 100;
+}
+
+.cerer-navbar__logos {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	padding-block: 8px;
+}
+
+.cerer-logo-unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 4px;
+}
+
+.cerer-logo-unit--left {
+	align-items: center; /* centré sous le logo, unité calée à gauche par le space-between parent */
+}
+
+.cerer-logo-unit--right {
+	align-items: center;
+}
+
+.cerer-logo-unit__img {
+	/* PROMPT-10 : en-tête compact — nom du logo gardé EN DESSOUS (pas à côté,
+	   sur demande explicite), donc la bande garde plus de hauteur qu'un
+	   lockup côte-à-côte ; on réduit ici ce qu'on peut sans écraser le logo. */
+	height: 44px;
+	width: auto;
+}
+
+.cerer-logo-unit__name {
+	font-family: var(--cerer-font-body);
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 1.25;
+	/* Blanc plein : contrainte de contraste PROMPT-10, cf. .cerer-topbar. */
+	color: var(--cerer-on-dark);
+	text-align: center;
+	max-width: 180px;
+}
+
+/* Burger — visible seulement <768px */
+.cerer-burger {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	width: 44px; /* cible tactile min. 44px, cf. rapport de recette Prompt 6 point 5 */
+	height: 44px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	margin-left: auto;
+}
+
+.cerer-burger span {
+	display: block;
+	width: 22px;
+	height: 2px;
+	background: #fff;
+	transition: var(--cerer-transition);
+}
+
+.cerer-burger[aria-expanded='true'] span:nth-child(1) {
+	transform: translateY(6px) rotate(45deg);
+}
+.cerer-burger[aria-expanded='true'] span:nth-child(2) {
+	opacity: 0;
+}
+.cerer-burger[aria-expanded='true'] span:nth-child(3) {
+	transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Menu principal — fond plus foncé que la bande de logos (PROMPT-10) : la
+   différence de teinte marque la séparation, plus besoin du filet. */
+.cerer-nav {
+	background: var(--cerer-blue-dark);
+}
+
+.cerer-nav__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2px;
+	padding-block: 8px;
+}
+
+.cerer-nav__item {
+	position: relative;
+}
+
+.cerer-nav__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-family: var(--cerer-font-body);
+	font-size: 14px;
+	/* Blanc plein (PROMPT-10) : 85% d'opacité tombait sous 4.5:1 sur nos bleus. */
+	color: var(--cerer-on-dark);
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 7px 12px;
+	border-radius: var(--cerer-radius-control);
+	transition: var(--cerer-transition);
+}
+
+.cerer-nav__link:hover {
+	background: rgba(255, 255, 255, .1);
+}
+
+.cerer-nav__link.is-active {
+	background: rgba(255, 255, 255, .12);
+	box-shadow: inset 0 -2px 0 var(--cerer-green);
+	color: var(--cerer-on-dark);
+}
+
+.cerer-nav__chevron {
+	font-size: 10px;
+	transition: transform var(--cerer-transition);
+}
+
+.cerer-nav__item.is-open .cerer-nav__chevron {
+	transform: rotate(180deg);
+}
+
+/* --- Mega-menu --- */
+
+.cerer-mega {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin-top: 8px;
+	min-width: 260px;
+	background: var(--cerer-surface);
+	border-radius: var(--cerer-radius-card);
+	box-shadow: var(--cerer-shadow-menu);
+	z-index: 10;
+}
+
+.cerer-nav__item.is-open .cerer-mega {
+	display: block;
+}
+
+.cerer-mega__list {
+	padding: 8px;
+}
+
+.cerer-mega__item {
+	list-style: none;
+}
+
+.cerer-mega__link {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 12px;
+	border-radius: var(--cerer-radius-control);
+	font-family: var(--cerer-font-body);
+	font-size: 14px;
+	color: var(--cerer-ink);
+	white-space: nowrap;
+}
+
+.cerer-mega__link:hover {
+	background: var(--cerer-bg);
+}
+
+.cerer-mega__link .is-upcoming {
+	color: var(--cerer-orange);
+}
+
+.cerer-mega__dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.cerer-mega__badge {
+	margin-left: auto;
+	padding: 3px 10px;
+	border-radius: var(--cerer-radius-pill);
+	background: #FDF1E0;
+	color: #A96410;
+	font-size: 11px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.cerer-mega__sep {
+	list-style: none;
+	padding: 0;
+}
+
+.cerer-mega__sep hr {
+	border: none;
+	border-top: 1px solid var(--cerer-border);
+	margin: 8px 4px;
+}
+
+.cerer-mega__group-title {
+	list-style: none;
+}
+
+.cerer-mega__group-title span {
+	display: block;
+	padding: 10px 12px 4px;
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-nav__mobile-extra {
+	display: none;
+}
+
+/* =========================================================
+   < 768px — burger + accordéon (point 6)
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+	.cerer-logo-unit__img {
+		height: 34px; /* PROMPT-10 : en-tête mobile visé à 58px. */
+	}
+
+	.cerer-logo-unit__name {
+		/* masqué visuellement, conservé pour les lecteurs d'écran */
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.cerer-burger {
+		display: inline-flex;
+	}
+
+	.cerer-nav {
+		display: none;
+		/* fond déjà var(--cerer-blue-dark) par la règle générale ci-dessus */
+	}
+
+	html.cerer-menu-open .cerer-nav {
+		display: block;
+	}
+
+	.cerer-nav__list {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+		padding-block: 8px;
+	}
+
+	.cerer-nav__link {
+		width: 100%;
+		justify-content: space-between;
+		border-radius: 0;
+		padding: 12px;
+		min-height: 44px;
+	}
+
+	/* Mega-menu = accordéon en flux normal, plus de positionnement absolu */
+	.cerer-mega {
+		position: static;
+		box-shadow: none;
+		border-radius: 0;
+		background: rgba(0, 0, 0, .12);
+		margin-top: 0;
+		min-width: 0;
+	}
+
+	/* 9px de padding + line-height hérité (1.7) ne totalisait que ~42px,
+	   sous la cible tactile de 44px (rapport de recette Prompt 6 point 5). */
+	.cerer-mega__link {
+		min-height: 44px;
+	}
+
+	.cerer-nav__mobile-extra {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4px;
+		padding: 16px 12px;
+		border-top: 1px solid rgba(255, 255, 255, .15);
+		color: var(--cerer-on-dark-2);
+	}
+
+	.cerer-nav__mobile-extra .cerer-lang {
+		margin-bottom: 8px;
+	}
+
+	.cerer-nav__mobile-action {
+		background: none;
+		border: none;
+		color: var(--cerer-on-dark-2);
+		font: inherit;
+		font-size: 14px;
+		padding: 10px 0;
+		min-height: 44px;
+		cursor: pointer;
+	}
+}
+
+@media (min-width: 768px) {
+	.cerer-burger {
+		display: none;
+	}
+}

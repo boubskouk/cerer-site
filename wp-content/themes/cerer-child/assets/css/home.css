@@ -1,0 +1,1323 @@
+/*
+ * Page d'accueil : hero, chiffres clés, en-têtes de section. Mobile-first.
+ */
+
+.cerer-hero {
+	position: relative;
+	overflow: hidden;
+	background: var(--cerer-blue);
+	color: #fff;
+	padding-block: 64px;
+}
+
+@media (min-width: 768px) {
+	.cerer-hero {
+		padding-block: 96px;
+	}
+}
+
+/* --- Hero : diaporama photo (PROMPT-8) --- */
+/* N'existe que si la galerie ACF "hero_slides" contient au moins une photo ;
+   sinon .cerer-hero reste l'aplat bleu ci-dessus, sans rien de plus. */
+
+.cerer-hero--slider {
+	min-height: 560px;
+	display: flex;
+	align-items: center;
+	padding-block: 0;
+}
+
+.cerer-hero__photos {
+	position: absolute;
+	inset: 0;
+}
+
+.cerer-hero__photo {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity 1.4s ease;
+}
+
+.cerer-hero__photo.is-active {
+	opacity: 1;
+	animation: cerer-hero-kenburns 12s ease-out forwards;
+}
+
+@keyframes cerer-hero-kenburns {
+	from { transform: scale(1.06); }
+	to   { transform: scale(1.16); }
+}
+
+.cerer-hero__veil {
+	position: absolute;
+	inset: 0;
+	/* PROMPT-9 : dense sur le tiers gauche (où se pose le texte), quasiment
+	   transparent passé 60% — la photo doit rester nette et saturée à
+	   droite, ce n'est pas une teinte générale sur toute l'image. */
+	background: linear-gradient(96deg, rgba(9, 45, 76, .90) 0%, rgba(12, 58, 95, .72) 34%, rgba(16, 76, 124, .34) 62%, rgba(20, 86, 143, .10) 100%);
+}
+
+.cerer-hero--slider .cerer-hero__inner {
+	position: relative;
+	z-index: 1;
+}
+
+.cerer-hero--slider h1 {
+	text-shadow: 0 2px 14px rgba(10, 40, 70, .55);
+}
+
+.cerer-hero--slider p {
+	text-shadow: 0 1px 10px rgba(10, 40, 70, .5);
+}
+
+.cerer-hero__dots {
+	position: absolute;
+	right: 24px;
+	bottom: 20px;
+	z-index: 2;
+	display: flex;
+	gap: 8px;
+}
+
+.cerer-hero__dot {
+	width: 6px;
+	height: 6px;
+	border: none;
+	padding: 0;
+	border-radius: 99px;
+	background: rgba(255, 255, 255, .45);
+	cursor: pointer;
+	transition: width .3s ease, background .3s ease;
+}
+
+.cerer-hero__dot.is-active {
+	width: 28px;
+	background: var(--cerer-green);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cerer-hero__photo {
+		transition: none;
+	}
+
+	.cerer-hero__photo.is-active {
+		animation: none;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.cerer-hero--slider {
+		min-height: 420px;
+	}
+
+	.cerer-hero--slider .cerer-hero__veil {
+		/* Le texte occupe toute la largeur sous 768px : le dégradé
+		   horizontal ne protège plus rien, retour à un voile vertical. */
+		background: linear-gradient(180deg, rgba(9, 45, 76, .86), rgba(12, 58, 95, .90));
+	}
+
+	.cerer-hero--slider .cerer-hero__photo.is-active {
+		animation: none;
+	}
+}
+
+.cerer-hero__inner {
+	max-width: 720px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.cerer-hero h1 {
+	color: #fff;
+	font-size: var(--cerer-fs-h1-mobile);
+}
+
+@media (min-width: 768px) {
+	.cerer-hero h1 { font-size: 36px; }
+}
+@media (min-width: 1280px) {
+	.cerer-hero h1 { font-size: var(--cerer-fs-h1); }
+}
+
+.cerer-hero p {
+	font-size: 16px;
+	color: rgba(255, 255, 255, .85);
+}
+
+.cerer-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 8px;
+}
+
+/* --- Chiffres clés — PROMPT-11 --- */
+/* README stack : "CountUp.js + IntersectionObserver" — remplacé ici par une
+   petite animation maison en vanilla JS (home.js), pour éviter de charger
+   une librairie externe pour un effet aussi simple (cohérent avec le choix
+   déjà fait ailleurs : pas de JS non utilisé sur une page donnée, §6.6).
+   Couleurs propres à cette section (pas des tokens partagés) : vérifiées
+   au contraste sur ce fond précis, cf. commentaires ci-dessous. */
+
+.cerer-stats {
+	background: #F0F7E4;
+	padding: 56px 24px;
+}
+
+@media (min-width: 768px) {
+	.cerer-stats {
+		padding: 84px 24px;
+	}
+}
+
+.cerer-stats__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 56px;
+}
+
+.cerer-stats__col-text {
+	flex: 1 1 380px;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.cerer-stats__eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-family: var(--cerer-font-body);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	/* #4F7A16 : 4.66:1 sur #F0F7E4. Le vert de marque (#4CB848) n'y passe
+	   pas (1.9:1) — ni sa variante hover (2.7:1) — d'où cette teinte dédiée. */
+	color: #4F7A16;
+}
+
+.cerer-stats__eyebrow-rule {
+	width: 28px;
+	height: 2px;
+	background: var(--cerer-green);
+	flex-shrink: 0;
+}
+
+.cerer-stats__col-text h2 {
+	font-size: 28px;
+	line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+	.cerer-stats__col-text h2 {
+		font-size: 38px;
+	}
+}
+
+.cerer-stats__chapo {
+	font-size: 17px;
+	line-height: 1.7;
+	color: var(--cerer-ink-2);
+	max-width: 480px;
+}
+
+.cerer-stats__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding-top: 6px;
+}
+
+.cerer-stats__btn {
+	display: inline-flex;
+	align-items: center;
+	padding: 13px 26px;
+	border-radius: 8px;
+	font-size: 15px;
+	font-weight: 500;
+	transition: background .2s ease, transform .2s ease;
+	/* #6BA524 : vert dédié à cette section, plus soutenu que --cerer-green
+	   pour porter du texte blanc lisible sans repasser par un fond sombre. */
+	background: #6BA524;
+	color: #fff;
+	border: 1px solid transparent;
+}
+
+.cerer-stats__btn:hover {
+	background: #5B8F1D;
+	transform: translateY(-2px);
+}
+
+.cerer-stats__btn--secondary {
+	background: transparent;
+	color: var(--cerer-blue-dark);
+	border-color: var(--cerer-blue-dark);
+}
+
+.cerer-stats__btn--secondary:hover {
+	background: #fff;
+	transform: translateY(-2px);
+}
+
+.cerer-stats__col-numbers {
+	flex: 1 1 420px;
+	min-width: 0;
+}
+
+.cerer-stats__grid {
+	display: grid;
+	/* auto-fit passerait à 3 colonnes sur un écran large et décalerait les
+	   filets (produits par le gap, cf. .cerer-stat ci-dessous) — figé à 2. */
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1px;
+	background: #EDF1E5;
+	border-radius: 12px;
+	box-shadow: 0 6px 24px rgba(26, 34, 51, .06);
+	overflow: hidden;
+}
+
+.cerer-stat {
+	background: #fff;
+	padding: 30px 26px;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.cerer-stat__number {
+	font-family: var(--cerer-font-heading);
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 1;
+	color: var(--cerer-blue-dark);
+}
+
+@media (min-width: 768px) {
+	.cerer-stat__number {
+		font-size: 46px;
+	}
+}
+
+.cerer-stat__label {
+	font-size: 14.5px;
+	line-height: 1.5;
+	color: var(--cerer-ink);
+}
+
+/* --- En-tête de section (étiquette + titre + lien "voir tout") --- */
+
+.cerer-section__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.cerer-section__head h2 {
+	margin-top: 4px;
+}
+
+.cerer-eyebrow {
+	color: var(--cerer-blue-2);
+}
+
+/* --- Partenaires --- */
+
+.cerer-partners__grid {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	margin-top: 32px;
+}
+
+.cerer-partners__item img {
+	max-height: 48px;
+	width: auto;
+	filter: grayscale(1);
+	opacity: .7;
+	transition: filter .2s ease, opacity .2s ease;
+}
+
+.cerer-partners__item img:hover,
+.cerer-partners__item img:focus-visible {
+	filter: none;
+	opacity: 1;
+}
+
+/* --- Nos projets phares — PROMPT-12 --- */
+
+.cerer-projects {
+	position: relative;
+	overflow: hidden;
+	background: #F0F7E4;
+	padding: 56px 24px;
+}
+
+@media (min-width: 768px) {
+	.cerer-projects {
+		padding: 80px 24px;
+	}
+}
+
+.cerer-projects__blob {
+	position: absolute;
+	right: -120px;
+	top: -120px;
+	width: 380px;
+	height: 380px;
+	border-radius: 50%;
+	background: #E4F1D2;
+	pointer-events: none;
+}
+
+.cerer-projects__inner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 44px;
+}
+
+.cerer-projects__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.cerer-projects__head-text {
+	flex: 1 1 420px;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.cerer-projects__head-text h2 {
+	font-size: 28px;
+	line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+	.cerer-projects__head-text h2 {
+		font-size: 38px;
+	}
+}
+
+.cerer-projects__all {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: #fff;
+	color: var(--cerer-blue-dark);
+	border: 1px solid var(--cerer-blue-dark);
+	padding: 13px 24px;
+	border-radius: 8px;
+	font-size: 15px;
+	font-weight: 500;
+	transition: background .2s ease, transform .2s ease;
+}
+
+.cerer-projects__all:hover {
+	background: #E7F2FB;
+	transform: translateY(-2px);
+}
+
+.cerer-projects__grid {
+	position: relative;
+	display: grid;
+	gap: 22px;
+	/* Figé à 3 colonnes : avec exactement 3 cartes, un repeat(auto-fit, ...)
+	   basculerait sur 2 colonnes sur certaines largeurs et laisserait la
+	   troisième carte orpheline sur une ligne à elle seule. */
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 899.98px) {
+	.cerer-projects__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-project-card {
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	transition: transform .2s ease, box-shadow .2s ease;
+	color: inherit;
+}
+
+.cerer-project-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 32px rgba(26, 34, 51, .11);
+}
+
+/* Couleurs par département — une classe par département plutôt qu'un style
+   inline généré en PHP (README PROMPT-12). --cerer-proj-fill par défaut
+   égal à la couleur du bandeau ; le photovoltaïque a un vert de piste plus
+   clair que son bandeau (le vert du logo, réservé à la piste : un blanc
+   dessus est illisible en texte, cf. .cerer-project-card__band). */
+.cerer-project-card.dept-photovoltaique { --cerer-proj-band: #4F7A16; --cerer-proj-fill: #8CC63F; }
+.cerer-project-card.dept-biomasse       { --cerer-proj-band: #1565A3; --cerer-proj-fill: #1565A3; }
+.cerer-project-card.dept-eolien         { --cerer-proj-band: #14568F; --cerer-proj-fill: #14568F; }
+.cerer-project-card.dept-thermique      { --cerer-proj-band: #7B57C8; --cerer-proj-fill: #7B57C8; }
+
+.cerer-project-card__band {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 20px 24px;
+	background: var(--cerer-proj-band, var(--cerer-blue-dark));
+}
+
+.cerer-project-card__dept {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.cerer-project-card__badge {
+	flex-shrink: 0;
+	padding: 4px 11px;
+	border-radius: 99px;
+	background: #fff;
+	font-size: 11.5px;
+	font-weight: 600;
+}
+
+/* Texte coloré sur badge blanc plutôt qu'un badge pastel sur le bandeau :
+   un pastel dessus perd tout contraste. */
+.cerer-project-card__badge.is-en-cours { color: #3D6B10; }
+.cerer-project-card__badge.is-a-venir  { color: #A96410; }
+.cerer-project-card__badge.is-termine  { color: #555B6A; }
+
+.cerer-project-card__body {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 26px 24px 24px;
+}
+
+.cerer-project-card__body h3 {
+	font-size: 21px;
+	line-height: 1.3;
+	color: var(--cerer-ink);
+}
+
+.cerer-project-card__desc {
+	flex: 1 1 auto;
+	font-size: 14.5px;
+	line-height: 1.65;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-project-card__progress {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.cerer-project-card__progress-row {
+	display: flex;
+	justify-content: space-between;
+	font-size: 12.5px;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-project-card__progress-pct {
+	color: var(--cerer-ink);
+	font-weight: 500;
+}
+
+.cerer-project-card__track {
+	height: 5px;
+	border-radius: 99px;
+	background: #EDF1E5;
+	overflow: hidden;
+}
+
+.cerer-project-card__fill {
+	height: 100%;
+	border-radius: 99px;
+	background: var(--cerer-proj-fill, var(--cerer-blue));
+}
+
+/* Projet à 0% : amorce de 3% en orange plutôt qu'une piste qui paraît vide
+   (README PROMPT-12), couleur volontairement hors palette départements. */
+.cerer-project-card__fill.is-empty {
+	background: #E08A1E;
+}
+
+.cerer-project-card__partners {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.cerer-project-card__partner {
+	padding: 4px 10px;
+	border-radius: 6px;
+	background: var(--cerer-bg);
+	font-size: 12px;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-project-card__link {
+	margin-top: auto;
+	border-top: 1px solid #EDEFF2;
+	padding-top: 14px;
+	font-size: 14.5px;
+	font-weight: 500;
+	color: var(--cerer-blue-2);
+}
+
+/* --- Nos départements de recherche (accueil) — PROMPT-11 départements-accueil --- */
+/* Même traitement visuel que Chiffres clés / Projets phares (fond vert
+   clair, surtitre à filet, cartes blanches) : cohérence voulue entre les
+   trois sections, cf. .cerer-stats__eyebrow / .cerer-projects__all réutilisés. */
+
+.cerer-departments {
+	position: relative;
+	overflow: hidden;
+	background: #F0F7E4;
+	padding: 56px 24px;
+}
+
+@media (min-width: 768px) {
+	.cerer-departments {
+		padding: 80px 24px;
+	}
+}
+
+.cerer-departments__blob {
+	position: absolute;
+	left: -140px;
+	bottom: -160px;
+	width: 400px;
+	height: 400px;
+	border-radius: 50%;
+	background: #E4F1D2;
+	pointer-events: none;
+}
+
+.cerer-departments__inner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 44px;
+}
+
+.cerer-departments__grid {
+	display: grid;
+	gap: 22px;
+	/* Figé à 2 colonnes : avec 4 cartes, un repeat(auto-fit, ...) peut
+	   basculer en 3 colonnes et laisser la 4e orpheline sur une ligne seule. */
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 899.98px) {
+	.cerer-departments__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-dept-card {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	background: #fff;
+	border-radius: 12px;
+	border-top: 3px solid var(--cerer-dept-color, var(--cerer-blue-dark));
+	padding: 28px 26px 24px;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	transition: transform .2s ease, box-shadow .2s ease;
+	text-decoration: none;
+	color: inherit;
+}
+
+.cerer-dept-card:hover,
+.cerer-dept-card:focus {
+	text-decoration: none;
+}
+
+.cerer-dept-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 32px rgba(26, 34, 51, .11);
+}
+
+.cerer-dept-card:focus-visible {
+	outline: 2px solid #4F7A16;
+	outline-offset: 2px;
+}
+
+.cerer-dept-card__head {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.cerer-dept-card__tile {
+	flex-shrink: 0;
+	width: 64px;
+	height: 64px;
+	border-radius: 12px;
+	padding: 9px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--cerer-dept-tint, var(--cerer-bg));
+	font-size: 28px;
+	line-height: 1;
+}
+
+.cerer-dept-card__tile img {
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+}
+
+.cerer-dept-card__head h3 {
+	font-size: 21px;
+	line-height: 1.25;
+	color: var(--cerer-ink);
+}
+
+.cerer-dept-card__desc {
+	flex: 1 1 auto;
+	font-size: 14.5px;
+	line-height: 1.65;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-dept-card__link {
+	border-top: 1px solid #EDEFF2;
+	padding-top: 14px;
+	font-size: 14.5px;
+	font-weight: 500;
+	color: #1565A3;
+}
+
+/* --- Webinaires (accueil) — PROMPT-13 --- */
+/* Même en-tête de section que Projets phares / Départements (classes
+   .cerer-projects__head* réutilisées à l'identique, cohérence voulue). */
+
+.cerer-webinars {
+	position: relative;
+	overflow: hidden;
+	background: #F0F7E4;
+	padding: 56px 24px;
+}
+
+@media (min-width: 768px) {
+	.cerer-webinars {
+		padding: 80px 24px;
+	}
+}
+
+.cerer-webinars__blob {
+	position: absolute;
+	right: -130px;
+	top: -150px;
+	width: 400px;
+	height: 400px;
+	border-radius: 50%;
+	background: #E4F1D2;
+	pointer-events: none;
+}
+
+.cerer-webinars__inner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 44px;
+}
+
+/* --- Carte "prochain webinaire" --- */
+
+.cerer-webinar-feature {
+	display: flex;
+	flex-wrap: wrap;
+	background: var(--cerer-blue-dark);
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.cerer-webinar-feature__main {
+	flex: 1 1 420px;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	padding: 40px;
+}
+
+/* Le panneau de droite ne doit JAMAIS être flex-grow:0 : sur une base trop
+   large la carte passerait sur deux lignes et laisserait un grand
+   rectangle bleu vide à côté du formulaire (README PROMPT-13). */
+.cerer-webinar-feature__form {
+	flex: 1 1 320px;
+	min-width: 0;
+	background: #0F4677;
+	padding: 40px 32px;
+}
+
+.cerer-webinar-feature__badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.cerer-webinar-feature__badge-next,
+.cerer-webinar-feature__badge-status {
+	display: inline-flex;
+	padding: 5px 12px;
+	border-radius: 99px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.cerer-webinar-feature__badge-next {
+	/* Vert du logo : pas de blanc dessus (illisible), texte foncé. */
+	background: #8CC63F;
+	color: #22350A;
+}
+
+.cerer-webinar-feature__badge-status {
+	background: rgba(255, 255, 255, .16);
+	color: #fff;
+}
+
+.cerer-webinar-feature__theme {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: #B8E07A;
+}
+
+.cerer-webinar-feature__main h3 {
+	font-size: 26px;
+	line-height: 1.22;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+	.cerer-webinar-feature__main h3 {
+		font-size: 32px;
+	}
+}
+
+.cerer-webinar-feature__resume {
+	font-size: 16px;
+	line-height: 1.7;
+	color: #fff;
+	max-width: 560px;
+}
+
+.cerer-webinar-feature__meta {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1px;
+	background: rgba(255, 255, 255, .18);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.cerer-webinar-feature__meta-cell {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background: var(--cerer-blue-dark);
+	padding: 14px 16px;
+}
+
+.cerer-webinar-feature__meta-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: #B8E07A;
+}
+
+.cerer-webinar-feature__meta-value {
+	font-size: 15px;
+	font-weight: 500;
+	color: #fff;
+}
+
+.cerer-webinar-feature__speakers-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: #B8E07A;
+	margin-bottom: 10px;
+}
+
+.cerer-webinar-feature__speakers-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.cerer-webinar-speaker {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+	padding: 10px 14px 10px 10px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, .10);
+}
+
+.cerer-webinar-speaker__photo {
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, .25);
+	overflow: hidden;
+	display: block;
+}
+
+.cerer-webinar-speaker__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.cerer-webinar-speaker__text {
+	display: flex;
+	flex-direction: column;
+}
+
+.cerer-webinar-speaker__nom {
+	font-size: 14.5px;
+	font-weight: 500;
+	color: #fff;
+}
+
+.cerer-webinar-speaker__fonction {
+	font-size: 12.5px;
+	color: #DCEBF7;
+}
+
+/* --- Formulaire d'inscription (panneau sombre) --- */
+
+.cerer-form--on-dark h3 {
+	font-size: 21px;
+	color: #fff;
+	margin-bottom: 6px;
+}
+
+.cerer-form--on-dark .cerer-form__intro {
+	font-size: 14px;
+	color: #C9DDEE;
+	margin-top: -6px;
+}
+
+.cerer-form--on-dark .cerer-form__row label {
+	color: #fff;
+}
+
+.cerer-form--on-dark .cerer-form__row input,
+.cerer-form--on-dark .cerer-form__row select {
+	background: #fff;
+	border-color: transparent;
+}
+
+.cerer-form--on-dark .cerer-form__submit {
+	width: 100%;
+	justify-content: center;
+	background: #4F7A16;
+	border-color: transparent;
+}
+
+.cerer-form--on-dark .cerer-form__submit:hover {
+	background: #416312;
+}
+
+.cerer-form--on-dark .cerer-form__mention {
+	font-size: 12.5px;
+	color: #C9DDEE;
+	margin-top: -8px;
+}
+
+.cerer-form--on-dark .cerer-form__feedback.is-success {
+	color: #B8E07A;
+}
+
+.cerer-form--on-dark .cerer-form__feedback.is-error {
+	color: #FFC7C2;
+}
+
+/* --- Les deux derniers webinaires --- */
+
+.cerer-webinars__replays-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.cerer-webinars__replays-head h3 {
+	font-size: 24px;
+	color: var(--cerer-ink);
+}
+
+.cerer-webinars__replays-link {
+	font-size: 14.5px;
+	font-weight: 500;
+	color: var(--cerer-blue-2);
+}
+
+.cerer-webinars__replays-grid {
+	display: grid;
+	gap: 22px;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 899.98px) {
+	.cerer-webinars__replays-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-webinar-replay {
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	transition: transform .2s ease, box-shadow .2s ease;
+	text-decoration: none;
+	color: inherit;
+}
+
+.cerer-webinar-replay:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 32px rgba(26, 34, 51, .11);
+	text-decoration: none;
+}
+
+.cerer-webinar-replay__thumb {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	background: var(--cerer-ink);
+}
+
+.cerer-webinar-replay__thumb img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-webinar-replay__play {
+	/* PROMPT-17 : "margin: calc(50% - 31px) auto 0" plaçait le bouton trop
+	   bas — un pourcentage sur margin-top se résout contre la LARGEUR du
+	   conteneur, pas sa hauteur ; sur une miniature 16/9 (plus large que
+	   haute) ça pousse le bouton sous le centre réel. position:absolute +
+	   top/left 50% + translate le centre correctement quel que soit le
+	   ratio. */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 62px;
+	height: 62px;
+	border-radius: 50%;
+	background: rgba(20, 86, 143, .92);
+	box-shadow: 0 4px 16px rgba(10, 30, 50, .35);
+}
+
+.cerer-webinar-replay__play-triangle {
+	width: 0;
+	height: 0;
+	margin-left: 4px;
+	border-top: 9px solid transparent;
+	border-bottom: 9px solid transparent;
+	border-left: 14px solid #fff;
+}
+
+.cerer-webinar-replay__theme {
+	position: absolute;
+	left: 14px;
+	top: 14px;
+	padding: 4px 10px;
+	border-radius: 6px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	background: var(--cerer-blue);
+	color: #fff;
+}
+
+.cerer-webinar-replay__duree {
+	position: absolute;
+	right: 14px;
+	bottom: 14px;
+	padding: 3px 8px;
+	border-radius: 4px;
+	background: rgba(26, 34, 51, .85);
+	color: #fff;
+	font-size: 12px;
+}
+
+.cerer-webinar-replay__body {
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+	padding: 24px;
+}
+
+.cerer-webinar-replay__date {
+	font-size: 12.5px;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-webinar-replay__body h3 {
+	font-size: 20px;
+	line-height: 1.3;
+	color: var(--cerer-ink);
+}
+
+.cerer-webinar-replay__resume {
+	font-size: 14.5px;
+	line-height: 1.65;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-webinar-replay__speakers-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	color: var(--cerer-ink-2);
+	margin-bottom: 4px;
+}
+
+.cerer-webinar-replay__speakers-names {
+	font-size: 14px;
+	color: var(--cerer-ink);
+}
+
+.cerer-webinar-replay__link {
+	margin-top: auto;
+	border-top: 1px solid #EDEFF2;
+	padding-top: 14px;
+	font-size: 14.5px;
+	font-weight: 500;
+	color: #1565A3;
+}
+
+/* --- Dernières actualités (accueil) — PROMPT-14 --- */
+/* Même en-tête de section que les précédentes (.cerer-projects__head*
+   réutilisées à l'identique). */
+
+.cerer-news {
+	position: relative;
+	overflow: hidden;
+	background: #F0F7E4;
+	padding: 56px 24px;
+}
+
+@media (min-width: 768px) {
+	.cerer-news {
+		padding: 80px 24px;
+	}
+}
+
+.cerer-news__blob {
+	position: absolute;
+	left: -150px;
+	top: -170px;
+	width: 420px;
+	height: 420px;
+	border-radius: 50%;
+	background: #E4F1D2;
+	pointer-events: none;
+}
+
+.cerer-news__inner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+/* --- Barre de filtres --- */
+
+.cerer-news__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 9px;
+}
+
+.cerer-news__pill {
+	padding: 8px 16px;
+	border-radius: 99px;
+	border: 1px solid #DCE4CE;
+	background: #fff;
+	color: #3A4152;
+	font-size: 13.5px;
+	font-family: inherit;
+	cursor: pointer;
+	transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.cerer-news__pill:hover {
+	border-color: #14568F;
+	color: #14568F;
+}
+
+.cerer-news__pill.is-active {
+	background: var(--cerer-blue-dark);
+	border-color: var(--cerer-blue-dark);
+	color: #fff;
+}
+
+/* --- Grille de cartes --- */
+
+.cerer-news__grid {
+	display: grid;
+	gap: 22px;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+	.cerer-news__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 700px) {
+	.cerer-news__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cerer-news__grid[aria-busy='true'] {
+	opacity: .5;
+}
+
+.cerer-news__empty {
+	color: var(--cerer-ink-2);
+}
+
+.cerer-actu-card {
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	transition: transform .2s ease, box-shadow .2s ease;
+	text-decoration: none;
+	color: inherit;
+}
+
+.cerer-actu-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 32px rgba(26, 34, 51, .11);
+	text-decoration: none;
+}
+
+.cerer-actu-card:focus-visible {
+	outline: 2px solid #4F7A16;
+	outline-offset: 2px;
+}
+
+.cerer-actu-card__media {
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	/* flex-shrink:0 : sans ça, un enfant avec aspect-ratio dans un flex
+	   column peut se faire écraser par le contenu du corps de carte selon
+	   la hauteur disponible (PROMPT-16 point 1). */
+	flex-shrink: 0;
+}
+
+.cerer-actu-card__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* Sans image (ni à la une, ni de repli catégorie) : pas d'aplat gris — la
+   carte n'a simplement pas de .cerer-actu-card__media du tout, juste un
+   liseré de couleur en haut pour garder un ancrage visuel (PROMPT-16). */
+.cerer-actu-card--no-image {
+	border-top: 3px solid var(--cerer-actu-color, var(--cerer-blue-dark));
+}
+
+.cerer-actu-card--no-image .cerer-actu-card__body {
+	padding-top: 24px;
+}
+
+.cerer-actu-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	padding: 22px;
+	flex: 1 1 auto;
+}
+
+.cerer-actu-card__badge {
+	align-self: flex-start;
+	padding: 4px 10px;
+	border-radius: 6px;
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: .07em;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.cerer-actu-card__body h3 {
+	font-size: 18px;
+	line-height: 1.35;
+	color: var(--cerer-ink);
+}
+
+.cerer-actu-card__excerpt {
+	flex: 1 1 auto;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--cerer-ink-2);
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.cerer-actu-card__date {
+	font-size: 12.5px;
+	color: #5C6472;
+}

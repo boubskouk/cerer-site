@@ -1,0 +1,73 @@
+{
+	"key": "group_cerer_chercheur",
+	"title": "Chercheur",
+	"fields": [
+		{
+			"key": "field_cerer_cher_titre",
+			"label": "Titre académique",
+			"name": "titre",
+			"type": "text",
+			"placeholder": "Professeur titulaire, Maître de conférences…"
+		},
+		{
+			"key": "field_cerer_cher_specialite",
+			"label": "Spécialité",
+			"name": "specialite",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_cher_photo",
+			"label": "Photo",
+			"name": "photo",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_cher_linkedin",
+			"label": "LinkedIn",
+			"name": "lien_linkedin",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_cher_researchgate",
+			"label": "ResearchGate",
+			"name": "lien_researchgate",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_cher_publications",
+			"label": "Publications liées",
+			"name": "publications_liees",
+			"type": "relationship",
+			"post_type": [
+				"publication"
+			],
+			"filters": [
+				"search"
+			],
+			"return_format": "object",
+			"min": 0,
+			"max": 0
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "chercheur"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

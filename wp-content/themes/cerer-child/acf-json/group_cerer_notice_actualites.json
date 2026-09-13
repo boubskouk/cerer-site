@@ -1,0 +1,32 @@
+{
+	"key": "group_cerer_notice_actualites",
+	"title": "Actualités — Où modifier le contenu",
+	"fields": [
+		{
+			"key": "field_cerer_notice_actu_msg",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page liste automatiquement les derniers articles publiés (menu « Articles » de l'admin) : elle n'a pas de contenu propre à modifier ici, et l'éditeur de blocs juste en dessous n'est pas utilisé.\n\nPour ajouter ou modifier une actualité, utilisez le menu « Articles », pas cette page.",
+			"esc_html": 0
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "posts_page"
+			}
+		]
+	],
+	"menu_order": -10,
+	"position": "acf_after_title",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

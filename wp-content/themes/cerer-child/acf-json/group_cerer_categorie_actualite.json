@@ -1,0 +1,42 @@
+{
+	"key": "group_cerer_categorie_actualite",
+	"title": "Catégorie d'actualité — couleur",
+	"fields": [
+		{
+			"key": "field_cerer_catact_couleur",
+			"label": "Couleur du badge (code hex)",
+			"name": "couleur",
+			"type": "text",
+			"instructions": "Vérifier un contraste ≥ 4.5:1 avec du texte blanc avant de choisir une couleur (PROMPT-14). Ne jamais utiliser #8CC63F ni #4CB848 : le blanc y est illisible.",
+			"placeholder": "#1565A3"
+		},
+		{
+			"key": "field_cerer_catact_image_defaut",
+			"label": "Image par défaut",
+			"name": "image_defaut",
+			"type": "image",
+			"instructions": "PROMPT-16 : utilisée sur la carte de l'accueil quand l'article n'a pas d'image à la une. Laisser vide pour que la carte s'affiche sans visuel (pas d'aplat gris).",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "taxonomy",
+				"operator": "==",
+				"value": "categorie_actualite"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

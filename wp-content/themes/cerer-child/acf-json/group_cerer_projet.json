@@ -1,0 +1,93 @@
+{
+	"key": "group_cerer_projet",
+	"title": "Projet",
+	"fields": [
+		{
+			"key": "field_cerer_proj_en_avant",
+			"label": "Mis en avant (accueil)",
+			"name": "en_avant",
+			"type": "true_false",
+			"instructions": "Coché : le projet apparaît dans « Nos projets phares » sur l'accueil (PROMPT-12). 3 max affichés, triés par date de début décroissante ; complété par les plus récents s'il y en a moins de 3.",
+			"default_value": 0,
+			"ui": 1
+		},
+		{
+			"key": "field_cerer_proj_statut",
+			"label": "Statut",
+			"name": "statut",
+			"type": "select",
+			"instructions": "Mêmes valeurs que les badges de statut du site (README §4.5).",
+			"choices": {
+				"en-cours": "En cours",
+				"a-venir": "À venir",
+				"termine": "Terminé"
+			},
+			"default_value": "en-cours",
+			"return_format": "value",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_proj_partenaires",
+			"label": "Partenaires",
+			"name": "partenaires",
+			"type": "text",
+			"instructions": "Séparés par des virgules."
+		},
+		{
+			"key": "field_cerer_proj_date_debut",
+			"label": "Date de début",
+			"name": "date_debut",
+			"type": "date_picker",
+			"display_format": "d/m/Y",
+			"return_format": "Y-m-d",
+			"first_day": 1
+		},
+		{
+			"key": "field_cerer_proj_date_fin",
+			"label": "Date de fin",
+			"name": "date_fin",
+			"type": "date_picker",
+			"display_format": "d/m/Y",
+			"return_format": "Y-m-d",
+			"first_day": 1
+		},
+		{
+			"key": "field_cerer_proj_progression",
+			"label": "Progression",
+			"name": "progression",
+			"type": "number",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"append": "%"
+		},
+		{
+			"key": "field_cerer_proj_description",
+			"label": "Description",
+			"name": "description",
+			"type": "textarea",
+			"rows": 4,
+			"new_lines": "wpautop"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "projet"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

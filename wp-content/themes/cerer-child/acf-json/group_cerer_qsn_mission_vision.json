@@ -1,0 +1,82 @@
+{
+	"key": "group_cerer_qsn_mission_vision",
+	"title": "Qui sommes-nous — Mission, vision, valeurs & forces",
+	"fields": [
+		{
+			"key": "field_cerer_qsn_mission_titre",
+			"label": "Titre — encadré Mission",
+			"name": "mission_titre",
+			"type": "text",
+			"default_value": "Notre mission"
+		},
+		{
+			"key": "field_cerer_qsn_mission_texte",
+			"label": "Texte — encadré Mission",
+			"name": "mission_texte",
+			"type": "textarea",
+			"rows": 5,
+			"default_value": "Promouvoir la recherche et le développement dans le domaine des énergies renouvelables au Sénégal et en Afrique, en assurant la maîtrise des progrès scientifiques et techniques et en valorisant leurs résultats auprès des populations."
+		},
+		{
+			"key": "field_cerer_qsn_vision_titre",
+			"label": "Titre — encadré Vision",
+			"name": "vision_titre",
+			"type": "text",
+			"default_value": "Notre vision"
+		},
+		{
+			"key": "field_cerer_qsn_vision_texte",
+			"label": "Texte — encadré Vision",
+			"name": "vision_texte",
+			"type": "textarea",
+			"rows": 5,
+			"default_value": "Consolider le statut du CERER comme grand centre de recherche et de création résolument tourné vers l'avenir, en repoussant les frontières des connaissances et en proposant des solutions innovantes et durables."
+		},
+		{
+			"key": "field_cerer_qsn_valeurs_titre",
+			"label": "Titre — encadré Nos valeurs",
+			"name": "valeurs_titre",
+			"type": "text",
+			"instructions": "PROMPT-18 : contenu à rédiger par le client. Laisser vide (avec le texte) pour masquer entièrement ce bloc."
+		},
+		{
+			"key": "field_cerer_qsn_valeurs_texte",
+			"label": "Texte — encadré Nos valeurs",
+			"name": "valeurs_texte",
+			"type": "textarea",
+			"rows": 5
+		},
+		{
+			"key": "field_cerer_qsn_forces_titre",
+			"label": "Titre — encadré Forces du CERER",
+			"name": "forces_titre",
+			"type": "text",
+			"instructions": "PROMPT-18 : contenu à rédiger par le client. Laisser vide (avec le texte) pour masquer entièrement ce bloc."
+		},
+		{
+			"key": "field_cerer_qsn_forces_texte",
+			"label": "Texte — encadré Forces du CERER",
+			"name": "forces_texte",
+			"type": "textarea",
+			"rows": 5
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": 1,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "PROMPT-15, section 2 ; étendue à 4 blocs par PROMPT-18 (valeurs, forces).",
+	"show_in_rest": 1
+}

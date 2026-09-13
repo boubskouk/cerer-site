@@ -1,0 +1,43 @@
+{
+	"key": "group_cerer_home_news",
+	"title": "Accueil — Actualités",
+	"fields": [
+		{
+			"key": "field_cerer_hn_eyebrow",
+			"label": "Surtitre",
+			"name": "home_news_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hn_title",
+			"label": "Titre",
+			"name": "home_news_title",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hn_intro",
+			"label": "Chapô",
+			"name": "home_news_intro",
+			"type": "textarea",
+			"rows": 3
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 5,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Section \"Dernières actualités\" (PROMPT-14).",
+	"show_in_rest": 1
+}

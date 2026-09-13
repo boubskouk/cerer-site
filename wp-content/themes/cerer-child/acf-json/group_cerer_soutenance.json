@@ -1,0 +1,91 @@
+{
+	"key": "group_cerer_soutenance",
+	"title": "Soutenance",
+	"fields": [
+		{
+			"key": "field_cerer_sout_niveau",
+			"label": "Niveau",
+			"name": "niveau",
+			"type": "select",
+			"choices": {
+				"licence": "Licence",
+				"master": "Master",
+				"certification": "Certification"
+			},
+			"default_value": "licence",
+			"return_format": "value",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_sout_auteur",
+			"label": "Auteur",
+			"name": "auteur",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_sout_annee",
+			"label": "Année",
+			"name": "annee",
+			"type": "number",
+			"min": 1990,
+			"max": 2100,
+			"step": 1
+		},
+		{
+			"key": "field_cerer_sout_directeur",
+			"label": "Directeur",
+			"name": "directeur",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_sout_mention",
+			"label": "Mention",
+			"name": "mention",
+			"type": "select",
+			"choices": {
+				"passable": "Passable",
+				"assez_bien": "Assez bien",
+				"bien": "Bien",
+				"tres_bien": "Très bien",
+				"excellent": "Excellent"
+			},
+			"return_format": "value",
+			"allow_null": 1,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_sout_lien_memoire",
+			"label": "Lien du mémoire",
+			"name": "lien_memoire",
+			"type": "url",
+			"instructions": "URL externe (Drive, etc.) — aucun fichier n'est hébergé sur le serveur."
+		},
+		{
+			"key": "field_cerer_sout_lien_video",
+			"label": "Lien vidéo",
+			"name": "lien_video",
+			"type": "url"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "soutenance"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

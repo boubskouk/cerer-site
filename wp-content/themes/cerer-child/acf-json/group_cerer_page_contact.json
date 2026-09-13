@@ -1,0 +1,110 @@
+{
+	"key": "group_cerer_page_contact",
+	"title": "Contact — coordonnées et liens utiles",
+	"fields": [
+		{
+			"key": "field_cerer_pc_notice",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page utilise un gabarit personnalisé : tout son contenu se modifie ici, PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal). Le formulaire de contact lui-même n'est pas modifiable ici : ses champs sont fixes dans le thème.",
+			"esc_html": 0
+		},
+		{
+			"key": "field_cerer_pc_chapo",
+			"label": "Chapô (sous le titre)",
+			"name": "chapo_page",
+			"type": "textarea",
+			"rows": 2
+		},
+		{
+			"key": "field_cerer_pc_adresse",
+			"label": "Adresse postale",
+			"name": "adresse",
+			"type": "textarea",
+			"rows": 2
+		},
+		{
+			"key": "field_cerer_pc_maps_url",
+			"label": "Lien Google Maps (optionnel)",
+			"name": "carte_google_maps_url",
+			"type": "url",
+			"instructions": "Laisser vide : la carte affichée se base automatiquement sur l'adresse postale ci-dessus. Si le repère n'est pas assez précis, collez ici le lien \"Partager → Intégrer une carte\" de Google Maps une fois le bon point localisé."
+		},
+		{
+			"key": "field_cerer_pc_telephone",
+			"label": "Téléphone",
+			"name": "telephone",
+			"type": "text",
+			"instructions": "Affiché tel quel. Le lien cliquable (tel:) est reconstruit automatiquement à partir de ce numéro."
+		},
+		{
+			"key": "field_cerer_pc_email",
+			"label": "Adresse e-mail",
+			"name": "email",
+			"type": "email"
+		},
+
+		{
+			"key": "field_cerer_pc_liens_titre",
+			"label": "Titre — bloc « Vous cherchez plutôt… »",
+			"name": "liens_utiles_titre",
+			"type": "text",
+			"default_value": "Vous cherchez plutôt…"
+		},
+		{
+			"key": "field_cerer_pc_lien1_label",
+			"label": "Lien utile 1 — Libellé",
+			"name": "liens_utiles_1_label",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_pc_lien1_url",
+			"label": "Lien utile 1 — URL",
+			"name": "liens_utiles_1_url",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_pc_lien2_label",
+			"label": "Lien utile 2 — Libellé",
+			"name": "liens_utiles_2_label",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_pc_lien2_url",
+			"label": "Lien utile 2 — URL",
+			"name": "liens_utiles_2_url",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_pc_lien3_label",
+			"label": "Lien utile 3 — Libellé",
+			"name": "liens_utiles_3_label",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_pc_lien3_url",
+			"label": "Lien utile 3 — URL",
+			"name": "liens_utiles_3_url",
+			"type": "url"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/contact.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "acf_after_title",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

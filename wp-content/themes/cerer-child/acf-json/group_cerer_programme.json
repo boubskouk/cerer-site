@@ -1,0 +1,69 @@
+{
+	"key": "group_cerer_programme",
+	"title": "Programme de formation",
+	"fields": [
+		{
+			"key": "field_cerer_prog_icone",
+			"label": "Icône (emoji)",
+			"name": "icone_emoji",
+			"type": "text",
+			"placeholder": "🎓"
+		},
+		{
+			"key": "field_cerer_prog_badge_variant",
+			"label": "Badge de statut",
+			"name": "badge_variant",
+			"type": "select",
+			"choices": {
+				"": "Aucun badge",
+				"inscriptions-ouvertes": "Inscriptions ouvertes",
+				"en-cours": "En cours",
+				"a-venir": "À venir",
+				"termine": "Terminé"
+			},
+			"allow_null": 0,
+			"default_value": "",
+			"return_format": "value",
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_prog_meta",
+			"label": "Ligne d'information (niveau · durée · lieu…)",
+			"name": "meta",
+			"type": "text",
+			"placeholder": "Bac+3 · 3 ans · Campus UCAD"
+		},
+		{
+			"key": "field_cerer_prog_description",
+			"label": "Description",
+			"name": "description",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_prog_lien",
+			"label": "Lien \"En savoir plus\"",
+			"name": "lien",
+			"type": "url",
+			"instructions": "Vers une page du site (ex. l'archive des sessions de formation) ou externe. Laisser vide pour un lien inactif (#)."
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "programme"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

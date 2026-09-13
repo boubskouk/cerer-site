@@ -1,0 +1,76 @@
+{
+	"key": "group_cerer_hero_slides",
+	"title": "Hero — Page d'accueil",
+	"fields": [
+		{
+			"key": "field_cerer_hero_intro",
+			"label": "Diaporama du hero",
+			"name": "hero_slides_intro",
+			"type": "message",
+			"message": "Jusqu'à 5 photos, affichées en fondu enchaîné. Laissez tous les champs vides pour garder le hero en aplat bleu uni, sans diaporama.\n\nACF (version gratuite installée sur ce site) n'a pas de champ Galerie — d'où ces 5 champs Image séparés plutôt qu'un seul champ répétable."
+		},
+		{
+			"key": "field_cerer_hero_slide_1",
+			"label": "Photo 1",
+			"name": "hero_slide_1",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_hero_slide_2",
+			"label": "Photo 2",
+			"name": "hero_slide_2",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_hero_slide_3",
+			"label": "Photo 3",
+			"name": "hero_slide_3",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_hero_slide_4",
+			"label": "Photo 4",
+			"name": "hero_slide_4",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_hero_slide_5",
+			"label": "Photo 5",
+			"name": "hero_slide_5",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

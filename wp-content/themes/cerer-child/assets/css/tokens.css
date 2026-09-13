@@ -1,0 +1,106 @@
+/*
+ * Design tokens CERER — valeurs définitives, cf. design_handoff_cerer_phase1/README.md §2.
+ * Ne pas modifier ces valeurs sans mise à jour du handoff correspondant.
+ */
+
+:root {
+	/* Couleurs — README §2 "Couleurs" */
+	--cerer-blue: #005B9A;
+	--cerer-blue-2: #0072BC;
+	--cerer-blue-dark: #003F70;
+	--cerer-green: #4CB848;
+	--cerer-green-hover: #3FA23C;
+	--cerer-green-soft: #EAF6E9;
+	--cerer-violet: #7B57C8;
+	--cerer-orange: #E08A1E;
+	--cerer-bg: #F4F5F7;
+	--cerer-surface: #FFFFFF;
+	--cerer-ink: #1A2233;
+	--cerer-ink-2: #555B6A;
+	--cerer-border: #E0E2E6;
+
+	/* Texte sur fonds sombres — ne jamais descendre sous 60% d'opacité */
+	--cerer-on-dark: #FFFFFF;
+	--cerer-on-dark-2: rgba(255, 255, 255, .75);
+	--cerer-on-dark-3: rgba(255, 255, 255, .6);
+
+	/* Typographie — README §2 "Typographie" */
+	--cerer-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+	--cerer-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+	--cerer-fs-h1: 42px;
+	--cerer-fs-h1-mobile: 28px;
+	--cerer-fs-h2: 28px;
+	--cerer-fs-h2-mobile: 22px;
+	--cerer-fs-h3: 20px;
+	--cerer-fs-body: 16px;
+	--cerer-fs-label: 12px;
+	--cerer-fs-meta: 13px;
+
+	--cerer-lh-heading-h1: 1.2;
+	--cerer-lh-heading-h2: 1.3;
+	--cerer-lh-heading-h3: 1.4;
+	--cerer-lh-body: 1.7;
+	--cerer-lh-label: 1.4;
+	--cerer-lh-meta: 1.6;
+
+	/* Formes — README §2 "Formes, ombres, mouvement" */
+	--cerer-radius-control: 8px;  /* boutons, champs, menus */
+	--cerer-radius-card: 12px;    /* cartes et blocs */
+	--cerer-radius-pill: 99px;    /* pills */
+	--cerer-radius-tag: 6px;      /* tags de type de contenu */
+
+	/* Ombres */
+	--cerer-shadow-card: 0 8px 24px rgba(26, 34, 51, .08);
+	--cerer-shadow-menu: 0 6px 20px rgba(26, 34, 51, .06);
+
+	/* Mouvement */
+	--cerer-transition: .2s ease;
+	--cerer-hover-lift: translateY(-2px);
+
+	/* Grille et rythme — README §2 "Grille et rythme" */
+	--cerer-container-max: 1240px;
+	--cerer-container-gutter: 24px;
+	--cerer-section-gap: 96px;
+	--cerer-section-gap-mobile: 56px;
+	--cerer-card-grid-min: 260px;
+	--cerer-card-grid-gap: 20px;
+
+	/* Breakpoints (référence — non utilisables comme var() dans les media queries,
+	   documentés ici pour rester la source unique de vérité, cf. README §2) */
+	--cerer-bp-mobile: 375px;
+	--cerer-bp-tablet: 768px;
+	--cerer-bp-desktop: 1280px;
+}
+
+/*
+ * Mode "Contraste élevé" — bouton de la topbar (header-topbar.php),
+ * bascule assets/js/header.js, persistée en localStorage. Le bouton
+ * existait déjà (classe posée sur <body>, état sauvegardé) mais sans
+ * aucune règle CSS pour lui donner effet : il ne se passait rien au clic.
+ *
+ * Ces tokens étant utilisés par la quasi-totalité des composants du site
+ * via var(--cerer-ink), var(--cerer-border)…, les redéfinir ici au niveau
+ * de <body> suffit à propager le contraste renforcé sans reprendre chaque
+ * composant un par un.
+ */
+body.high-contrast {
+	--cerer-ink: #000000;
+	--cerer-ink-2: #000000;
+	--cerer-bg: #FFFFFF;
+	--cerer-border: #000000;
+	--cerer-on-dark: #FFFFFF;
+	--cerer-on-dark-2: #FFFFFF;
+	--cerer-on-dark-3: #FFFFFF;
+	--cerer-shadow-card: 0 0 0 1px #000000;
+	--cerer-shadow-menu: 0 0 0 1px #000000;
+}
+
+body.high-contrast :is(a, button, [tabindex]):focus-visible {
+	outline: 3px solid #000000;
+	outline-offset: 2px;
+}
+
+body.high-contrast img {
+	filter: contrast(1.1);
+}

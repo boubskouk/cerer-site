@@ -1,0 +1,82 @@
+{
+	"key": "group_cerer_page_departements",
+	"title": "Départements — en-tête et services transversaux",
+	"fields": [
+		{
+			"key": "field_cerer_pd_notice",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page utilise un gabarit personnalisé : tout son contenu se modifie ici, PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal).\n\nLes 4 cartes de département (titre, description, icône, couleur) ne se modifient pas ici : chacune vient de sa fiche dans Réglages → Départements, où elle est déjà éditable.",
+			"esc_html": 0
+		},
+		{
+			"key": "field_cerer_pd_chapo",
+			"label": "Chapô (sous le titre)",
+			"name": "chapo_page",
+			"type": "textarea",
+			"rows": 2,
+			"default_value": "Le CERER organise sa recherche autour de quatre départements thématiques et de services transversaux qui les soutiennent."
+		},
+		{
+			"key": "field_cerer_pd_services_titre",
+			"label": "Titre — Services transversaux",
+			"name": "services_transversaux_titre",
+			"type": "text",
+			"default_value": "Services transversaux"
+		},
+		{
+			"key": "field_cerer_pd_service_1",
+			"label": "Service 1",
+			"name": "services_transversaux_1",
+			"type": "text",
+			"default_value": "SSIN"
+		},
+		{
+			"key": "field_cerer_pd_service_2",
+			"label": "Service 2",
+			"name": "services_transversaux_2",
+			"type": "text",
+			"default_value": "Scolarité"
+		},
+		{
+			"key": "field_cerer_pd_service_3",
+			"label": "Service 3",
+			"name": "services_transversaux_3",
+			"type": "text",
+			"default_value": "Atelier"
+		},
+		{
+			"key": "field_cerer_pd_service_4",
+			"label": "Service 4",
+			"name": "services_transversaux_4",
+			"type": "text",
+			"instructions": "Laisser vide pour ne pas afficher de 4e service."
+		},
+		{
+			"key": "field_cerer_pd_service_5",
+			"label": "Service 5",
+			"name": "services_transversaux_5",
+			"type": "text",
+			"instructions": "Laisser vide pour ne pas afficher de 5e service."
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/departements.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "acf_after_title",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Rend éditable le contenu autrefois codé en dur dans page-templates/departements.php.",
+	"show_in_rest": 1
+}

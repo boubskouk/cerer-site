@@ -1,0 +1,127 @@
+{
+	"key": "group_cerer_qsn_videos",
+	"title": "Qui sommes-nous — Le CERER en images",
+	"fields": [
+		{
+			"key": "field_cerer_qsn_videos_intro",
+			"label": "Vidéos de présentation",
+			"name": "videos_presentation_intro",
+			"type": "message",
+			"message": "6 vidéos maximum, affichées dans l'ordre ci-dessous. Laisser l'URL YouTube vide pour ne pas afficher une carte.\n\nACF (version gratuite installée sur ce site) n'a pas de champ Répéteur — d'où ces blocs numérotés séparés plutôt qu'un seul champ répétable.\n\nMiniature : si le champ \"Miniature\" est laissé vide, elle est dérivée automatiquement de l'URL YouTube et importée une seule fois dans la médiathèque."
+		},
+
+		{ "key": "field_cerer_qsn_v1_url", "label": "Vidéo 1 — URL YouTube", "name": "videos_presentation_1_url_youtube", "type": "url" },
+		{ "key": "field_cerer_qsn_v1_titre", "label": "Vidéo 1 — Titre", "name": "videos_presentation_1_titre", "type": "text" },
+		{ "key": "field_cerer_qsn_v1_desc", "label": "Vidéo 1 — Description", "name": "videos_presentation_1_description", "type": "textarea", "rows": 2 },
+		{ "key": "field_cerer_qsn_v1_cat", "label": "Vidéo 1 — Catégorie", "name": "videos_presentation_1_categorie", "type": "text", "placeholder": "Présentation, Reportage, Terrain, Laboratoire…" },
+		{
+			"key": "field_cerer_qsn_v1_couleur",
+			"label": "Vidéo 1 — Couleur du badge",
+			"name": "videos_presentation_1_couleur_badge",
+			"type": "select",
+			"choices": { "vert": "Vert", "bleu": "Bleu", "bleu_fonce": "Bleu foncé" },
+			"default_value": "bleu",
+			"return_format": "value",
+			"ui": 0
+		},
+		{ "key": "field_cerer_qsn_v1_thumb", "label": "Vidéo 1 — Miniature (optionnelle)", "name": "videos_presentation_1_miniature", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+
+		{ "key": "field_cerer_qsn_v2_url", "label": "Vidéo 2 — URL YouTube", "name": "videos_presentation_2_url_youtube", "type": "url" },
+		{ "key": "field_cerer_qsn_v2_titre", "label": "Vidéo 2 — Titre", "name": "videos_presentation_2_titre", "type": "text" },
+		{ "key": "field_cerer_qsn_v2_desc", "label": "Vidéo 2 — Description", "name": "videos_presentation_2_description", "type": "textarea", "rows": 2 },
+		{ "key": "field_cerer_qsn_v2_cat", "label": "Vidéo 2 — Catégorie", "name": "videos_presentation_2_categorie", "type": "text", "placeholder": "Présentation, Reportage, Terrain, Laboratoire…" },
+		{
+			"key": "field_cerer_qsn_v2_couleur",
+			"label": "Vidéo 2 — Couleur du badge",
+			"name": "videos_presentation_2_couleur_badge",
+			"type": "select",
+			"choices": { "vert": "Vert", "bleu": "Bleu", "bleu_fonce": "Bleu foncé" },
+			"default_value": "bleu",
+			"return_format": "value",
+			"ui": 0
+		},
+		{ "key": "field_cerer_qsn_v2_thumb", "label": "Vidéo 2 — Miniature (optionnelle)", "name": "videos_presentation_2_miniature", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+
+		{ "key": "field_cerer_qsn_v3_url", "label": "Vidéo 3 — URL YouTube", "name": "videos_presentation_3_url_youtube", "type": "url" },
+		{ "key": "field_cerer_qsn_v3_titre", "label": "Vidéo 3 — Titre", "name": "videos_presentation_3_titre", "type": "text" },
+		{ "key": "field_cerer_qsn_v3_desc", "label": "Vidéo 3 — Description", "name": "videos_presentation_3_description", "type": "textarea", "rows": 2 },
+		{ "key": "field_cerer_qsn_v3_cat", "label": "Vidéo 3 — Catégorie", "name": "videos_presentation_3_categorie", "type": "text", "placeholder": "Présentation, Reportage, Terrain, Laboratoire…" },
+		{
+			"key": "field_cerer_qsn_v3_couleur",
+			"label": "Vidéo 3 — Couleur du badge",
+			"name": "videos_presentation_3_couleur_badge",
+			"type": "select",
+			"choices": { "vert": "Vert", "bleu": "Bleu", "bleu_fonce": "Bleu foncé" },
+			"default_value": "bleu",
+			"return_format": "value",
+			"ui": 0
+		},
+		{ "key": "field_cerer_qsn_v3_thumb", "label": "Vidéo 3 — Miniature (optionnelle)", "name": "videos_presentation_3_miniature", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+
+		{ "key": "field_cerer_qsn_v4_url", "label": "Vidéo 4 — URL YouTube", "name": "videos_presentation_4_url_youtube", "type": "url" },
+		{ "key": "field_cerer_qsn_v4_titre", "label": "Vidéo 4 — Titre", "name": "videos_presentation_4_titre", "type": "text" },
+		{ "key": "field_cerer_qsn_v4_desc", "label": "Vidéo 4 — Description", "name": "videos_presentation_4_description", "type": "textarea", "rows": 2 },
+		{ "key": "field_cerer_qsn_v4_cat", "label": "Vidéo 4 — Catégorie", "name": "videos_presentation_4_categorie", "type": "text", "placeholder": "Présentation, Reportage, Terrain, Laboratoire…" },
+		{
+			"key": "field_cerer_qsn_v4_couleur",
+			"label": "Vidéo 4 — Couleur du badge",
+			"name": "videos_presentation_4_couleur_badge",
+			"type": "select",
+			"choices": { "vert": "Vert", "bleu": "Bleu", "bleu_fonce": "Bleu foncé" },
+			"default_value": "bleu",
+			"return_format": "value",
+			"ui": 0
+		},
+		{ "key": "field_cerer_qsn_v4_thumb", "label": "Vidéo 4 — Miniature (optionnelle)", "name": "videos_presentation_4_miniature", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+
+		{ "key": "field_cerer_qsn_v5_url", "label": "Vidéo 5 — URL YouTube", "name": "videos_presentation_5_url_youtube", "type": "url" },
+		{ "key": "field_cerer_qsn_v5_titre", "label": "Vidéo 5 — Titre", "name": "videos_presentation_5_titre", "type": "text" },
+		{ "key": "field_cerer_qsn_v5_desc", "label": "Vidéo 5 — Description", "name": "videos_presentation_5_description", "type": "textarea", "rows": 2 },
+		{ "key": "field_cerer_qsn_v5_cat", "label": "Vidéo 5 — Catégorie", "name": "videos_presentation_5_categorie", "type": "text", "placeholder": "Présentation, Reportage, Terrain, Laboratoire…" },
+		{
+			"key": "field_cerer_qsn_v5_couleur",
+			"label": "Vidéo 5 — Couleur du badge",
+			"name": "videos_presentation_5_couleur_badge",
+			"type": "select",
+			"choices": { "vert": "Vert", "bleu": "Bleu", "bleu_fonce": "Bleu foncé" },
+			"default_value": "bleu",
+			"return_format": "value",
+			"ui": 0
+		},
+		{ "key": "field_cerer_qsn_v5_thumb", "label": "Vidéo 5 — Miniature (optionnelle)", "name": "videos_presentation_5_miniature", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+
+		{ "key": "field_cerer_qsn_v6_url", "label": "Vidéo 6 — URL YouTube", "name": "videos_presentation_6_url_youtube", "type": "url" },
+		{ "key": "field_cerer_qsn_v6_titre", "label": "Vidéo 6 — Titre", "name": "videos_presentation_6_titre", "type": "text" },
+		{ "key": "field_cerer_qsn_v6_desc", "label": "Vidéo 6 — Description", "name": "videos_presentation_6_description", "type": "textarea", "rows": 2 },
+		{ "key": "field_cerer_qsn_v6_cat", "label": "Vidéo 6 — Catégorie", "name": "videos_presentation_6_categorie", "type": "text", "placeholder": "Présentation, Reportage, Terrain, Laboratoire…" },
+		{
+			"key": "field_cerer_qsn_v6_couleur",
+			"label": "Vidéo 6 — Couleur du badge",
+			"name": "videos_presentation_6_couleur_badge",
+			"type": "select",
+			"choices": { "vert": "Vert", "bleu": "Bleu", "bleu_fonce": "Bleu foncé" },
+			"default_value": "bleu",
+			"return_format": "value",
+			"ui": 0
+		},
+		{ "key": "field_cerer_qsn_v6_thumb", "label": "Vidéo 6 — Miniature (optionnelle)", "name": "videos_presentation_6_miniature", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" }
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": 2,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "PROMPT-15, section 3.",
+	"show_in_rest": 1
+}

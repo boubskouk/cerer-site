@@ -1,0 +1,43 @@
+{
+	"key": "group_cerer_home_projects",
+	"title": "Accueil — Projets phares",
+	"fields": [
+		{
+			"key": "field_cerer_hp_eyebrow",
+			"label": "Surtitre",
+			"name": "home_projects_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hp_title",
+			"label": "Titre",
+			"name": "home_projects_title",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_hp_intro",
+			"label": "Chapô",
+			"name": "home_projects_intro",
+			"type": "textarea",
+			"rows": 3
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 2,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Section \"Nos projets phares\" (PROMPT-12).",
+	"show_in_rest": 1
+}

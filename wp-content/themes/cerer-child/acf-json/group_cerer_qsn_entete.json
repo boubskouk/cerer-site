@@ -1,0 +1,40 @@
+{
+	"key": "group_cerer_qsn_entete",
+	"title": "Qui sommes-nous — En-tête de page",
+	"fields": [
+		{
+			"key": "field_cerer_qsn_titre_page",
+			"label": "Titre affiché (H1)",
+			"name": "titre_page",
+			"type": "text",
+			"instructions": "Distinct du titre WordPress de la page (utilisé pour le fil d'Ariane et l'onglet du navigateur). Laisser vide pour reprendre le titre WordPress.",
+			"placeholder": "Qui sommes-nous"
+		},
+		{
+			"key": "field_cerer_qsn_chapo_page",
+			"label": "Chapô",
+			"name": "chapo_page",
+			"type": "textarea",
+			"rows": 3,
+			"default_value": "Le Centre d'Études et de Recherches sur les Énergies Renouvelables (CERER) est un Institut de l'Université Cheikh Anta Diop de Dakar (UCAD) créé par le décret n° 80-402 du 28 avril 1980."
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "PROMPT-15, section 1 (en-tête).",
+	"show_in_rest": 1
+}

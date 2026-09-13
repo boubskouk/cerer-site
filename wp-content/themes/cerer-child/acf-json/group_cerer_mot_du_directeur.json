@@ -1,0 +1,109 @@
+{
+	"key": "group_cerer_mot_du_directeur",
+	"title": "Qui sommes-nous — Mot du Directeur",
+	"fields": [
+		{
+			"key": "field_cerer_mdd_notice",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "PROMPT-20 : seul le nom est connu pour l'instant (valeur de départ ci-dessous). Le portrait, les paragraphes, le lien vidéo et les réseaux sont à renseigner par le client — laissés vides tant qu'il ne les a pas fournis, la section reste lisible sans.",
+			"esc_html": 0
+		},
+		{
+			"key": "field_cerer_mdd_nom",
+			"label": "Nom",
+			"name": "nom",
+			"type": "text",
+			"default_value": "Pr. Mamadou Lamine SOW"
+		},
+		{
+			"key": "field_cerer_mdd_fonction",
+			"label": "Fonction",
+			"name": "fonction",
+			"type": "text",
+			"default_value": "Directeur du CERER"
+		},
+		{
+			"key": "field_cerer_mdd_portrait",
+			"label": "Portrait",
+			"name": "portrait",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_mdd_message",
+			"label": "Message",
+			"name": "message",
+			"type": "wysiwyg",
+			"instructions": "Autant de paragraphes que nécessaire. Le style du tout premier paragraphe (plus grand, plus sombre) s'applique automatiquement — pas besoin de le mettre en forme.\n\nSi la zone ne réagit pas au clavier, cliquez sur l'onglet « Texte » en haut à droite du champ : vous pouvez y taper directement, sans mise en forme visuelle.",
+			"tabs": "all",
+			"toolbar": "basic",
+			"media_upload": 0
+		},
+		{
+			"key": "field_cerer_mdd_video_url",
+			"label": "Vidéo — URL YouTube",
+			"name": "video_url",
+			"type": "url",
+			"instructions": "Laisser vide pour masquer entièrement la carte vidéo."
+		},
+		{
+			"key": "field_cerer_mdd_video_titre",
+			"label": "Vidéo — Titre",
+			"name": "video_titre",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_mdd_video_contexte",
+			"label": "Vidéo — Contexte",
+			"name": "video_contexte",
+			"type": "text",
+			"placeholder": "4 min 12 · janvier 2026"
+		},
+		{
+			"key": "field_cerer_mdd_linkedin",
+			"label": "LinkedIn",
+			"name": "lien_linkedin",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_mdd_researchgate",
+			"label": "ResearchGate",
+			"name": "lien_researchgate",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_mdd_scholar",
+			"label": "Google Scholar",
+			"name": "lien_scholar",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_mdd_email",
+			"label": "E-mail de contact",
+			"name": "email_contact",
+			"type": "email"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": 4,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "PROMPT-20 : remplace l'ancien groupe \"Mot du Directeur\" (noms de champs différents, migration faite en base).",
+	"show_in_rest": 1
+}

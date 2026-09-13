@@ -1,0 +1,200 @@
+{
+	"key": "group_cerer_webinaire",
+	"title": "Webinaire",
+	"fields": [
+		{
+			"key": "field_cerer_web_statut",
+			"label": "Statut",
+			"name": "statut",
+			"type": "select",
+			"instructions": "Indicatif seulement : la section Webinaires de l'accueil (PROMPT-13) se base sur la date, pas sur ce champ — un webinaire dont la date est dépassée bascule seul en replay.",
+			"choices": {
+				"a_venir": "À venir",
+				"passe": "Passé"
+			},
+			"default_value": "a_venir",
+			"return_format": "value",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_web_date",
+			"label": "Date et heure",
+			"name": "date",
+			"type": "date_time_picker",
+			"display_format": "d/m/Y H:i",
+			"return_format": "Y-m-d H:i:s",
+			"first_day": 1
+		},
+		{
+			"key": "field_cerer_web_resume",
+			"label": "Résumé",
+			"name": "resume",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_web_plateforme",
+			"label": "Plateforme",
+			"name": "plateforme",
+			"type": "text",
+			"placeholder": "Zoom, Teams, YouTube, Google Meet…"
+		},
+		{
+			"key": "field_cerer_web_langue",
+			"label": "Langue",
+			"name": "langue",
+			"type": "text",
+			"default_value": "Français"
+		},
+		{
+			"key": "field_cerer_web_lien_inscription",
+			"label": "Lien d'inscription",
+			"name": "lien_inscription",
+			"type": "url",
+			"instructions": "Renseigné pour mémoire uniquement : le formulaire natif de l'accueil (PROMPT-13) gère l'inscription, le lien Zoom part par e-mail après coup."
+		},
+		{
+			"key": "field_cerer_web_lien_replay",
+			"label": "Lien du replay",
+			"name": "lien_replay",
+			"type": "url",
+			"instructions": "URL externe (YouTube, Drive…) — aucune vidéo n'est hébergée sur le serveur."
+		},
+		{
+			"key": "field_cerer_web_miniature",
+			"label": "Miniature",
+			"name": "miniature",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_web_duree",
+			"label": "Durée",
+			"name": "duree",
+			"type": "text",
+			"placeholder": "1h30"
+		},
+		{
+			"key": "field_cerer_web_intervenants_msg",
+			"label": "Intervenants",
+			"name": "intervenants_message",
+			"type": "message",
+			"message": "Jusqu'à 3 intervenants, en champs séparés — ACF Pro (Repeater) n'est pas installé sur ce site. Laisser les champs d'un intervenant vides s'il n'y en a pas."
+		},
+		{
+			"key": "field_cerer_web_int1_nom",
+			"label": "Intervenant 1 — nom",
+			"name": "intervenant_1_nom",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int1_fonction",
+			"label": "Intervenant 1 — fonction",
+			"name": "intervenant_1_fonction",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int1_institution",
+			"label": "Intervenant 1 — institution",
+			"name": "intervenant_1_institution",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int1_photo",
+			"label": "Intervenant 1 — photo",
+			"name": "intervenant_1_photo",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "thumbnail",
+			"library": "all",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int2_nom",
+			"label": "Intervenant 2 — nom",
+			"name": "intervenant_2_nom",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int2_fonction",
+			"label": "Intervenant 2 — fonction",
+			"name": "intervenant_2_fonction",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int2_institution",
+			"label": "Intervenant 2 — institution",
+			"name": "intervenant_2_institution",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int2_photo",
+			"label": "Intervenant 2 — photo",
+			"name": "intervenant_2_photo",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "thumbnail",
+			"library": "all",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int3_nom",
+			"label": "Intervenant 3 — nom",
+			"name": "intervenant_3_nom",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int3_fonction",
+			"label": "Intervenant 3 — fonction",
+			"name": "intervenant_3_fonction",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int3_institution",
+			"label": "Intervenant 3 — institution",
+			"name": "intervenant_3_institution",
+			"type": "text",
+			"wrapper": { "width": "25" }
+		},
+		{
+			"key": "field_cerer_web_int3_photo",
+			"label": "Intervenant 3 — photo",
+			"name": "intervenant_3_photo",
+			"type": "image",
+			"return_format": "array",
+			"preview_size": "thumbnail",
+			"library": "all",
+			"wrapper": { "width": "25" }
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "webinaire"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

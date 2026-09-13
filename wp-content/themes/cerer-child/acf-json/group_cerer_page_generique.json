@@ -1,0 +1,98 @@
+{
+	"key": "group_cerer_page_generique",
+	"title": "Page générique — contenu",
+	"fields": [
+		{
+			"key": "field_cerer_pg_notice",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page utilise un gabarit personnalisé (même style visuel que « Qui sommes-nous ») : tout son contenu se modifie ici, PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal).",
+			"esc_html": 0
+		},
+		{
+			"key": "field_cerer_pg_titre",
+			"label": "Titre affiché (H1)",
+			"name": "titre_page",
+			"type": "text",
+			"instructions": "Laisser vide pour reprendre le titre WordPress de la page."
+		},
+		{
+			"key": "field_cerer_pg_chapo",
+			"label": "Chapô (sous le titre, fond bleu)",
+			"name": "chapo_page",
+			"type": "textarea",
+			"rows": 2
+		},
+		{
+			"key": "field_cerer_pg_contenu",
+			"label": "Contenu principal",
+			"name": "contenu",
+			"type": "wysiwyg",
+			"tabs": "all",
+			"toolbar": "basic",
+			"media_upload": 0,
+			"instructions": "Si la zone ne réagit pas au clavier, l'onglet « Texte » (en haut à droite du champ) accepte la saisie sans mise en forme visuelle."
+		},
+
+		{
+			"key": "field_cerer_pg_points_titre",
+			"label": "Titre — liste à puces (optionnel)",
+			"name": "points_cles_titre",
+			"type": "text",
+			"instructions": "Laisser vide pour masquer entièrement ce bloc (titre ET tous les points vides)."
+		},
+		{ "key": "field_cerer_pg_point_1", "label": "Point 1", "name": "points_cles_1", "type": "text" },
+		{ "key": "field_cerer_pg_point_2", "label": "Point 2", "name": "points_cles_2", "type": "text" },
+		{ "key": "field_cerer_pg_point_3", "label": "Point 3", "name": "points_cles_3", "type": "text" },
+		{ "key": "field_cerer_pg_point_4", "label": "Point 4", "name": "points_cles_4", "type": "text" },
+		{ "key": "field_cerer_pg_point_5", "label": "Point 5", "name": "points_cles_5", "type": "text" },
+		{ "key": "field_cerer_pg_point_6", "label": "Point 6", "name": "points_cles_6", "type": "text" },
+
+		{
+			"key": "field_cerer_pg_cta_titre",
+			"label": "Bloc d'appel à l'action — Titre (optionnel)",
+			"name": "cta_titre",
+			"type": "text",
+			"instructions": "Laisser vide pour masquer entièrement ce bloc."
+		},
+		{
+			"key": "field_cerer_pg_cta_texte",
+			"label": "Bloc d'appel à l'action — Texte",
+			"name": "cta_texte",
+			"type": "textarea",
+			"rows": 2
+		},
+		{
+			"key": "field_cerer_pg_cta_label",
+			"label": "Bloc d'appel à l'action — Libellé du bouton",
+			"name": "cta_bouton_label",
+			"type": "text",
+			"default_value": "Nous contacter"
+		},
+		{
+			"key": "field_cerer_pg_cta_url",
+			"label": "Bloc d'appel à l'action — Lien du bouton",
+			"name": "cta_bouton_url",
+			"type": "url"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/page-generique.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "acf_after_title",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}

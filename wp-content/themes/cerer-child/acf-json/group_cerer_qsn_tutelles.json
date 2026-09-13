@@ -1,0 +1,55 @@
+{
+	"key": "group_cerer_qsn_tutelles",
+	"title": "Qui sommes-nous — Nos tutelles",
+	"fields": [
+		{
+			"key": "field_cerer_qsn_tutelles_intro",
+			"label": "Tutelles",
+			"name": "tutelles_intro",
+			"type": "message",
+			"message": "4 tutelles maximum, affichées dans l'ordre ci-dessous. Laisser le sigle vide pour ne pas afficher une carte.\n\nLogo manquant : la carte s'affiche avec un aplat neutre à la place du logo, jamais une carte cassée."
+		},
+
+		{ "key": "field_cerer_qsn_t1_logo", "label": "Tutelle 1 — Logo", "name": "tutelles_1_logo", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+		{ "key": "field_cerer_qsn_t1_encadre", "label": "Tutelle 1 — Encadrer le logo (utile pour un drapeau)", "name": "tutelles_1_logo_encadre", "type": "true_false", "ui": 1, "default_value": 0 },
+		{ "key": "field_cerer_qsn_t1_sigle", "label": "Tutelle 1 — Sigle", "name": "tutelles_1_sigle", "type": "text", "default_value": "UCAD" },
+		{ "key": "field_cerer_qsn_t1_intitule", "label": "Tutelle 1 — Intitulé complet", "name": "tutelles_1_intitule", "type": "text", "default_value": "Université Cheikh Anta Diop de Dakar" },
+		{ "key": "field_cerer_qsn_t1_url", "label": "Tutelle 1 — Site web (optionnel)", "name": "tutelles_1_url", "type": "url" },
+
+		{ "key": "field_cerer_qsn_t2_logo", "label": "Tutelle 2 — Logo", "name": "tutelles_2_logo", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+		{ "key": "field_cerer_qsn_t2_encadre", "label": "Tutelle 2 — Encadrer le logo (utile pour un drapeau)", "name": "tutelles_2_logo_encadre", "type": "true_false", "ui": 1, "default_value": 1, "instructions": "Cochée par défaut : le visuel de départ est le drapeau du Sénégal, à décocher si le client fournit le vrai logo du Ministère." },
+		{ "key": "field_cerer_qsn_t2_sigle", "label": "Tutelle 2 — Sigle", "name": "tutelles_2_sigle", "type": "text", "default_value": "Ministère de l'Énergie" },
+		{ "key": "field_cerer_qsn_t2_intitule", "label": "Tutelle 2 — Intitulé complet", "name": "tutelles_2_intitule", "type": "text", "default_value": "Ministère du Pétrole, des Énergies et des Mines du Sénégal", "instructions": "Le drapeau national tient la place du logo officiel du Ministère en attendant que le client le fournisse." },
+		{ "key": "field_cerer_qsn_t2_url", "label": "Tutelle 2 — Site web (optionnel)", "name": "tutelles_2_url", "type": "url" },
+
+		{ "key": "field_cerer_qsn_t3_logo", "label": "Tutelle 3 — Logo", "name": "tutelles_3_logo", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+		{ "key": "field_cerer_qsn_t3_encadre", "label": "Tutelle 3 — Encadrer le logo (utile pour un drapeau)", "name": "tutelles_3_logo_encadre", "type": "true_false", "ui": 1, "default_value": 0 },
+		{ "key": "field_cerer_qsn_t3_sigle", "label": "Tutelle 3 — Sigle", "name": "tutelles_3_sigle", "type": "text", "default_value": "ANER" },
+		{ "key": "field_cerer_qsn_t3_intitule", "label": "Tutelle 3 — Intitulé complet", "name": "tutelles_3_intitule", "type": "text", "default_value": "Agence Nationale pour les Énergies Renouvelables" },
+		{ "key": "field_cerer_qsn_t3_url", "label": "Tutelle 3 — Site web (optionnel)", "name": "tutelles_3_url", "type": "url" },
+
+		{ "key": "field_cerer_qsn_t4_logo", "label": "Tutelle 4 — Logo", "name": "tutelles_4_logo", "type": "image", "return_format": "array", "preview_size": "medium", "library": "all" },
+		{ "key": "field_cerer_qsn_t4_encadre", "label": "Tutelle 4 — Encadrer le logo (utile pour un drapeau)", "name": "tutelles_4_logo_encadre", "type": "true_false", "ui": 1, "default_value": 0 },
+		{ "key": "field_cerer_qsn_t4_sigle", "label": "Tutelle 4 — Sigle", "name": "tutelles_4_sigle", "type": "text" },
+		{ "key": "field_cerer_qsn_t4_intitule", "label": "Tutelle 4 — Intitulé complet", "name": "tutelles_4_intitule", "type": "text" },
+		{ "key": "field_cerer_qsn_t4_url", "label": "Tutelle 4 — Site web (optionnel)", "name": "tutelles_4_url", "type": "url" }
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/qui-sommes-nous.php"
+			}
+		]
+	],
+	"menu_order": 5,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "PROMPT-15, section 6 ; case \"encadrer\" ajoutée par PROMPT-19 pour le traitement visuel du drapeau.",
+	"show_in_rest": 1
+}

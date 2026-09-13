@@ -1,0 +1,32 @@
+{
+	"key": "group_cerer_notice_accueil",
+	"title": "Accueil — Où modifier le contenu",
+	"fields": [
+		{
+			"key": "field_cerer_notice_accueil_msg",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page utilise un gabarit personnalisé (front-page.php) : tout son contenu se modifie dans les encadrés ci-dessous (Chiffres clés, Projets phares, Départements, Webinaires, Actualités…), PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal).\n\nLes cartes elles-mêmes (projets, webinaires, actualités, chercheurs…) ne se modifient pas ici : chacune a sa propre fiche dans le menu de gauche de l'admin.",
+			"esc_html": 0
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": -10,
+	"position": "acf_after_title",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 1
+}
