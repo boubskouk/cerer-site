@@ -80,6 +80,154 @@
 	margin-top: 24px;
 }
 
+/* --- Archive Webinaires (/webinaires/) : liste à gauche, inscription à
+   droite. Même grille proportionnelle que .cerer-contact-layout (page
+   Contact), colonnes dans l'ordre inverse : ici la colonne principale
+   (liste) est déjà en premier dans le HTML, donc à gauche. --- */
+
+.cerer-webinaires-layout {
+	display: grid;
+	gap: 40px;
+	grid-template-columns: 1fr;
+	align-items: start;
+}
+
+@media (min-width: 1024px) {
+	.cerer-webinaires-layout {
+		grid-template-columns: 1.3fr 1fr;
+	}
+}
+
+.cerer-webinaires-layout__main > * + * {
+	margin-top: 56px;
+}
+
+/* Carte d'inscription : même famille visuelle que .cerer-director-card
+   ("Qui sommes-nous") — fond blanc, ombre, filet dégradé vert → bleu en
+   accroche visuelle plutôt qu'un simple encadré plat. */
+
+.cerer-webinar-signup {
+	position: relative;
+	background: var(--cerer-surface);
+	border: 1px solid var(--cerer-border);
+	border-radius: var(--cerer-radius-card);
+	box-shadow: var(--cerer-shadow-card);
+	padding: 32px 28px;
+	overflow: hidden;
+}
+
+.cerer-webinar-signup::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 5px;
+	background: linear-gradient(90deg, var(--cerer-green), var(--cerer-blue));
+}
+
+@media (min-width: 1024px) {
+	.cerer-webinar-signup {
+		position: sticky;
+		top: 24px;
+	}
+}
+
+.cerer-webinar-signup__empty {
+	text-align: center;
+	color: var(--cerer-ink-2);
+	font-size: 14.5px;
+	line-height: 1.6;
+}
+
+/* --- Chef de département (archive /departement/xxx/) --- */
+
+.cerer-dept-chef {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 32px;
+	margin-top: 32px;
+	background: var(--cerer-surface);
+	border: 1px solid var(--cerer-border);
+	border-radius: var(--cerer-radius-card);
+	box-shadow: var(--cerer-shadow-card);
+	padding: 32px;
+}
+
+.cerer-dept-chef__photo-col {
+	flex: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 14px;
+}
+
+.cerer-dept-chef__photo {
+	width: 112px;
+	height: 112px;
+	border-radius: 50%;
+	overflow: hidden;
+	background: var(--cerer-bg);
+}
+
+.cerer-dept-chef__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-dept-chef__photo.is-placeholder {
+	background-image: repeating-linear-gradient(
+		45deg, var(--cerer-border), var(--cerer-border) 1px, transparent 1px, transparent 12px
+	);
+}
+
+/* Lien LinkedIn directement sous la photo (demande explicite, pas à côté du
+   nom) — même traitement pill que .cerer-director-card__pill (cohérence
+   avec "Qui sommes-nous"). */
+.cerer-dept-chef__linkedin {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 14px;
+	border-radius: var(--cerer-radius-pill);
+	background: var(--cerer-bg);
+	color: #14568F;
+	font-size: 12.5px;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.cerer-dept-chef__linkedin:hover {
+	background: #E7F2FB;
+}
+
+body.dark-mode .cerer-dept-chef__linkedin:hover {
+	background: rgba(20, 86, 143, .35);
+}
+
+.cerer-dept-chef__body {
+	flex: 1 1 260px;
+	min-width: 0;
+}
+
+.cerer-dept-chef__label {
+	font-size: 11.5px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-dept-chef__name {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 21px;
+	margin-top: 6px;
+	color: var(--cerer-ink);
+}
+
 /* --- Fiche single (publication, webinaire) --- */
 
 .cerer-single h1 {

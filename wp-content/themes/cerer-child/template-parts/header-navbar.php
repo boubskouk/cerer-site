@@ -15,6 +15,11 @@ defined( 'ABSPATH' ) || exit;
 	<div class="cerer-container cerer-navbar__logos">
 		<?php get_template_part( 'template-parts/logo-lockup' ); ?>
 
+		<div class="cerer-navbar__brand-wrap" aria-hidden="true">
+			<span class="cerer-navbar__brand-shine cerer-navbar__brand-shine--<?php echo esc_attr( cerer_brand_shine_color() ); ?>">C.E.R.E.R</span>
+			<span class="cerer-navbar__brand-subtitle"><?php esc_html_e( "Centre d'Études et de Recherches sur les Énergies Renouvelables", 'cerer-child' ); ?></span>
+		</div>
+
 		<button
 			type="button"
 			class="cerer-burger"

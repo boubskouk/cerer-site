@@ -25,6 +25,28 @@
 			"rows": 2
 		},
 		{
+			"key": "field_cerer_pg_brochure_url",
+			"label": "Brochure téléchargeable — Fichier ou lien",
+			"name": "brochure_url",
+			"type": "url",
+			"instructions": "URL d'un PDF déjà en médiathèque (copier son \"Lien du fichier\") ou lien externe. Laisser vide pour masquer le bouton de téléchargement dans l'en-tête."
+		},
+		{
+			"key": "field_cerer_pg_brochure_label",
+			"label": "Brochure téléchargeable — Libellé du bouton",
+			"name": "brochure_label",
+			"type": "text",
+			"default_value": "Télécharger la brochure",
+			"conditional_logic": [
+				[
+					{
+						"field": "field_cerer_pg_brochure_url",
+						"operator": "!=empty"
+					}
+				]
+			]
+		},
+		{
 			"key": "field_cerer_pg_contenu",
 			"label": "Contenu principal",
 			"name": "contenu",

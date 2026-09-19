@@ -182,6 +182,42 @@
 	}
 
 	/* -----------------------------------------------------------
+	 * 5bis. Mode sombre — même patron que le contraste élevé ci-dessus
+	 *       (classe sur <body>, persistée en localStorage sous une clé
+	 *       distincte pour que les deux réglages restent indépendants).
+	 * --------------------------------------------------------- */
+	var DARK_KEY    = 'cerer-dark-mode';
+	var darkToggles = Array.prototype.slice.call(
+		document.querySelectorAll( '.cerer-dark-toggle' )
+	);
+
+	function setDark( on ) {
+		document.body.classList.toggle( 'dark-mode', on );
+		darkToggles.forEach( function ( btn ) {
+			btn.setAttribute( 'aria-pressed', on ? 'true' : 'false' );
+		} );
+		try {
+			localStorage.setItem( DARK_KEY, on ? '1' : '0' );
+		} catch ( e ) {
+			/* stockage indisponible (navigation privée…) : on continue sans persister */
+		}
+	}
+
+	darkToggles.forEach( function ( btn ) {
+		btn.addEventListener( 'click', function () {
+			setDark( ! document.body.classList.contains( 'dark-mode' ) );
+		} );
+	} );
+
+	try {
+		if ( '1' === localStorage.getItem( DARK_KEY ) ) {
+			setDark( true );
+		}
+	} catch ( e ) {
+		/* ignore */
+	}
+
+	/* -----------------------------------------------------------
 	 * 6. Échap referme tout (mega-menu, recherche, menu mobile) et
 	 *    rend le focus au déclencheur — README §6.2 navigation clavier.
 	 * --------------------------------------------------------- */

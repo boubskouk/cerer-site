@@ -1025,7 +1025,7 @@
 .cerer-webinar-replay__thumb {
 	position: relative;
 	aspect-ratio: 16 / 9;
-	background: var(--cerer-ink);
+	background: var(--cerer-navy);
 }
 
 .cerer-webinar-replay__thumb img {

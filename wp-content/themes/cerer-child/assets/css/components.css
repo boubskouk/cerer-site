@@ -4,6 +4,46 @@
  */
 
 /* =========================================================
+   ZOOM AU SURVOL — image mise en avant + photos du corps des articles.
+   Demande explicite : simple agrandissement au hover (pas de lightbox).
+   .ct-featured-image = classe du thème parent Blocksy (single post/page) ;
+   .entry-content = zone de contenu Blocksy où vivent les images insérées
+   dans le corps d'un article (CPT "post").
+   ========================================================= */
+
+.ct-featured-image,
+.entry-content figure.wp-block-image,
+.entry-content p:has(> img:only-child) {
+	overflow: hidden;
+}
+
+.ct-featured-image img,
+.entry-content img {
+	transition: transform .35s ease !important;
+	cursor: zoom-in;
+}
+
+/* !important : le thème parent (Blocksy) peut poser un style inline sur ces
+   images (animation d'apparition au scroll, ratio…) qui, sans ça, prime
+   toujours sur une règle de feuille de style externe, même plus précise. */
+.ct-featured-image:hover img,
+.entry-content img:hover {
+	transform: scale(1.08) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ct-featured-image img,
+	.entry-content img {
+		transition: none !important;
+	}
+
+	.ct-featured-image:hover img,
+	.entry-content img:hover {
+		transform: none !important;
+	}
+}
+
+/* =========================================================
    BOUTONS — §4.4
    ========================================================= */
 
@@ -51,10 +91,13 @@
 .cerer-btn.cerer-btn--primary {
 	background: var(--cerer-green);
 	/* Texte blanc sur #4CB848 ne passe pas WCAG AA (2,54:1, cf. rapport de
-	   recette Prompt 6, point 3). --cerer-ink sur ce même vert donne 6,25:1
-	   (4,88:1 au survol) : on garde le fond exactement tel que défini au
-	   README §4.4 et on corrige uniquement la couleur du texte. */
-	color: var(--cerer-ink);
+	   recette Prompt 6, point 3). --cerer-on-brand sur ce même vert donne
+	   6,25:1 (4,88:1 au survol) : on garde le fond exactement tel que défini
+	   au README §4.4 et on corrige uniquement la couleur du texte.
+	   --cerer-on-brand (pas --cerer-ink) volontairement : --cerer-ink devient
+	   clair en mode sombre (PROMPT dark-mode), ce qui casserait ce contraste
+	   sur un fond vert qui, lui, ne change pas de thème. */
+	color: var(--cerer-on-brand);
 }
 .cerer-btn.cerer-btn--primary:hover {
 	background: var(--cerer-green-hover);
@@ -193,14 +236,15 @@
 
 /* #4CB848 et #E08A1E sont trop clairs pour du texte blanc (2,54:1 et 2,68:1,
    cf. rapport de recette Prompt 6, point 3) : fond inchangé (README §4.5),
-   texte en --cerer-ink à la place (6,25:1 et 5,92:1, AA ok). */
+   texte en --cerer-on-brand à la place (6,25:1 et 5,92:1, AA ok — token fixe,
+   pas --cerer-ink qui s'éclaircit en mode sombre, cf. .cerer-btn--primary). */
 .cerer-tag--evenement {
 	background: var(--cerer-green);
-	color: var(--cerer-ink);
+	color: var(--cerer-on-brand);
 }
 .cerer-tag--formation {
 	background: var(--cerer-orange);
-	color: var(--cerer-ink);
+	color: var(--cerer-on-brand);
 }
 
 /* =========================================================

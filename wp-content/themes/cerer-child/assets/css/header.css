@@ -158,6 +158,77 @@ html.is-scrolled .cerer-topbar {
 	justify-content: space-between;
 	gap: 16px;
 	padding-block: 8px;
+	position: relative;
+}
+
+/* "C.E.R.E.R" scintillant + nom complet en dessous, centrés entre les deux
+   logos, sur toutes les pages. Décoratif : aria-hidden côté PHP, ne doit
+   jamais gêner le clic sur les logos ou le burger (pointer-events: none). */
+.cerer-navbar__brand-wrap {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	text-align: center;
+}
+
+.cerer-navbar__brand-subtitle {
+	font-family: var(--cerer-font-body);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: .03em;
+	line-height: 1.3;
+	color: var(--cerer-on-dark);
+	max-width: 220px;
+}
+
+.cerer-navbar__brand-shine {
+	font-family: var(--cerer-font-heading, var(--cerer-font-body));
+	font-weight: 700;
+	font-size: 44px;
+	letter-spacing: .1em;
+	white-space: nowrap;
+	background-size: 300% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	animation: cerer-brand-shine 3.5s linear infinite;
+}
+
+/* Couleur variable selon la page (cerer_brand_shine_color(), inc/helpers.php)
+   — choix limité à bleu et vert sur demande explicite. */
+.cerer-navbar__brand-shine--blue {
+	background-image: linear-gradient(100deg, #0072BC 0%, #BFE3FF 15%, #4FB2E8 30%, #005B9A 45%, #BFE3FF 60%, #4FB2E8 75%, #005B9A 100%);
+	filter: drop-shadow(0 0 12px rgba(79, 178, 232, .6));
+}
+
+.cerer-navbar__brand-shine--green {
+	background-image: linear-gradient(100deg, #3FA23C 0%, #D9F3D8 15%, #6FCB6B 30%, #4CB848 45%, #D9F3D8 60%, #6FCB6B 75%, #4CB848 100%);
+	filter: drop-shadow(0 0 12px rgba(111, 203, 107, .6));
+}
+
+@keyframes cerer-brand-shine {
+	0% { background-position: 0% 50%; }
+	100% { background-position: 300% 50%; }
+}
+
+@media (max-width: 1099.98px) {
+	/* Texte agrandi (44px) + sous-titre : il leur faut plus de largeur entre
+	   les deux logos. Sous ce seuil, on masque plutôt que de superposer. */
+	.cerer-navbar__brand-wrap {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cerer-navbar__brand-shine {
+		animation: none;
+	}
 }
 
 .cerer-logo-unit {
@@ -176,12 +247,36 @@ html.is-scrolled .cerer-topbar {
 	align-items: center;
 }
 
+/* Pastille blanche derrière chaque logo : sur fond --cerer-blue, le bleu du
+   logo CERER (et les tons du logo UCAD) se fondait dans la barre — signalé
+   en recette. Le fond clair détache les deux logos quelle que soit leur
+   propre couleur, sans changer la couleur de fond "règle absolue" §4.1. */
+.cerer-logo-unit__media {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+	border-radius: 10px;
+	padding: 6px 10px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .18);
+}
+
 .cerer-logo-unit__img {
 	/* PROMPT-10 : en-tête compact — nom du logo gardé EN DESSOUS (pas à côté,
 	   sur demande explicite), donc la bande garde plus de hauteur qu'un
-	   lockup côte-à-côte ; on réduit ici ce qu'on peut sans écraser le logo. */
-	height: 44px;
+	   lockup côte-à-côte. Agrandi (44px → 56px) suite au retour "logos peu
+	   visibles" — la pastille blanche ci-dessus absorbe la marge nécessaire. */
+	height: 56px;
 	width: auto;
+}
+
+/* Le fichier logo-ucad.png inscrit son sceau circulaire dans un canevas qui
+   lui laisse une marge (fond bleu clair) sur les côtés, contrairement au
+   logo CERER dont le tracé touche les 4 bords : à hauteur égale, l'UCAD
+   paraît donc plus petit. On compense en lui donnant une hauteur un peu
+   supérieure pour que les deux paraissent de taille équivalente. */
+.cerer-logo-unit--right .cerer-logo-unit__img {
+	height: 66px;
 }
 
 .cerer-logo-unit__name {
@@ -381,7 +476,16 @@ html.is-scrolled .cerer-topbar {
 
 @media (max-width: 767.98px) {
 	.cerer-logo-unit__img {
-		height: 34px; /* PROMPT-10 : en-tête mobile visé à 58px. */
+		height: 42px; /* PROMPT-10 : en-tête mobile visé à 58px. */
+	}
+
+	.cerer-logo-unit--right .cerer-logo-unit__img {
+		height: 48px;
+	}
+
+	.cerer-logo-unit__media {
+		padding: 4px 7px;
+		border-radius: 8px;
 	}
 
 	.cerer-logo-unit__name {

@@ -19,6 +19,14 @@ $titre_page = get_field( 'titre_page' ) ?: get_the_title();
 $chapo_page = get_field( 'chapo_page' );
 $contenu    = get_field( 'contenu' );
 
+// Brochure téléchargeable (bouton dans l'en-tête) — ex. brochures d'adhésion
+// Licence / Master / Certifications professionnelles. get_field() renvoie
+// NULL tant que le champ n'a jamais été enregistré, y compris pour le
+// libellé qui a une valeur par défaut ACF (jamais lue avant un premier
+// enregistrement) : on retombe donc explicitement sur le texte ici.
+$brochure_url   = get_field( 'brochure_url' );
+$brochure_label = get_field( 'brochure_label' ) ?: __( 'Télécharger la brochure', 'cerer-child' );
+
 $points_titre = get_field( 'points_cles_titre' );
 $points       = array_filter(
 	array(
@@ -53,6 +61,11 @@ $show_cta  = $cta_titre && $cta_url;
 		<h1><?php echo esc_html( $titre_page ); ?></h1>
 		<?php if ( $chapo_page ) : ?>
 			<p class="cerer-about-hero__chapo"><?php echo esc_html( $chapo_page ); ?></p>
+		<?php endif; ?>
+		<?php if ( $brochure_url ) : ?>
+			<a href="<?php echo esc_url( $brochure_url ); ?>" class="cerer-btn cerer-btn--secondary-blue cerer-btn--l cerer-about-hero__brochure" target="_blank" rel="noopener noreferrer" download>
+				<?php echo esc_html( $brochure_label ); ?> ↓
+			</a>
 		<?php endif; ?>
 	</div>
 </header>

@@ -40,9 +40,13 @@ function cerer_handle_webinar_registration() {
 	$institution  = isset( $_POST['institution'] ) ? sanitize_text_field( wp_unslash( $_POST['institution'] ) ) : '';
 	$profil       = isset( $_POST['profil'] ) ? sanitize_text_field( wp_unslash( $_POST['profil'] ) ) : '';
 
-	if ( ! $webinaire_id || ! $nom || ! $email || ! is_email( $email ) ) {
+	// webinaire_id à 0 : inscription générale (« être informé du prochain »),
+	// aucun webinaire précis n'étant programmé au moment de l'envoi.
+	if ( ! $nom || ! $email || ! is_email( $email ) ) {
 		wp_send_json_error( array( 'message' => __( 'Merci de remplir au minimum votre nom et votre e-mail.', 'cerer-child' ) ), 400 );
 	}
+
+	$webinaire_titre = $webinaire_id ? get_the_title( $webinaire_id ) : __( 'Prochain webinaire (non encore programmé)', 'cerer-child' );
 
 	// Une adresse déjà inscrite à CE webinaire n'est pas ré-enregistrée deux fois.
 	$existing = get_posts(
@@ -65,7 +69,7 @@ function cerer_handle_webinar_registration() {
 	$post_id = wp_insert_post(
 		array(
 			'post_type'   => 'webinar_signup',
-			'post_title'  => sprintf( '%s — %s', $nom, get_the_title( $webinaire_id ) ),
+			'post_title'  => sprintf( '%s — %s', $nom, $webinaire_titre ),
 			'post_status' => 'private',
 		)
 	);
@@ -84,7 +88,7 @@ function cerer_handle_webinar_registration() {
 	// faute de SMTP configuré sur l'environnement local.
 	wp_mail(
 		get_option( 'admin_email' ),
-		sprintf( '[Inscription webinaire] %s', get_the_title( $webinaire_id ) ),
+		sprintf( '[Inscription webinaire] %s', $webinaire_titre ),
 		sprintf( "%s <%s>\nInstitution : %s\nProfil : %s\n\nLe lien de connexion doit lui être envoyé manuellement (le lien Zoom n'est jamais affiché sur le site).", $nom, $email, $institution, $profil )
 	);
 

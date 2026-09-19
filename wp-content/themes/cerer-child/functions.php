@@ -20,6 +20,7 @@ require_once get_stylesheet_directory() . '/inc/about-page.php';
 require_once get_stylesheet_directory() . '/inc/contact-form.php';
 require_once get_stylesheet_directory() . '/inc/webinar-registration-form.php';
 require_once get_stylesheet_directory() . '/inc/actualites-accueil.php';
+require_once get_stylesheet_directory() . '/inc/auto-translate.php';
 
 /**
  * Taille d'image dédiée au diaporama du hero (PROMPT-9 point 5) : "large"
@@ -141,8 +142,10 @@ function cerer_enqueue_assets() {
 	// Chargé sur "Qui sommes-nous" et tout gabarit qui en reprend le système
 	// visuel (en-tête bleu, sections en fond alterné) — cf.
 	// page-templates/page-generique.php, demandé pour les nouvelles pages
-	// (programmes de formation…) sans dupliquer le CSS.
-	if ( is_page_template( array( 'page-templates/qui-sommes-nous.php', 'page-templates/page-generique.php' ) ) ) {
+	// (programmes de formation…) sans dupliquer le CSS. L'archive Webinaires
+	// (/webinaires/) et les archives de département (/departement/xxx/,
+	// carte "Chef de département") reprennent aussi cet habillage.
+	if ( is_page_template( array( 'page-templates/qui-sommes-nous.php', 'page-templates/page-generique.php' ) ) || is_post_type_archive( 'webinaire' ) || is_tax( 'departement' ) ) {
 		wp_enqueue_style(
 			'cerer-about',
 			get_stylesheet_directory_uri() . '/assets/css/about.css',
@@ -181,6 +184,29 @@ function cerer_enqueue_assets() {
 			get_stylesheet_directory_uri() . '/assets/css/archives.css',
 			array( 'cerer-pages' ),
 			cerer_asset_version( 'assets/css/archives.css' )
+		);
+	}
+
+	// Formulaire d'inscription webinaire (PROMPT-13) : accueil (carte du
+	// prochain webinaire) et archive /webinaires/ (réorganisée avec ce même
+	// formulaire à droite).
+	if ( is_front_page() || is_post_type_archive( 'webinaire' ) ) {
+		wp_enqueue_script(
+			'cerer-webinar-form',
+			get_stylesheet_directory_uri() . '/assets/js/webinar-registration-form.js',
+			array(),
+			cerer_asset_version( 'assets/js/webinar-registration-form.js' ),
+			true
+		);
+		wp_localize_script(
+			'cerer-webinar-form',
+			'cererWebinar',
+			array(
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'nonce'        => wp_create_nonce( 'cerer_webinar_registration' ),
+				'i18nRequired' => __( 'Merci de remplir les champs obligatoires (*).', 'cerer-child' ),
+				'i18nError'    => __( 'Une erreur est survenue, réessayez.', 'cerer-child' ),
+			)
 		);
 	}
 
@@ -235,24 +261,6 @@ function cerer_enqueue_assets() {
 			array(),
 			cerer_asset_version( 'assets/js/hero-slider.js' ),
 			true
-		);
-
-		wp_enqueue_script(
-			'cerer-webinar-form',
-			get_stylesheet_directory_uri() . '/assets/js/webinar-registration-form.js',
-			array(),
-			cerer_asset_version( 'assets/js/webinar-registration-form.js' ),
-			true
-		);
-		wp_localize_script(
-			'cerer-webinar-form',
-			'cererWebinar',
-			array(
-				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
-				'nonce'        => wp_create_nonce( 'cerer_webinar_registration' ),
-				'i18nRequired' => __( 'Merci de remplir les champs obligatoires (*).', 'cerer-child' ),
-				'i18nError'    => __( 'Une erreur est survenue, réessayez.', 'cerer-child' ),
-			)
 		);
 
 		wp_enqueue_script(

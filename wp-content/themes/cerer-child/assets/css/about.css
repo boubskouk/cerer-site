@@ -11,7 +11,7 @@
    ========================================================= */
 
 .cerer-about-section {
-	background: #FFFFFF;
+	background: var(--cerer-surface);
 	padding: 56px 24px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .cerer-about-section--tint {
-	background: #F0F7E4;
+	background: var(--cerer-tint-bg);
 }
 
 .cerer-about-section h2 {
@@ -30,7 +30,7 @@
 	font-weight: 600;
 	font-size: 26px;
 	line-height: 1.2;
-	color: #1A2233;
+	color: var(--cerer-ink);
 	margin-top: 10px;
 }
 
@@ -128,6 +128,22 @@
 	color: #FFFFFF;
 }
 
+/* Pastille colorée (archive de département, taxonomy-departement.php) —
+   couleur d'accent du département au-dessus du H1, dans le même en-tête que
+   "Qui sommes-nous"/pages génériques. */
+.cerer-dept-hero__eyebrow {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 14px;
+	border-radius: var(--cerer-radius-pill);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+}
+
 .cerer-about-hero h1 {
 	font-family: var(--cerer-font-heading);
 	font-weight: 600;
@@ -148,6 +164,12 @@
 	line-height: 1.7;
 	color: #FFFFFF;
 	max-width: 700px;
+}
+
+/* Bouton "Télécharger la brochure" (page-generique.php) — pages Licence,
+   Master, Certifications professionnelles. */
+.cerer-about-hero__brochure {
+	margin-top: 24px;
 }
 
 /* =========================================================
@@ -241,7 +263,7 @@
 	flex-shrink: 0;
 	display: inline-flex;
 	align-items: center;
-	background: #FFFFFF;
+	background: var(--cerer-surface);
 	color: #14568F;
 	border: 1px solid #14568F;
 	padding: 12px 22px;
@@ -281,24 +303,24 @@
 
 .cerer-about-video-card {
 	display: block;
-	background: #FFFFFF;
+	background: var(--cerer-surface);
 	border-radius: 12px;
 	overflow: hidden;
 	text-decoration: none;
-	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	box-shadow: var(--cerer-shadow-soft);
 	transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .cerer-about-video-card:hover,
 .cerer-about-video-card:focus-visible {
 	transform: translateY(-3px);
-	box-shadow: 0 10px 26px rgba(26, 34, 51, .1);
+	box-shadow: var(--cerer-shadow-soft-hover);
 }
 
 .cerer-about-video-card__media {
 	position: relative;
 	aspect-ratio: 16 / 9;
-	background: #1A2233;
+	background: var(--cerer-navy);
 	/* PROMPT-19 : le badge (position absolute) doit rester dans les angles
 	   arrondis de la miniature, pas seulement ceux de la carte. */
 	overflow: hidden;
@@ -358,13 +380,13 @@
 	font-weight: 600;
 	font-size: 21px;
 	line-height: 1.3;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-about-video-card__body p {
 	font-size: 14.5px;
 	line-height: 1.65;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 .cerer-about-video-card__footer {
@@ -432,7 +454,7 @@
 .cerer-about-timeline__label {
 	font-size: 15px;
 	line-height: 1.6;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 	max-width: 220px;
 }
 
@@ -482,7 +504,7 @@
 	flex-shrink: 0;
 	display: inline-flex;
 	align-items: center;
-	background: #fff;
+	background: var(--cerer-surface);
 	color: var(--cerer-blue-dark);
 	border: 1px solid var(--cerer-blue-dark);
 	padding: 12px 22px;
@@ -520,13 +542,13 @@
 }
 
 .cerer-about-team__card {
-	background: #FFFFFF;
+	background: var(--cerer-surface);
 	/* PROMPT-20 : la section est passée au fond blanc — l'ombre seule ne
 	   suffit plus à détacher une carte blanche, d'où cette bordure. */
-	border: 1px solid #E0E2E6;
+	border: 1px solid var(--cerer-border);
 	border-radius: 12px;
 	overflow: hidden;
-	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	box-shadow: var(--cerer-shadow-soft);
 }
 
 .cerer-about-team__photo {
@@ -553,7 +575,7 @@
 .cerer-about-team__fonction {
 	margin-top: 4px;
 	font-size: 13.5px;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 .cerer-about-team__pills {
@@ -592,7 +614,7 @@
 	display: flex;
 	align-items: center;
 	gap: 18px;
-	border: 1px solid #E0E2E6;
+	border: 1px solid var(--cerer-border);
 	border-radius: 12px;
 	padding: 28px;
 	text-decoration: none;
@@ -616,14 +638,14 @@
 	width: 56px;
 	height: auto;
 	border-radius: 3px;
-	box-shadow: 0 0 0 1px #E0E2E6;
+	box-shadow: 0 0 0 1px var(--cerer-border);
 }
 
 .cerer-about-tutelle__sigle {
 	display: block;
 	font-size: 16px;
 	font-weight: 600;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-about-tutelle__intitule {
@@ -631,7 +653,7 @@
 	margin-top: 4px;
 	font-size: 13.5px;
 	line-height: 1.5;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 /* =========================================================
@@ -662,9 +684,9 @@
 
 .cerer-director-card {
 	margin-top: 32px;
-	background: #FFFFFF;
+	background: var(--cerer-surface);
 	border-radius: 12px;
-	box-shadow: 0 4px 18px rgba(26, 34, 51, .05);
+	box-shadow: var(--cerer-shadow-soft);
 	padding: 40px;
 	display: flex;
 	flex-wrap: wrap;
@@ -709,14 +731,14 @@
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 1.3;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-director-card__role {
 	margin-top: 2px;
 	font-size: 14px;
 	line-height: 1.5;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 .cerer-director-card__social-label {
@@ -724,7 +746,7 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: .1em;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 	margin-bottom: 8px;
 }
 
@@ -759,12 +781,12 @@
 .cerer-director-card__message p {
 	font-size: 15.5px;
 	line-height: 1.75;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 .cerer-director-card__message p:first-child {
 	font-size: 16.5px;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-director-card__message p + p {
@@ -791,7 +813,7 @@
 	flex: 1 1 300px;
 	position: relative;
 	aspect-ratio: 16 / 9;
-	background: #1A2233;
+	background: var(--cerer-navy);
 }
 
 .cerer-director-video__media img {
@@ -849,13 +871,13 @@
 	font-family: var(--cerer-font-heading);
 	font-weight: 600;
 	font-size: 19px;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-director-video__meta {
 	margin-top: 6px;
 	font-size: 14px;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 .cerer-director-video__cta {
@@ -877,7 +899,7 @@
 .cerer-page-generique__contenu :is(h2, h3) {
 	font-family: var(--cerer-font-heading);
 	font-weight: 600;
-	color: #1A2233;
+	color: var(--cerer-ink);
 	margin-top: 32px;
 	margin-bottom: 12px;
 }
@@ -885,7 +907,7 @@
 .cerer-page-generique__contenu p {
 	font-size: 15.5px;
 	line-height: 1.75;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 }
 
 .cerer-page-generique__contenu p + p {
@@ -896,7 +918,7 @@
 .cerer-page-generique__contenu ol {
 	margin-top: 12px;
 	padding-left: 20px;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 	font-size: 15.5px;
 	line-height: 1.75;
 }
@@ -917,10 +939,10 @@
 .cerer-page-generique__points li {
 	position: relative;
 	padding: 16px 16px 16px 44px;
-	background: #FFFFFF;
+	background: var(--cerer-surface);
 	border-radius: 10px;
 	font-size: 15px;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-page-generique__points li::before {
@@ -954,12 +976,12 @@
 	font-family: var(--cerer-font-heading);
 	font-weight: 600;
 	font-size: 22px;
-	color: #1A2233;
+	color: var(--cerer-ink);
 }
 
 .cerer-page-generique__cta p {
 	margin-top: 8px;
 	font-size: 15px;
-	color: #555B6A;
+	color: var(--cerer-ink-2);
 	max-width: 520px;
 }

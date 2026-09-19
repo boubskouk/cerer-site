@@ -23,9 +23,9 @@ defined( 'ABSPATH' ) || exit;
 			<h4 class="cerer-footer__title"><?php esc_html_e( 'Coordonnées', 'cerer-child' ); ?></h4>
 			<address class="cerer-footer__address">
 				<p>CERER — UCAD</p>
-				<p><?php esc_html_e( 'Route de Ouakam, Dakar, Sénégal', 'cerer-child' ); ?></p>
+				<p><?php esc_html_e( 'Route du Service Géographique (HB-87) x Rue HB-478, Hann Bel-Air, Dakar, Sénégal', 'cerer-child' ); ?></p>
 				<p><a href="mailto:cerer@ucad.edu.sn">cerer@ucad.edu.sn</a></p>
-				<p><a href="tel:+22133825XXXX">+221 33 825 XX XX</a></p>
+				<p><a href="tel:+221765772252">+(221) 76 577 22 52</a></p>
 			</address>
 		</div>
 
@@ -77,12 +77,12 @@ defined( 'ABSPATH' ) || exit;
 				<?php
 				printf(
 					/* translators: %d: année en cours */
-					esc_html__( '© %d CERER — UCAD. Tous droits réservés.', 'cerer-child' ),
+					esc_html__( 'Copyright © %d CERER. All rights reserved.', 'cerer-child' ),
 					(int) current_time( 'Y' )
 				);
 				?>
 			</p>
-			<p>cerer.ucad.sn</p>
+			<p><?php esc_html_e( 'By Service informatique du C.E.R.E.R', 'cerer-child' ); ?></p>
 		</div>
 	</div>
 </footer>

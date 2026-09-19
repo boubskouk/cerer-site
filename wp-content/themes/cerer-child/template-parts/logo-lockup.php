@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 $cerer_img_dir = get_stylesheet_directory_uri() . '/assets/img/';
 ?>
 <a href="<?php echo esc_url( cerer_home_url() ); ?>" class="cerer-logo-unit cerer-logo-unit--left">
-	<picture>
+	<picture class="cerer-logo-unit__media">
 		<source srcset="<?php echo esc_url( $cerer_img_dir . 'logo-cerer.webp' ); ?>" type="image/webp">
 		<img
 			src="<?php echo esc_url( $cerer_img_dir . 'logo-cerer.png' ); ?>"
@@ -33,7 +33,7 @@ $cerer_img_dir = get_stylesheet_directory_uri() . '/assets/img/';
 </a>
 
 <a href="<?php echo esc_url( cerer_home_url() ); ?>" class="cerer-logo-unit cerer-logo-unit--right">
-	<picture>
+	<picture class="cerer-logo-unit__media">
 		<source srcset="<?php echo esc_url( $cerer_img_dir . 'logo-ucad.webp' ); ?>" type="image/webp">
 		<img
 			src="<?php echo esc_url( $cerer_img_dir . 'logo-ucad.png' ); ?>"

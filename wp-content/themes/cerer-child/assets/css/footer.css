@@ -91,7 +91,7 @@
    ========================================================= */
 
 .cerer-footer {
-	background: var(--cerer-ink);
+	background: var(--cerer-navy);
 	color: rgba(255, 255, 255, .75);
 }
 
@@ -105,6 +105,12 @@
 
 .cerer-footer .cerer-logo-unit__img {
 	height: 62px;
+}
+
+/* Même correction qu'en en-tête (header.css) : le logo UCAD paraît plus
+   petit à hauteur égale à cause de la marge autour de son sceau circulaire. */
+.cerer-footer .cerer-logo-unit--right .cerer-logo-unit__img {
+	height: 72px;
 }
 
 .cerer-footer .cerer-logo-unit__name {

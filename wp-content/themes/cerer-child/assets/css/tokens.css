@@ -18,6 +18,11 @@
 	--cerer-ink: #1A2233;
 	--cerer-ink-2: #555B6A;
 	--cerer-border: #E0E2E6;
+	/* Bleu marine fixe (jamais redéfini par body.dark-mode/.high-contrast),
+	   pour les fonds volontairement sombres dans les deux thèmes (footer,
+	   vignette vidéo) qui empruntaient --cerer-ink par commodité — cette
+	   valeur ne doit pas s'éclaircir avec le reste du texte en mode sombre. */
+	--cerer-navy: #1A2233;
 
 	/* Texte sur fonds sombres — ne jamais descendre sous 60% d'opacité */
 	--cerer-on-dark: #FFFFFF;
@@ -53,6 +58,20 @@
 	/* Ombres */
 	--cerer-shadow-card: 0 8px 24px rgba(26, 34, 51, .08);
 	--cerer-shadow-menu: 0 6px 20px rgba(26, 34, 51, .06);
+	/* Ombre plus légère, répétée telle quelle (valeur codée en dur) dans
+	   about.css sur les cartes vidéo/équipe/directeur — tokenisée ici pour
+	   que le mode sombre puisse la reprendre sans toucher about.css. */
+	--cerer-shadow-soft: 0 4px 18px rgba(26, 34, 51, .05);
+	--cerer-shadow-soft-hover: 0 10px 26px rgba(26, 34, 51, .1);
+
+	/* Fond de section "teinté" alterné (about.css : .cerer-about-section--tint) */
+	--cerer-tint-bg: #F0F7E4;
+
+	/* Texte sur bouton vert primaire (.cerer-btn--primary) : #4CB848 ne passe
+	   pas WCAG AA avec du blanc (2,54:1) ni, en mode sombre, avec un ink clair
+	   — ce token reste donc fixe (jamais redéfini par body.dark-mode),
+	   découplé de --cerer-ink qui lui change de thème. */
+	--cerer-on-brand: #1A2233;
 
 	/* Mouvement */
 	--cerer-transition: .2s ease;
@@ -103,4 +122,32 @@ body.high-contrast :is(a, button, [tabindex]):focus-visible {
 
 body.high-contrast img {
 	filter: contrast(1.1);
+}
+
+/*
+ * Mode sombre — bouton de la topbar (header-topbar.php), bascule
+ * assets/js/header.js, persisté en localStorage (même patron que
+ * "Contraste élevé" ci-dessus). Ces tokens couvrent tout ce qui, dans le
+ * site, lit déjà var(--cerer-ink)/var(--cerer-bg)/var(--cerer-surface)/
+ * var(--cerer-border) (base.css, components.css, header.css, footer.css,
+ * pages.css, archives.css — la grande majorité des pages).
+ *
+ * Reste hors de ce passage (couleurs codées en dur, pas encore branchées
+ * sur ces variables) : la page d'accueil (assets/css/home.css) et une
+ * partie d'assets/css/about.css — cf. dark-mode.css pour les quelques
+ * overrides ciblés qui couvrent malgré tout les pages "Qui sommes-nous" /
+ * pages génériques / archive Webinaires / archive Département.
+ */
+body.dark-mode {
+	color-scheme: dark;
+	--cerer-bg: #14181F;
+	--cerer-surface: #1E242E;
+	--cerer-ink: #E7E9EE;
+	--cerer-ink-2: #A4ACBA;
+	--cerer-border: #2B323D;
+	--cerer-tint-bg: #17231A;
+	--cerer-shadow-card: 0 8px 24px rgba(0, 0, 0, .4);
+	--cerer-shadow-menu: 0 6px 20px rgba(0, 0, 0, .35);
+	--cerer-shadow-soft: 0 4px 18px rgba(0, 0, 0, .3);
+	--cerer-shadow-soft-hover: 0 10px 26px rgba(0, 0, 0, .45);
 }

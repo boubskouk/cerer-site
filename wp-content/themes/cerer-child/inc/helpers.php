@@ -12,6 +12,45 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Couleur ('blue' ou 'green') du "C.E.R.E.R" scintillant de la navbar
+ * (template-parts/header-navbar.php), affiché sur toutes les pages avec une
+ * teinte qui varie selon la page — sur demande explicite, choix limité à
+ * ces deux couleurs. Départements : reprend l'association déjà utilisée par
+ * les cartes de département (taxonomy-departement.php), Thermique et Éolien
+ * n'ayant pas de bleu/vert dédié dans cette palette-là sont répartis pour
+ * équilibrer les deux teintes. Reste du site : alternance stable par ID de
+ * page/post, pour que chaque page garde toujours la même couleur.
+ *
+ * @return string 'blue'|'green'
+ */
+function cerer_brand_shine_color() {
+	if ( is_front_page() ) {
+		return 'blue';
+	}
+
+	if ( is_tax( 'departement' ) ) {
+		$term = get_queried_object();
+		$map  = array(
+			'Photovoltaïque'        => 'green',
+			'Biomasse & Bioénergie' => 'blue',
+			'Éolien'                => 'blue',
+			'Thermique'             => 'green',
+			// Termes anglais (Polylang).
+			'Photovoltaic'          => 'green',
+			'Biomass & Bioenergy'   => 'blue',
+			'Wind'                  => 'blue',
+			'Thermal'               => 'green',
+		);
+		if ( isset( $term->name, $map[ $term->name ] ) ) {
+			return $map[ $term->name ];
+		}
+	}
+
+	$id = get_queried_object_id();
+	return ( 0 === $id % 2 ) ? 'blue' : 'green';
+}
+
+/**
  * ID d'un élément de get_posts(), que ce soit un WP_Post (défaut) ou un
  * entier (get_posts appelé avec 'fields' => 'ids'). Utilisé par
  * cerer_posts_with_fallback() pour rester agnostique du format demandé.

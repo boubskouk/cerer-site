@@ -25,6 +25,47 @@
 			"name": "teinte",
 			"type": "text",
 			"placeholder": "#EDF3F9"
+		},
+		{
+			"key": "field_cerer_dept_chef_nom",
+			"label": "Chef de département — Nom",
+			"name": "chef_nom",
+			"type": "text",
+			"instructions": "Laisser vide pour masquer entièrement la carte \"Chef de département\" sur la page du département."
+		},
+		{
+			"key": "field_cerer_dept_chef_fonction",
+			"label": "Chef de département — Fonction",
+			"name": "chef_fonction",
+			"type": "text",
+			"default_value": "Chef du département"
+		},
+		{
+			"key": "field_cerer_dept_chef_photo",
+			"label": "Chef de département — Photo",
+			"name": "chef_photo",
+			"type": "image",
+			"instructions": "Carrée de préférence. Vide : silhouette de repli affichée à la place.",
+			"return_format": "array",
+			"preview_size": "medium",
+			"library": "all"
+		},
+		{
+			"key": "field_cerer_dept_chef_linkedin",
+			"label": "Chef de département — Lien LinkedIn",
+			"name": "chef_linkedin",
+			"type": "url",
+			"instructions": "Affiché sous la photo. Laisser vide pour ne pas afficher de lien."
+		},
+		{
+			"key": "field_cerer_dept_description_longue",
+			"label": "Présentation détaillée",
+			"name": "description_longue",
+			"type": "wysiwyg",
+			"instructions": "Texte long affiché sur la page du département (laboratoire, services, équipe…), sous la fiche du chef de département. Laisser vide pour ne rien afficher.",
+			"tabs": "all",
+			"toolbar": "full",
+			"media_upload": 0
 		}
 	],
 	"location": [

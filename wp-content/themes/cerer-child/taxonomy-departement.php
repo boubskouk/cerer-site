@@ -29,6 +29,19 @@ $dept_colors = array(
 );
 $accent = $dept_colors[ $term->name ] ?? 'var(--cerer-blue)';
 
+// Chef de département (carte sous l'en-tête) : champs ACF sur le terme,
+// cf. group_cerer_departement_meta.json. Comme les autres métas de ce
+// terme (couleur, icône — page-templates/departements.php), on lit
+// toujours depuis le terme FR : Polylang sépare FR/EN en deux termes
+// distincts, mais ce contenu n'est saisi qu'une fois côté FR.
+$dept_fr_term_id = function_exists( 'pll_get_term' ) ? ( pll_get_term( $term->term_id, 'fr' ) ?: $term->term_id ) : $term->term_id;
+$dept_selector    = 'departement_' . $dept_fr_term_id;
+$chef_nom         = get_field( 'chef_nom', $dept_selector );
+$chef_fonction    = get_field( 'chef_fonction', $dept_selector ) ?: __( 'Chef du département', 'cerer-child' );
+$chef_photo       = get_field( 'chef_photo', $dept_selector );
+$chef_linkedin    = get_field( 'chef_linkedin', $dept_selector );
+$description_longue = get_field( 'description_longue', $dept_selector );
+
 // CPT partageant la taxonomie "departement" (inc/taxonomies.php), avec le
 // libellé de section correspondant.
 $content_types = array(
@@ -57,15 +70,55 @@ $has_any = false;
 $sibling_thematique = get_term_by( 'name', $term->name, 'thematique' );
 ?>
 
-<div class="cerer-page-hero">
-	<div class="cerer-container">
-		<p class="cerer-label cerer-eyebrow" style="color:<?php echo esc_attr( $accent ); ?>;"><?php esc_html_e( 'Département', 'cerer-child' ); ?></p>
+<header class="cerer-about-hero">
+	<div class="cerer-about-hero__blob" aria-hidden="true"></div>
+	<div class="cerer-container cerer-about-hero__inner">
+		<nav class="cerer-about-hero__breadcrumb" aria-label="<?php esc_attr_e( 'Fil d’Ariane', 'cerer-child' ); ?>">
+			<a href="<?php echo esc_url( cerer_home_url() ); ?>"><?php esc_html_e( 'Accueil', 'cerer-child' ); ?></a>
+			<span class="cerer-about-hero__sep" aria-hidden="true">/</span>
+			<span class="cerer-about-hero__current"><?php echo esc_html( $term->name ); ?></span>
+		</nav>
+		<p class="cerer-dept-hero__eyebrow" style="background:<?php echo esc_attr( $accent ); ?>;"><?php esc_html_e( 'Département', 'cerer-child' ); ?></p>
 		<h1><?php echo esc_html( $term->name ); ?></h1>
 		<?php if ( $term->description ) : ?>
-			<p><?php echo esc_html( $term->description ); ?></p>
+			<p class="cerer-about-hero__chapo"><?php echo esc_html( $term->description ); ?></p>
 		<?php endif; ?>
 	</div>
-</div>
+</header>
+
+<?php if ( $chef_nom ) : ?>
+	<section class="cerer-about-section">
+		<div class="cerer-container">
+			<p class="cerer-about__eyebrow"><span class="cerer-about__eyebrow-rule" aria-hidden="true" style="background:<?php echo esc_attr( $accent ); ?>;"></span><?php esc_html_e( 'ÉQUIPE', 'cerer-child' ); ?></p>
+			<h2><?php esc_html_e( 'Chef de département', 'cerer-child' ); ?></h2>
+
+			<div class="cerer-dept-chef">
+				<div class="cerer-dept-chef__photo-col">
+					<div class="cerer-dept-chef__photo<?php echo empty( $chef_photo['url'] ) ? ' is-placeholder' : ''; ?>">
+						<?php if ( ! empty( $chef_photo['url'] ) ) : ?>
+							<img src="<?php echo esc_url( $chef_photo['sizes']['medium'] ?? $chef_photo['url'] ); ?>" alt="" loading="lazy">
+						<?php endif; ?>
+					</div>
+					<?php if ( $chef_linkedin ) : ?>
+						<a href="<?php echo esc_url( $chef_linkedin ); ?>" target="_blank" rel="noopener noreferrer" class="cerer-dept-chef__linkedin">LinkedIn ↗</a>
+					<?php endif; ?>
+				</div>
+				<div class="cerer-dept-chef__body">
+					<p class="cerer-dept-chef__label"><?php echo esc_html( $chef_fonction ); ?></p>
+					<h3 class="cerer-dept-chef__name"><?php echo esc_html( $chef_nom ); ?></h3>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php if ( $description_longue ) : ?>
+	<section class="cerer-about-section">
+		<div class="cerer-container cerer-page-generique__contenu">
+			<?php echo wp_kses_post( $description_longue ); ?>
+		</div>
+	</section>
+<?php endif; ?>
 
 <div class="cerer-container cerer-section">
 	<?php
