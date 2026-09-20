@@ -18,6 +18,7 @@ while ( have_posts() ) :
 	$specialite    = get_field( 'specialite' );
 	$linkedin      = get_field( 'lien_linkedin' );
 	$researchgate  = get_field( 'lien_researchgate' );
+	$instagram     = get_field( 'lien_instagram' );
 	$publications  = get_field( 'publications_liees' );
 	?>
 
@@ -36,13 +37,16 @@ while ( have_posts() ) :
 				<?php if ( $specialite ) : ?>
 					<p style="margin-top:8px; font-size:15px; color:var(--cerer-ink-2);"><?php echo esc_html( $specialite ); ?></p>
 				<?php endif; ?>
-				<?php if ( $linkedin || $researchgate ) : ?>
+				<?php if ( $linkedin || $researchgate || $instagram ) : ?>
 					<div class="cerer-card__actions" style="margin-top:16px;">
 						<?php if ( $linkedin ) : ?>
 							<?php cerer_external_link( $linkedin, __( 'LinkedIn', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
 						<?php endif; ?>
 						<?php if ( $researchgate ) : ?>
 							<?php cerer_external_link( $researchgate, __( 'ResearchGate', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
+						<?php endif; ?>
+						<?php if ( $instagram ) : ?>
+							<?php cerer_external_link( $instagram, __( 'Instagram', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>

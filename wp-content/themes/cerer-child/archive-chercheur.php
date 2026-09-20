@@ -36,6 +36,7 @@ get_header();
 						'specialite'   => get_field( 'specialite' ),
 						'linkedin'     => get_field( 'lien_linkedin' ),
 						'researchgate' => get_field( 'lien_researchgate' ),
+						'instagram'    => get_field( 'lien_instagram' ),
 					)
 				);
 			endwhile;

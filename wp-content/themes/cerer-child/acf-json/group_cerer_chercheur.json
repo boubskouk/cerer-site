@@ -37,6 +37,12 @@
 			"type": "url"
 		},
 		{
+			"key": "field_cerer_cher_instagram",
+			"label": "Instagram",
+			"name": "lien_instagram",
+			"type": "url"
+		},
+		{
 			"key": "field_cerer_cher_publications",
 			"label": "Publications liées",
 			"name": "publications_liees",

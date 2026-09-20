@@ -277,6 +277,7 @@ if ( $directeur_video_url ) {
 					$fonction    = trim( implode( ' — ', array_filter( array( $titre, $dept ) ) ) );
 					$linkedin    = get_field( 'lien_linkedin', $chercheur->ID );
 					$researchgate = get_field( 'lien_researchgate', $chercheur->ID );
+					$instagram   = get_field( 'lien_instagram', $chercheur->ID );
 					?>
 					<div class="cerer-about-team__card">
 						<div class="cerer-about-team__photo">
@@ -289,13 +290,16 @@ if ( $directeur_video_url ) {
 							<?php if ( $fonction ) : ?>
 								<p class="cerer-about-team__fonction"><?php echo esc_html( $fonction ); ?></p>
 							<?php endif; ?>
-							<?php if ( $linkedin || $researchgate ) : ?>
+							<?php if ( $linkedin || $researchgate || $instagram ) : ?>
 								<div class="cerer-about-team__pills">
 									<?php if ( $linkedin ) : ?>
 										<a href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener noreferrer" class="cerer-about-team__pill">LinkedIn</a>
 									<?php endif; ?>
 									<?php if ( $researchgate ) : ?>
 										<a href="<?php echo esc_url( $researchgate ); ?>" target="_blank" rel="noopener noreferrer" class="cerer-about-team__pill">ResearchGate</a>
+									<?php endif; ?>
+									<?php if ( $instagram ) : ?>
+										<a href="<?php echo esc_url( $instagram ); ?>" target="_blank" rel="noopener noreferrer" class="cerer-about-team__pill">Instagram</a>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>

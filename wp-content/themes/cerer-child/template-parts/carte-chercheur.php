@@ -16,6 +16,7 @@
  *       'specialite' => get_field( 'specialite' ),
  *       'linkedin'   => get_field( 'lien_linkedin' ),
  *       'researchgate' => get_field( 'lien_researchgate' ),
+ *       'instagram'  => get_field( 'lien_instagram' ),
  *   ) );
  *
  * @package cerer-child
@@ -34,6 +35,7 @@ $args = wp_parse_args(
 		'specialite'   => '',
 		'linkedin'     => '',
 		'researchgate' => '',
+		'instagram'    => '',
 	)
 );
 ?>
@@ -50,13 +52,16 @@ $args = wp_parse_args(
 	<?php if ( $args['specialite'] ) : ?>
 		<p class="cerer-card__description"><?php echo esc_html( $args['specialite'] ); ?></p>
 	<?php endif; ?>
-	<?php if ( $args['linkedin'] || $args['researchgate'] ) : ?>
+	<?php if ( $args['linkedin'] || $args['researchgate'] || $args['instagram'] ) : ?>
 		<div class="cerer-card__actions">
 			<?php if ( $args['linkedin'] ) : ?>
 				<?php cerer_external_link( $args['linkedin'], __( 'LinkedIn', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
 			<?php endif; ?>
 			<?php if ( $args['researchgate'] ) : ?>
 				<?php cerer_external_link( $args['researchgate'], __( 'ResearchGate', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
+			<?php endif; ?>
+			<?php if ( $args['instagram'] ) : ?>
+				<?php cerer_external_link( $args['instagram'], __( 'Instagram', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>
