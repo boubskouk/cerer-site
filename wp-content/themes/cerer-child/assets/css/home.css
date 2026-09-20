@@ -371,15 +371,6 @@
 	max-height: 56px;
 	max-width: 100%;
 	width: auto;
-	filter: grayscale(1);
-	opacity: .7;
-	transition: filter .2s ease, opacity .2s ease;
-}
-
-.cerer-partners__item img:hover,
-.cerer-partners__item img:focus-visible {
-	filter: none;
-	opacity: 1;
 }
 
 /* --- Nos projets phares — PROMPT-12 --- */
