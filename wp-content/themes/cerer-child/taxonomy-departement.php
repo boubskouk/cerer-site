@@ -166,6 +166,7 @@ $chef_fonction   = cerer_term_field( 'chef_fonction', $term->term_id, $fr_term_i
 $chef_photo      = cerer_term_field( 'chef_photo', $term->term_id, $fr_term_id );
 $chef_linkedin   = cerer_term_field( 'chef_linkedin', $term->term_id, $fr_term_id );
 $chef_researchgate = cerer_term_field( 'chef_researchgate', $term->term_id, $fr_term_id );
+$chef_instagram  = cerer_term_field( 'chef_instagram', $term->term_id, $fr_term_id );
 
 // --- Nos trois laboratoires ---
 $laboratoires = array();
@@ -467,13 +468,16 @@ $chercheurs_dept = get_posts(
 						</div>
 						<p class="cerer-deptd-resp__name"><?php echo esc_html( $chef_nom ); ?></p>
 						<p class="cerer-deptd-resp__role"><?php echo esc_html( $chef_fonction ); ?></p>
-						<?php if ( $chef_linkedin || $chef_researchgate ) : ?>
+						<?php if ( $chef_linkedin || $chef_researchgate || $chef_instagram ) : ?>
 							<div class="cerer-deptd-resp__links">
 								<?php if ( $chef_linkedin ) : ?>
 									<a href="<?php echo esc_url( $chef_linkedin ); ?>" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
 								<?php endif; ?>
 								<?php if ( $chef_researchgate ) : ?>
 									<a href="<?php echo esc_url( $chef_researchgate ); ?>" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">RG</a>
+								<?php endif; ?>
+								<?php if ( $chef_instagram ) : ?>
+									<a href="<?php echo esc_url( $chef_instagram ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>

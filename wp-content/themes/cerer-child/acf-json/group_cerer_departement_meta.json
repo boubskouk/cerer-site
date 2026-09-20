@@ -79,6 +79,13 @@
             "instructions": "Laisser vide pour ne pas afficher la pastille."
         },
         {
+            "key": "field_cerer_dept_chef_instagram",
+            "label": "Lien Instagram",
+            "name": "chef_instagram",
+            "type": "url",
+            "instructions": "Laisser vide pour ne pas afficher la pastille."
+        },
+        {
             "key": "field_cerer_dept_whatsapp_chef",
             "label": "Numéro WhatsApp (encart \"Contact direct\")",
             "name": "whatsapp_chef",

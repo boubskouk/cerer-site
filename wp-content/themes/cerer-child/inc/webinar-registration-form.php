@@ -48,6 +48,16 @@ function cerer_handle_webinar_registration() {
 
 	$webinaire_titre = $webinaire_id ? get_the_title( $webinaire_id ) : __( 'Prochain webinaire (non encore programmé)', 'cerer-child' );
 
+	// Adresse de réception propre à ce webinaire (champ ACF "E-mail de
+	// réception des inscriptions") si renseignée, sinon repli sur l'adresse
+	// par défaut du site — permet de changer le destinataire webinaire par
+	// webinaire sans toucher au code, l'adresse pouvant changer d'une session
+	// à l'autre.
+	$notification_email = $webinaire_id ? get_field( 'email_notification', $webinaire_id ) : '';
+	if ( ! $notification_email || ! is_email( $notification_email ) ) {
+		$notification_email = cerer_notification_email();
+	}
+
 	// Une adresse déjà inscrite à CE webinaire n'est pas ré-enregistrée deux fois.
 	$existing = get_posts(
 		array(
@@ -87,7 +97,7 @@ function cerer_handle_webinar_registration() {
 	// Best effort — n'empêche pas la réponse de succès si l'envoi échoue
 	// faute de SMTP configuré sur l'environnement local.
 	wp_mail(
-		cerer_notification_email(),
+		$notification_email,
 		sprintf( '[Inscription webinaire] %s', $webinaire_titre ),
 		sprintf( "%s <%s>\nInstitution : %s\nProfil : %s\n\nLe lien de connexion doit lui être envoyé manuellement (le lien Zoom n'est jamais affiché sur le site).", $nom, $email, $institution, $profil )
 	);

@@ -56,6 +56,13 @@
 			"instructions": "Renseigné pour mémoire uniquement : le formulaire natif de l'accueil (PROMPT-13) gère l'inscription, le lien Zoom part par e-mail après coup."
 		},
 		{
+			"key": "field_cerer_web_email_notification",
+			"label": "E-mail de réception des inscriptions",
+			"name": "email_notification",
+			"type": "email",
+			"instructions": "Chaque inscription à CE webinaire sera notifiée à cette adresse. Laisser vide pour utiliser l'adresse par défaut du site (cerer@ucad.edu.sn)."
+		},
+		{
 			"key": "field_cerer_web_lien_replay",
 			"label": "Lien du replay",
 			"name": "lien_replay",

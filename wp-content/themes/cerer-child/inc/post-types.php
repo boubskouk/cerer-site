@@ -126,7 +126,10 @@ function cerer_register_post_types() {
 			// c'est ainsi que le client réordonne l'équipe affichée sur
 			// "Qui sommes-nous" (PROMPT-15), faute de glisser-déposer natif.
 			'supports'     => array( 'title', 'thumbnail', 'page-attributes' ),
-			'rewrite'      => array( 'slug' => 'chercheurs' ),
+			// URL publique "/equipe/" plutôt que "/chercheurs/" (identifiant
+			// technique du CPT inchangé) : la page réunit maintenant aussi les
+			// chefs de département, pas seulement les chercheurs au sens strict.
+			'rewrite'      => array( 'slug' => 'equipe' ),
 		)
 	);
 
