@@ -10,6 +10,27 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Réseaux sociaux — pas d'écran d'admin dédié (pas d'ACF Pro/Options Pages
+// sur ce site), donc un tableau ici : chaque entrée avec 'url' vide s'affiche
+// en texte simple non cliquable + badge (compte pas encore actif/en attente
+// du lien), au lieu d'un lien mort vers "#". Pour ajouter un réseau
+// supplémentaire (LinkedIn, YouTube, ResearchGate…), dupliquer une ligne.
+$cerer_social_links = array(
+	array(
+		'label' => 'Facebook',
+		'url'   => 'https://www.facebook.com/profile.php?id=61575920205179',
+	),
+	array(
+		'label' => 'Instagram',
+		'url'   => '',
+	),
+	array(
+		'label' => 'TikTok',
+		'url'   => '',
+		'badge' => __( 'à venir', 'cerer-child' ),
+	),
+);
 ?>
 <footer id="cerer-footer" class="cerer-footer">
 
@@ -62,10 +83,18 @@ defined( 'ABSPATH' ) || exit;
 		<div class="cerer-footer__col">
 			<h4 class="cerer-footer__title"><?php esc_html_e( 'Suivez-nous', 'cerer-child' ); ?></h4>
 			<ul class="cerer-footer__list">
-				<li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
-				<li><a href="#" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
-				<li><a href="#" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
-				<li><a href="#" target="_blank" rel="noopener noreferrer">ResearchGate ↗</a></li>
+				<?php foreach ( $cerer_social_links as $social ) : ?>
+					<li>
+						<?php if ( $social['url'] ) : ?>
+							<a href="<?php echo esc_url( $social['url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $social['label'] ); ?> ↗</a>
+						<?php else : ?>
+							<span class="cerer-footer__list-soon">
+								<?php echo esc_html( $social['label'] ); ?>
+								<span class="cerer-footer__list-badge"><?php echo esc_html( $social['badge'] ?? __( 'bientôt', 'cerer-child' ) ); ?></span>
+							</span>
+						<?php endif; ?>
+					</li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 
