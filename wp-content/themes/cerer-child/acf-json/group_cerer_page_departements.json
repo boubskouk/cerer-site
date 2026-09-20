@@ -26,39 +26,77 @@
 			"default_value": "Services transversaux"
 		},
 		{
-			"key": "field_cerer_pd_service_1",
-			"label": "Service 1",
-			"name": "services_transversaux_1",
+			"key": "field_cerer_pd_service_1_titre",
+			"label": "Service 1 — Nom",
+			"name": "services_transversaux_1_titre",
 			"type": "text",
 			"default_value": "SSIN"
 		},
 		{
-			"key": "field_cerer_pd_service_2",
-			"label": "Service 2",
-			"name": "services_transversaux_2",
+			"key": "field_cerer_pd_service_1_description",
+			"label": "Service 1 — Description",
+			"name": "services_transversaux_1_description",
+			"type": "textarea",
+			"rows": 3,
+			"default_value": "Gère le parc informatique et le réseau du centre, et développe des applications sur mesure pour répondre aux besoins spécifiques du CERER."
+		},
+		{
+			"key": "field_cerer_pd_service_2_titre",
+			"label": "Service 2 — Nom",
+			"name": "services_transversaux_2_titre",
 			"type": "text",
 			"default_value": "Scolarité"
 		},
 		{
-			"key": "field_cerer_pd_service_3",
-			"label": "Service 3",
-			"name": "services_transversaux_3",
+			"key": "field_cerer_pd_service_2_description",
+			"label": "Service 2 — Description",
+			"name": "services_transversaux_2_description",
+			"type": "textarea",
+			"rows": 3,
+			"default_value": "Assure le suivi administratif et pédagogique des étudiants du CERER, de la licence au master, jusqu'aux certifications."
+		},
+		{
+			"key": "field_cerer_pd_service_3_titre",
+			"label": "Service 3 — Nom",
+			"name": "services_transversaux_3_titre",
 			"type": "text",
 			"default_value": "Atelier"
 		},
 		{
-			"key": "field_cerer_pd_service_4",
-			"label": "Service 4",
-			"name": "services_transversaux_4",
+			"key": "field_cerer_pd_service_3_description",
+			"label": "Service 3 — Description",
+			"name": "services_transversaux_3_description",
+			"type": "textarea",
+			"rows": 3,
+			"default_value": "Rattaché au département Thermique, conçoit et fabrique le matériel physique dont le centre a besoin, et répond aux demandes de construction du centre comme de la population."
+		},
+		{
+			"key": "field_cerer_pd_service_4_titre",
+			"label": "Service 4 — Nom",
+			"name": "services_transversaux_4_titre",
 			"type": "text",
 			"instructions": "Laisser vide pour ne pas afficher de 4e service."
 		},
 		{
-			"key": "field_cerer_pd_service_5",
-			"label": "Service 5",
-			"name": "services_transversaux_5",
+			"key": "field_cerer_pd_service_4_description",
+			"label": "Service 4 — Description",
+			"name": "services_transversaux_4_description",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_pd_service_5_titre",
+			"label": "Service 5 — Nom",
+			"name": "services_transversaux_5_titre",
 			"type": "text",
 			"instructions": "Laisser vide pour ne pas afficher de 5e service."
+		},
+		{
+			"key": "field_cerer_pd_service_5_description",
+			"label": "Service 5 — Description",
+			"name": "services_transversaux_5_description",
+			"type": "textarea",
+			"rows": 3
 		}
 	],
 	"location": [

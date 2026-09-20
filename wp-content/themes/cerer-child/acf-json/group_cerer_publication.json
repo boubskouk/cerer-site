@@ -28,6 +28,37 @@
 			"placeholder": "A. Diop, M. Fall"
 		},
 		{
+			"key": "field_cerer_pub_type_auteur",
+			"label": "Profil de l'auteur principal",
+			"name": "type_auteur",
+			"type": "select",
+			"instructions": "Affiché en badge sur la fiche — qui publie doit être visible : chercheur du CERER, étudiant (mémoire, soutenance) ou auteur externe/partenaire.",
+			"choices": {
+				"chercheur": "Chercheur CERER",
+				"etudiant": "Étudiant",
+				"externe": "Auteur externe / partenaire"
+			},
+			"default_value": "chercheur",
+			"return_format": "value",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0
+		},
+		{
+			"key": "field_cerer_pub_chercheur_lie",
+			"label": "Fiche chercheur liée (optionnel)",
+			"name": "chercheur_lie",
+			"type": "post_object",
+			"instructions": "Si l'auteur principal est un chercheur du CERER déjà référencé (CPT « Chercheurs »), le lier ici affiche sa photo et un lien vers sa fiche à la place du simple texte.",
+			"post_type": [
+				"chercheur"
+			],
+			"return_format": "id",
+			"ui": 1,
+			"allow_null": 1,
+			"multiple": 0
+		},
+		{
 			"key": "field_cerer_pub_revue",
 			"label": "Revue",
 			"name": "revue",

@@ -1,89 +1,802 @@
 {
-	"key": "group_cerer_departement_meta",
-	"title": "Département — apparence",
-	"fields": [
-		{
-			"key": "field_cerer_dept_icone",
-			"label": "Icône",
-			"name": "icone",
-			"type": "image",
-			"instructions": "Carrée, fond transparent, ~64×64px affichés. Vide : un émoji de repli s'affiche à la place (PROMPT-11 en attente des PNG définitifs).",
-			"return_format": "array",
-			"preview_size": "thumbnail",
-			"library": "all"
-		},
-		{
-			"key": "field_cerer_dept_couleur",
-			"label": "Couleur (filet de carte, code hex)",
-			"name": "couleur",
-			"type": "text",
-			"placeholder": "#1565A3"
-		},
-		{
-			"key": "field_cerer_dept_teinte",
-			"label": "Teinte de la tuile d'icône (code hex)",
-			"name": "teinte",
-			"type": "text",
-			"placeholder": "#EDF3F9"
-		},
-		{
-			"key": "field_cerer_dept_chef_nom",
-			"label": "Chef de département — Nom",
-			"name": "chef_nom",
-			"type": "text",
-			"instructions": "Laisser vide pour masquer entièrement la carte \"Chef de département\" sur la page du département."
-		},
-		{
-			"key": "field_cerer_dept_chef_fonction",
-			"label": "Chef de département — Fonction",
-			"name": "chef_fonction",
-			"type": "text",
-			"default_value": "Chef du département"
-		},
-		{
-			"key": "field_cerer_dept_chef_photo",
-			"label": "Chef de département — Photo",
-			"name": "chef_photo",
-			"type": "image",
-			"instructions": "Carrée de préférence. Vide : silhouette de repli affichée à la place.",
-			"return_format": "array",
-			"preview_size": "medium",
-			"library": "all"
-		},
-		{
-			"key": "field_cerer_dept_chef_linkedin",
-			"label": "Chef de département — Lien LinkedIn",
-			"name": "chef_linkedin",
-			"type": "url",
-			"instructions": "Affiché sous la photo. Laisser vide pour ne pas afficher de lien."
-		},
-		{
-			"key": "field_cerer_dept_description_longue",
-			"label": "Présentation détaillée",
-			"name": "description_longue",
-			"type": "wysiwyg",
-			"instructions": "Texte long affiché sur la page du département (laboratoire, services, équipe…), sous la fiche du chef de département. Laisser vide pour ne rien afficher.",
-			"tabs": "all",
-			"toolbar": "full",
-			"media_upload": 0
-		}
-	],
-	"location": [
-		[
-			{
-				"param": "taxonomy",
-				"operator": "==",
-				"value": "departement"
-			}
-		]
-	],
-	"menu_order": 0,
-	"position": "normal",
-	"style": "default",
-	"label_placement": "top",
-	"instruction_placement": "label",
-	"hide_on_screen": "",
-	"active": true,
-	"description": "",
-	"show_in_rest": 1
+    "key": "group_cerer_departement_meta",
+    "title": "Département — apparence et contenu",
+    "fields": [
+        {
+            "key": "field_cerer_dept_tab_apparence",
+            "label": "Apparence",
+            "name": "tab_apparence",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_cerer_dept_icone",
+            "label": "Icône",
+            "name": "icone",
+            "type": "image",
+            "instructions": "Carrée, fond transparent, ~64×64px affichés. Vide : un émoji de repli s'affiche à la place (PROMPT-11 en attente des PNG définitifs).",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_couleur",
+            "label": "Couleur (filet de carte, code hex)",
+            "name": "couleur",
+            "type": "text",
+            "placeholder": "#1565A3"
+        },
+        {
+            "key": "field_cerer_dept_teinte",
+            "label": "Teinte de la tuile d'icône (code hex)",
+            "name": "teinte",
+            "type": "text",
+            "placeholder": "#EDF3F9"
+        },
+        {
+            "key": "field_cerer_dept_tab_chef",
+            "label": "Chef de département",
+            "name": "tab_chef",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_cerer_dept_chef_nom",
+            "label": "Nom",
+            "name": "chef_nom",
+            "type": "text",
+            "instructions": "Laisser vide pour masquer entièrement la fiche \"Responsable\" sur la page du département."
+        },
+        {
+            "key": "field_cerer_dept_chef_fonction",
+            "label": "Fonction",
+            "name": "chef_fonction",
+            "type": "text",
+            "default_value": "Chef du département"
+        },
+        {
+            "key": "field_cerer_dept_chef_photo",
+            "label": "Photo",
+            "name": "chef_photo",
+            "type": "image",
+            "instructions": "Carrée de préférence. Vide : silhouette de repli affichée à la place.",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_chef_linkedin",
+            "label": "Lien LinkedIn",
+            "name": "chef_linkedin",
+            "type": "url",
+            "instructions": "Laisser vide pour ne pas afficher la pastille."
+        },
+        {
+            "key": "field_cerer_dept_chef_researchgate",
+            "label": "Lien ResearchGate",
+            "name": "chef_researchgate",
+            "type": "url",
+            "instructions": "Laisser vide pour ne pas afficher la pastille."
+        },
+        {
+            "key": "field_cerer_dept_whatsapp_chef",
+            "label": "Numéro WhatsApp (encart \"Contact direct\")",
+            "name": "whatsapp_chef",
+            "type": "text",
+            "placeholder": "+221 77 528 20 91",
+            "instructions": "Format lisible (affiché tel quel sous le bouton). Laisser vide pour masquer tout l'encart \"Contact direct\"."
+        },
+        {
+            "key": "field_cerer_dept_tab_presentation",
+            "label": "Présentation",
+            "name": "tab_presentation",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_cerer_dept_presentation",
+            "label": "Présentation (\"Axes de recherche du département\")",
+            "name": "presentation",
+            "type": "wysiwyg",
+            "instructions": "Paragraphes affichés à gauche de la fiche du responsable. Si vide, la page retombe sur \"Présentation détaillée\" ci-dessous (compatibilité avec les départements pas encore migrés vers le nouveau gabarit).",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_cerer_dept_mot_cle_1",
+            "label": "Mot-clé 1",
+            "name": "mot_cle_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_mot_cle_2",
+            "label": "Mot-clé 2",
+            "name": "mot_cle_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_mot_cle_3",
+            "label": "Mot-clé 3",
+            "name": "mot_cle_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_mot_cle_4",
+            "label": "Mot-clé 4",
+            "name": "mot_cle_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_mot_cle_5",
+            "label": "Mot-clé 5",
+            "name": "mot_cle_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_mot_cle_6",
+            "label": "Mot-clé 6",
+            "name": "mot_cle_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_description_longue",
+            "label": "Présentation détaillée (ancien contenu, replié si \"Présentation\" ci-dessus est rempli)",
+            "name": "description_longue",
+            "type": "wysiwyg",
+            "instructions": "Texte long historique. Reste affiché tel quel tant que les nouveaux champs Présentation/Laboratoires ne sont pas remplis pour ce département.",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0
+        },
+        {
+            "key": "field_cerer_dept_tab_labos",
+            "label": "Laboratoires",
+            "name": "tab_labos",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_sigle",
+            "label": "Labo 1 — Sigle",
+            "name": "lab_1_sigle",
+            "type": "text",
+            "instructions": "Les 3 blocs disparaissent (et toute la section \"Nos laboratoires\") si aucun sigle n'est renseigné."
+        },
+        {
+            "key": "field_cerer_dept_lab_1_nom",
+            "label": "Labo 1 — Nom complet (H3)",
+            "name": "lab_1_nom",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_description",
+            "label": "Labo 1 — Description",
+            "name": "lab_1_description",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_texte_complementaire",
+            "label": "Labo 1 — Texte complémentaire (optionnel)",
+            "name": "lab_1_texte_complementaire",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_couleur",
+            "label": "Labo 1 — Couleur (filet + puces)",
+            "name": "lab_1_couleur",
+            "type": "text",
+            "placeholder": "#1565A3"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_encart_fond",
+            "label": "Labo 1 — Fond de l'encart liste",
+            "name": "lab_1_encart_fond",
+            "type": "text",
+            "placeholder": "#F4F7FA"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_libelle_liste",
+            "label": "Labo 1 — Libellé de la liste",
+            "name": "lab_1_libelle_liste",
+            "type": "text",
+            "placeholder": "Tests réalisés :"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_item_1",
+            "label": "Labo 1 — Item 1",
+            "name": "lab_1_item_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_item_2",
+            "label": "Labo 1 — Item 2",
+            "name": "lab_1_item_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_item_3",
+            "label": "Labo 1 — Item 3",
+            "name": "lab_1_item_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_item_4",
+            "label": "Labo 1 — Item 4",
+            "name": "lab_1_item_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_item_5",
+            "label": "Labo 1 — Item 5",
+            "name": "lab_1_item_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_1_pleine_largeur",
+            "label": "Labo 1 — Pleine largeur",
+            "name": "lab_1_pleine_largeur",
+            "type": "true_false",
+            "default_value": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_cerer_dept_lab_2_sigle",
+            "label": "Labo 2 — Sigle",
+            "name": "lab_2_sigle",
+            "type": "text",
+            "instructions": ""
+        },
+        {
+            "key": "field_cerer_dept_lab_2_nom",
+            "label": "Labo 2 — Nom complet (H3)",
+            "name": "lab_2_nom",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_description",
+            "label": "Labo 2 — Description",
+            "name": "lab_2_description",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_texte_complementaire",
+            "label": "Labo 2 — Texte complémentaire (optionnel)",
+            "name": "lab_2_texte_complementaire",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_couleur",
+            "label": "Labo 2 — Couleur (filet + puces)",
+            "name": "lab_2_couleur",
+            "type": "text",
+            "placeholder": "#1565A3"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_encart_fond",
+            "label": "Labo 2 — Fond de l'encart liste",
+            "name": "lab_2_encart_fond",
+            "type": "text",
+            "placeholder": "#F4F7FA"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_libelle_liste",
+            "label": "Labo 2 — Libellé de la liste",
+            "name": "lab_2_libelle_liste",
+            "type": "text",
+            "placeholder": "Tests réalisés :"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_item_1",
+            "label": "Labo 2 — Item 1",
+            "name": "lab_2_item_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_item_2",
+            "label": "Labo 2 — Item 2",
+            "name": "lab_2_item_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_item_3",
+            "label": "Labo 2 — Item 3",
+            "name": "lab_2_item_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_item_4",
+            "label": "Labo 2 — Item 4",
+            "name": "lab_2_item_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_item_5",
+            "label": "Labo 2 — Item 5",
+            "name": "lab_2_item_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_2_pleine_largeur",
+            "label": "Labo 2 — Pleine largeur",
+            "name": "lab_2_pleine_largeur",
+            "type": "true_false",
+            "default_value": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_cerer_dept_lab_3_sigle",
+            "label": "Labo 3 — Sigle",
+            "name": "lab_3_sigle",
+            "type": "text",
+            "instructions": ""
+        },
+        {
+            "key": "field_cerer_dept_lab_3_nom",
+            "label": "Labo 3 — Nom complet (H3)",
+            "name": "lab_3_nom",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_description",
+            "label": "Labo 3 — Description",
+            "name": "lab_3_description",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_texte_complementaire",
+            "label": "Labo 3 — Texte complémentaire (optionnel)",
+            "name": "lab_3_texte_complementaire",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_couleur",
+            "label": "Labo 3 — Couleur (filet + puces)",
+            "name": "lab_3_couleur",
+            "type": "text",
+            "placeholder": "#1565A3"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_encart_fond",
+            "label": "Labo 3 — Fond de l'encart liste",
+            "name": "lab_3_encart_fond",
+            "type": "text",
+            "placeholder": "#F4F7FA"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_libelle_liste",
+            "label": "Labo 3 — Libellé de la liste",
+            "name": "lab_3_libelle_liste",
+            "type": "text",
+            "placeholder": "Tests réalisés :"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_item_1",
+            "label": "Labo 3 — Item 1",
+            "name": "lab_3_item_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_item_2",
+            "label": "Labo 3 — Item 2",
+            "name": "lab_3_item_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_item_3",
+            "label": "Labo 3 — Item 3",
+            "name": "lab_3_item_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_item_4",
+            "label": "Labo 3 — Item 4",
+            "name": "lab_3_item_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_item_5",
+            "label": "Labo 3 — Item 5",
+            "name": "lab_3_item_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_lab_3_pleine_largeur",
+            "label": "Labo 3 — Pleine largeur",
+            "name": "lab_3_pleine_largeur",
+            "type": "true_false",
+            "default_value": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_cerer_dept_tab_sidebar",
+            "label": "Sidebar",
+            "name": "tab_sidebar",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_cerer_dept_sidebar_en_bref_note",
+            "label": "Le département en bref",
+            "name": "msg_en_bref",
+            "type": "message",
+            "message": "Jusqu'à 6 paires libellé / valeur. Encart masqué si aucune paire n'est remplie."
+        },
+        {
+            "key": "field_cerer_dept_bref_1_libelle",
+            "label": "En bref 1 — Libellé",
+            "name": "en_bref_1_libelle",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_1_valeur",
+            "label": "En bref 1 — Valeur",
+            "name": "en_bref_1_valeur",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_2_libelle",
+            "label": "En bref 2 — Libellé",
+            "name": "en_bref_2_libelle",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_2_valeur",
+            "label": "En bref 2 — Valeur",
+            "name": "en_bref_2_valeur",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_3_libelle",
+            "label": "En bref 3 — Libellé",
+            "name": "en_bref_3_libelle",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_3_valeur",
+            "label": "En bref 3 — Valeur",
+            "name": "en_bref_3_valeur",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_4_libelle",
+            "label": "En bref 4 — Libellé",
+            "name": "en_bref_4_libelle",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_4_valeur",
+            "label": "En bref 4 — Valeur",
+            "name": "en_bref_4_valeur",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_5_libelle",
+            "label": "En bref 5 — Libellé",
+            "name": "en_bref_5_libelle",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_5_valeur",
+            "label": "En bref 5 — Valeur",
+            "name": "en_bref_5_valeur",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_6_libelle",
+            "label": "En bref 6 — Libellé",
+            "name": "en_bref_6_libelle",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_bref_6_valeur",
+            "label": "En bref 6 — Valeur",
+            "name": "en_bref_6_valeur",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_sidebar_ressources_note",
+            "label": "Ressources",
+            "name": "msg_ressources",
+            "type": "message",
+            "message": "Jusqu'à 6 liens. Encart masqué si aucun lien n'est rempli. L'icône ↗ s'affiche automatiquement pour un lien hors site."
+        },
+        {
+            "key": "field_cerer_dept_ress_1_intitule",
+            "label": "Ressource 1 — Intitulé",
+            "name": "ressource_1_intitule",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_ress_1_url",
+            "label": "Ressource 1 — URL",
+            "name": "ressource_1_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_ress_2_intitule",
+            "label": "Ressource 2 — Intitulé",
+            "name": "ressource_2_intitule",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_ress_2_url",
+            "label": "Ressource 2 — URL",
+            "name": "ressource_2_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_ress_3_intitule",
+            "label": "Ressource 3 — Intitulé",
+            "name": "ressource_3_intitule",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_ress_3_url",
+            "label": "Ressource 3 — URL",
+            "name": "ressource_3_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_ress_4_intitule",
+            "label": "Ressource 4 — Intitulé",
+            "name": "ressource_4_intitule",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_ress_4_url",
+            "label": "Ressource 4 — URL",
+            "name": "ressource_4_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_ress_5_intitule",
+            "label": "Ressource 5 — Intitulé",
+            "name": "ressource_5_intitule",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_ress_5_url",
+            "label": "Ressource 5 — URL",
+            "name": "ressource_5_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_ress_6_intitule",
+            "label": "Ressource 6 — Intitulé",
+            "name": "ressource_6_intitule",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_ress_6_url",
+            "label": "Ressource 6 — URL",
+            "name": "ressource_6_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_sidebar_partenaires_note",
+            "label": "Partenaires du département",
+            "name": "msg_partenaires",
+            "type": "message",
+            "message": "Jusqu'à 6 logos (grille 2 colonnes). Encart masqué si aucun logo n'est présent."
+        },
+        {
+            "key": "field_cerer_dept_partlogo_1",
+            "label": "Partenaire 1 — Logo",
+            "name": "partenaire_dept_1_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_partlien_1",
+            "label": "Partenaire 1 — Lien (optionnel)",
+            "name": "partenaire_dept_1_lien",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_partlogo_2",
+            "label": "Partenaire 2 — Logo",
+            "name": "partenaire_dept_2_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_partlien_2",
+            "label": "Partenaire 2 — Lien (optionnel)",
+            "name": "partenaire_dept_2_lien",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_partlogo_3",
+            "label": "Partenaire 3 — Logo",
+            "name": "partenaire_dept_3_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_partlien_3",
+            "label": "Partenaire 3 — Lien (optionnel)",
+            "name": "partenaire_dept_3_lien",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_partlogo_4",
+            "label": "Partenaire 4 — Logo",
+            "name": "partenaire_dept_4_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_partlien_4",
+            "label": "Partenaire 4 — Lien (optionnel)",
+            "name": "partenaire_dept_4_lien",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_partlogo_5",
+            "label": "Partenaire 5 — Logo",
+            "name": "partenaire_dept_5_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_partlien_5",
+            "label": "Partenaire 5 — Lien (optionnel)",
+            "name": "partenaire_dept_5_lien",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_partlogo_6",
+            "label": "Partenaire 6 — Logo",
+            "name": "partenaire_dept_6_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_partlien_6",
+            "label": "Partenaire 6 — Lien (optionnel)",
+            "name": "partenaire_dept_6_lien",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_tab_medias",
+            "label": "En images",
+            "name": "tab_medias",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_cerer_dept_medias_note",
+            "label": "Vidéo & photos",
+            "name": "msg_medias",
+            "type": "message",
+            "message": "Section entière masquée si ni vidéo ni photo n'est renseignée. 1 vidéo + jusqu'à 8 photos (les 5 premières affichées, le reste derrière « voir tout »)."
+        },
+        {
+            "key": "field_cerer_dept_video_url",
+            "label": "Vidéo — URL (YouTube/Vimeo, embed)",
+            "name": "video_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_dept_video_titre",
+            "label": "Vidéo — Titre",
+            "name": "video_titre",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_video_duree",
+            "label": "Vidéo — Durée (ex. 3:24)",
+            "name": "video_duree",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_dept_photo_1",
+            "label": "Photo 1",
+            "name": "photo_1",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_2",
+            "label": "Photo 2",
+            "name": "photo_2",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_3",
+            "label": "Photo 3",
+            "name": "photo_3",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_4",
+            "label": "Photo 4",
+            "name": "photo_4",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_5",
+            "label": "Photo 5",
+            "name": "photo_5",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_6",
+            "label": "Photo 6",
+            "name": "photo_6",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_7",
+            "label": "Photo 7",
+            "name": "photo_7",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cerer_dept_photo_8",
+            "label": "Photo 8",
+            "name": "photo_8",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "departement"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1
 }

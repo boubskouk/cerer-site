@@ -125,29 +125,9 @@ body.high-contrast img {
 }
 
 /*
- * Mode sombre — bouton de la topbar (header-topbar.php), bascule
- * assets/js/header.js, persisté en localStorage (même patron que
- * "Contraste élevé" ci-dessus). Ces tokens couvrent tout ce qui, dans le
- * site, lit déjà var(--cerer-ink)/var(--cerer-bg)/var(--cerer-surface)/
- * var(--cerer-border) (base.css, components.css, header.css, footer.css,
- * pages.css, archives.css — la grande majorité des pages).
- *
- * Reste hors de ce passage (couleurs codées en dur, pas encore branchées
- * sur ces variables) : la page d'accueil (assets/css/home.css) et une
- * partie d'assets/css/about.css — cf. dark-mode.css pour les quelques
- * overrides ciblés qui couvrent malgré tout les pages "Qui sommes-nous" /
- * pages génériques / archive Webinaires / archive Département.
+ * Mode sombre retiré (trop partiel — ne couvrait pas home.css ni une partie
+ * d'about.css — pour être livré en l'état). À reprendre proprement une fois
+ * le reste du site stabilisé : bouton + JS dans template-parts/header-topbar.php
+ * et assets/js/header.js suivaient le même patron que "Contraste élevé"
+ * juste au-dessus, à réutiliser comme squelette.
  */
-body.dark-mode {
-	color-scheme: dark;
-	--cerer-bg: #14181F;
-	--cerer-surface: #1E242E;
-	--cerer-ink: #E7E9EE;
-	--cerer-ink-2: #A4ACBA;
-	--cerer-border: #2B323D;
-	--cerer-tint-bg: #17231A;
-	--cerer-shadow-card: 0 8px 24px rgba(0, 0, 0, .4);
-	--cerer-shadow-menu: 0 6px 20px rgba(0, 0, 0, .35);
-	--cerer-shadow-soft: 0 4px 18px rgba(0, 0, 0, .3);
-	--cerer-shadow-soft-hover: 0 10px 26px rgba(0, 0, 0, .45);
-}

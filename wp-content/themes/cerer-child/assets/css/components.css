@@ -94,9 +94,9 @@
 	   recette Prompt 6, point 3). --cerer-on-brand sur ce même vert donne
 	   6,25:1 (4,88:1 au survol) : on garde le fond exactement tel que défini
 	   au README §4.4 et on corrige uniquement la couleur du texte.
-	   --cerer-on-brand (pas --cerer-ink) volontairement : --cerer-ink devient
-	   clair en mode sombre (PROMPT dark-mode), ce qui casserait ce contraste
-	   sur un fond vert qui, lui, ne change pas de thème. */
+	   --cerer-on-brand (pas --cerer-ink) volontairement : --cerer-ink est un
+	   token de thème amené à changer (mode sombre à venir), ce qui casserait
+	   ce contraste sur un fond vert qui, lui, ne change pas de thème. */
 	color: var(--cerer-on-brand);
 }
 .cerer-btn.cerer-btn--primary:hover {

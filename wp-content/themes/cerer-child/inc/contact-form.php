@@ -59,10 +59,10 @@ function cerer_handle_contact_form() {
 	update_post_meta( $post_id, 'email', $email );
 	update_post_meta( $post_id, 'sujet', $sujet );
 
-	// Notifie l'administrateur — best effort, n'empeche pas la reponse de succes
+	// Notifie le CERER — best effort, n'empeche pas la reponse de succes
 	// si l'envoi de mail echoue sur l'environnement local (pas de SMTP configure).
 	wp_mail(
-		get_option( 'admin_email' ),
+		cerer_notification_email(),
 		sprintf( '[Contact CERER] %s', $sujet ? $sujet : __( 'Nouveau message', 'cerer-child' ) ),
 		sprintf( "De : %s <%s>\n\n%s", $nom, $email, $message )
 	);

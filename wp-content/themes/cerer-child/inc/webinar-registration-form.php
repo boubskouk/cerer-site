@@ -87,7 +87,7 @@ function cerer_handle_webinar_registration() {
 	// Best effort — n'empêche pas la réponse de succès si l'envoi échoue
 	// faute de SMTP configuré sur l'environnement local.
 	wp_mail(
-		get_option( 'admin_email' ),
+		cerer_notification_email(),
 		sprintf( '[Inscription webinaire] %s', $webinaire_titre ),
 		sprintf( "%s <%s>\nInstitution : %s\nProfil : %s\n\nLe lien de connexion doit lui être envoyé manuellement (le lien Zoom n'est jamais affiché sur le site).", $nom, $email, $institution, $profil )
 	);

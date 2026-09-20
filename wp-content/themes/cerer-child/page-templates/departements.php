@@ -33,16 +33,24 @@ $departement_terms = get_terms(
 
 $chapo_page = get_field( 'chapo_page' );
 
+// Couleurs d'accent des cartes service, dans l'ordre des 5 emplacements
+// possibles — pas de champ ACF dédié, la palette suffit pour distinguer
+// visuellement les services sans complexifier l'admin.
+$services_couleurs = array( 'var(--cerer-blue)', 'var(--cerer-green)', 'var(--cerer-orange)', 'var(--cerer-violet)', 'var(--cerer-blue-2)' );
+
 $services_titre = get_field( 'services_transversaux_titre' );
-$services       = array_filter(
-	array(
-		get_field( 'services_transversaux_1' ),
-		get_field( 'services_transversaux_2' ),
-		get_field( 'services_transversaux_3' ),
-		get_field( 'services_transversaux_4' ),
-		get_field( 'services_transversaux_5' ),
-	)
-);
+$services       = array();
+for ( $i = 1; $i <= 5; $i++ ) {
+	$titre = get_field( "services_transversaux_{$i}_titre" );
+	if ( ! $titre ) {
+		continue;
+	}
+	$services[] = array(
+		'title'       => $titre,
+		'description' => get_field( "services_transversaux_{$i}_description" ),
+		'color'       => $services_couleurs[ $i - 1 ],
+	);
+}
 ?>
 
 <div class="cerer-page-hero">
@@ -82,11 +90,11 @@ $services       = array_filter(
 
 	<?php if ( $services ) : ?>
 		<h2 id="services-transversaux" style="margin-top:56px;"><?php echo esc_html( $services_titre ?: __( 'Services transversaux', 'cerer-child' ) ); ?></h2>
-		<ul class="cerer-services-list">
+		<div class="cerer-card-grid" style="margin-top:24px;">
 			<?php foreach ( $services as $service ) : ?>
-				<li><?php echo esc_html( $service ); ?></li>
+				<?php get_template_part( 'template-parts/carte-service', null, $service ); ?>
 			<?php endforeach; ?>
-		</ul>
+		</div>
 	<?php endif; ?>
 </div>
 

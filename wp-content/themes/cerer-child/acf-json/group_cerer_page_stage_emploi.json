@@ -1,0 +1,166 @@
+{
+	"key": "group_cerer_page_stage_emploi",
+	"title": "Stage & emploi",
+	"fields": [
+		{
+			"key": "field_cerer_se_notice",
+			"label": "",
+			"name": "",
+			"type": "message",
+			"message": "Cette page utilise un gabarit personnalisé : tout son contenu se modifie ici, PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal).\n\nJusqu'à 3 offres peuvent être publiées. Laisser le titre d'une offre vide pour ne pas l'afficher — tant qu'aucune offre n'est saisie, le message \"Aucune offre pour le moment\" s'affiche à la place.",
+			"esc_html": 0
+		},
+		{
+			"key": "field_cerer_se_chapo",
+			"label": "Chapô (sous le titre)",
+			"name": "chapo_page",
+			"type": "textarea",
+			"rows": 2,
+			"default_value": "Retrouvez ici les offres d'emploi du CERER et déposez une demande de stage dans nos différents services."
+		},
+		{
+			"key": "field_cerer_se_offres_titre",
+			"label": "Titre — Offres",
+			"name": "offres_titre",
+			"type": "text",
+			"default_value": "Offres actuelles"
+		},
+		{
+			"key": "field_cerer_se_offres_vide",
+			"label": "Message si aucune offre",
+			"name": "offres_vide_message",
+			"type": "textarea",
+			"rows": 2,
+			"default_value": "Aucune offre d'emploi n'est actuellement disponible. Revenez consulter cette page régulièrement, ou déposez une demande de stage ci-dessous."
+		},
+		{
+			"key": "field_cerer_se_offre_1_titre",
+			"label": "Offre 1 — Intitulé du poste",
+			"name": "offre_1_titre",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_1_type",
+			"label": "Offre 1 — Type / service",
+			"name": "offre_1_type",
+			"type": "text",
+			"instructions": "Ex. « CDD · Département Thermique » — affiché sous l'intitulé."
+		},
+		{
+			"key": "field_cerer_se_offre_1_description",
+			"label": "Offre 1 — Description",
+			"name": "offre_1_description",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_se_offre_1_date_limite",
+			"label": "Offre 1 — Date limite de candidature",
+			"name": "offre_1_date_limite",
+			"type": "text",
+			"instructions": "Ex. « Jusqu'au 30 octobre 2026 » — laisser vide si pas de date limite."
+		},
+		{
+			"key": "field_cerer_se_offre_1_lien",
+			"label": "Offre 1 — Lien pour postuler",
+			"name": "offre_1_lien",
+			"type": "url",
+			"instructions": "URL ou lien mailto:. Laisser vide pour que « Postuler » ouvre un e-mail pré-rempli vers cerer@ucad.edu.sn."
+		},
+		{
+			"key": "field_cerer_se_offre_2_titre",
+			"label": "Offre 2 — Intitulé du poste",
+			"name": "offre_2_titre",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_2_type",
+			"label": "Offre 2 — Type / service",
+			"name": "offre_2_type",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_2_description",
+			"label": "Offre 2 — Description",
+			"name": "offre_2_description",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_se_offre_2_date_limite",
+			"label": "Offre 2 — Date limite de candidature",
+			"name": "offre_2_date_limite",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_2_lien",
+			"label": "Offre 2 — Lien pour postuler",
+			"name": "offre_2_lien",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_se_offre_3_titre",
+			"label": "Offre 3 — Intitulé du poste",
+			"name": "offre_3_titre",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_3_type",
+			"label": "Offre 3 — Type / service",
+			"name": "offre_3_type",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_3_description",
+			"label": "Offre 3 — Description",
+			"name": "offre_3_description",
+			"type": "textarea",
+			"rows": 3
+		},
+		{
+			"key": "field_cerer_se_offre_3_date_limite",
+			"label": "Offre 3 — Date limite de candidature",
+			"name": "offre_3_date_limite",
+			"type": "text"
+		},
+		{
+			"key": "field_cerer_se_offre_3_lien",
+			"label": "Offre 3 — Lien pour postuler",
+			"name": "offre_3_lien",
+			"type": "url"
+		},
+		{
+			"key": "field_cerer_se_stage_titre",
+			"label": "Titre — Bloc demande de stage",
+			"name": "stage_titre",
+			"type": "text",
+			"default_value": "Faire une demande de stage"
+		},
+		{
+			"key": "field_cerer_se_stage_texte",
+			"label": "Texte — Bloc demande de stage",
+			"name": "stage_texte",
+			"type": "textarea",
+			"rows": 2,
+			"default_value": "Vous êtes étudiant et souhaitez effectuer un stage au CERER ? Indiquez la filière qui vous intéresse — administration, l'un de nos départements de recherche, ou le SSIN — et nous reviendrons vers vous."
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/stage-emploi.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "acf_after_title",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Rend éditable le contenu de la page Stage & emploi.",
+	"show_in_rest": 1
+}

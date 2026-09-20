@@ -27,6 +27,53 @@ $contenu    = get_field( 'contenu' );
 $brochure_url   = get_field( 'brochure_url' );
 $brochure_label = get_field( 'brochure_label' ) ?: __( 'Télécharger la brochure', 'cerer-child' );
 
+// Services par département — cartes icône/couleur (mêmes champs ACF que la
+// section départements de l'accueil/page Départements) + services en
+// badges saisis pour CETTE page (champs numérotés, ACF Free sans repeater).
+$services_departement_emoji_fallback = array(
+	9  => '☀️',
+	10 => '🌱',
+	11 => '💨',
+	12 => '🌡️',
+);
+$services_departements = array(
+	9  => 'photovoltaique',
+	10 => 'biomasse',
+	11 => 'eolien',
+	12 => 'thermique',
+);
+$services_cards = array();
+foreach ( $services_departements as $dept_term_id => $slug ) {
+	$term = get_term( $dept_term_id, 'departement' );
+	if ( ! $term || is_wp_error( $term ) ) {
+		continue;
+	}
+	$services = array();
+	for ( $i = 1; $i <= 12; $i++ ) {
+		$service = get_field( "services_{$slug}_{$i}" );
+		if ( $service ) {
+			$services[] = $service;
+		}
+	}
+	if ( ! $services ) {
+		continue; // Carte masquée si aucun service saisi pour ce département.
+	}
+	$services_cards[] = array(
+		'term'     => $term,
+		'services' => $services,
+	);
+}
+
+$services_transversaux_titre = get_field( 'services_transversaux_titre' ) ?: __( 'Autres services transversaux', 'cerer-child' );
+$services_transversaux       = array();
+for ( $i = 1; $i <= 8; $i++ ) {
+	$service = get_field( "services_transversaux_{$i}" );
+	if ( $service ) {
+		$services_transversaux[] = $service;
+	}
+}
+$show_services = $services_cards || $services_transversaux;
+
 $points_titre = get_field( 'points_cles_titre' );
 $points       = array_filter(
 	array(
@@ -75,6 +122,56 @@ $show_cta  = $cta_titre && $cta_url;
 	<section class="cerer-about-section">
 		<div class="cerer-container cerer-page-generique__contenu">
 			<?php echo wp_kses_post( $contenu ); ?>
+		</div>
+	</section>
+<?php endif; ?>
+
+<!-- SERVICES PAR DÉPARTEMENT (fond blanc) -->
+<?php if ( $show_services ) : ?>
+	<section class="cerer-about-section">
+		<div class="cerer-container">
+			<div class="cerer-pg-services__grid">
+				<?php foreach ( $services_cards as $card ) : ?>
+					<?php
+					$dept_term  = $card['term'];
+					$dept_icone = get_field( 'icone', 'departement_' . $dept_term->term_id );
+					$dept_color = get_field( 'couleur', 'departement_' . $dept_term->term_id ) ?: 'var(--cerer-blue)';
+					$dept_tint  = get_field( 'teinte', 'departement_' . $dept_term->term_id ) ?: 'var(--cerer-bg)';
+					?>
+					<div class="cerer-pg-services__card" style="--cerer-pg-accent: <?php echo esc_attr( $dept_color ); ?>; --cerer-pg-tint: <?php echo esc_attr( $dept_tint ); ?>;">
+						<div class="cerer-pg-services__head">
+							<div class="cerer-pg-services__icon" aria-hidden="true">
+								<?php if ( ! empty( $dept_icone['url'] ) ) : ?>
+									<img src="<?php echo esc_url( $dept_icone['url'] ); ?>" alt="">
+								<?php else : ?>
+									<?php echo esc_html( $services_departement_emoji_fallback[ $dept_term->term_id ] ?? '🔬' ); ?>
+								<?php endif; ?>
+							</div>
+							<h3><?php echo esc_html( $dept_term->name ); ?></h3>
+							<a href="<?php echo esc_url( get_term_link( $dept_term ) ); ?>" class="cerer-pg-services__link"><?php esc_html_e( 'Voir le département', 'cerer-child' ); ?> →</a>
+						</div>
+						<div class="cerer-pg-services__tags">
+							<?php foreach ( $card['services'] as $service ) : ?>
+								<span class="cerer-pg-services__tag"><?php echo esc_html( $service ); ?></span>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endforeach; ?>
+
+				<?php if ( $services_transversaux ) : ?>
+					<div class="cerer-pg-services__card cerer-pg-services__card--transversal" style="--cerer-pg-accent: var(--cerer-green);">
+						<div class="cerer-pg-services__head">
+							<div class="cerer-pg-services__icon" aria-hidden="true">🛠️</div>
+							<h3><?php echo esc_html( $services_transversaux_titre ); ?></h3>
+						</div>
+						<div class="cerer-pg-services__tags">
+							<?php foreach ( $services_transversaux as $service ) : ?>
+								<span class="cerer-pg-services__tag"><?php echo esc_html( $service ); ?></span>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
 		</div>
 	</section>
 <?php endif; ?>

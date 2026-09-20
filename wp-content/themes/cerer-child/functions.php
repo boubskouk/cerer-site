@@ -18,6 +18,7 @@ require_once get_stylesheet_directory() . '/inc/taxonomies.php';
 require_once get_stylesheet_directory() . '/inc/about-videos.php';
 require_once get_stylesheet_directory() . '/inc/about-page.php';
 require_once get_stylesheet_directory() . '/inc/contact-form.php';
+require_once get_stylesheet_directory() . '/inc/stage-form.php';
 require_once get_stylesheet_directory() . '/inc/webinar-registration-form.php';
 require_once get_stylesheet_directory() . '/inc/actualites-accueil.php';
 require_once get_stylesheet_directory() . '/inc/auto-translate.php';
@@ -145,7 +146,7 @@ function cerer_enqueue_assets() {
 	// (programmes de formation…) sans dupliquer le CSS. L'archive Webinaires
 	// (/webinaires/) et les archives de département (/departement/xxx/,
 	// carte "Chef de département") reprennent aussi cet habillage.
-	if ( is_page_template( array( 'page-templates/qui-sommes-nous.php', 'page-templates/page-generique.php' ) ) || is_post_type_archive( 'webinaire' ) || is_tax( 'departement' ) ) {
+	if ( is_page_template( array( 'page-templates/qui-sommes-nous.php', 'page-templates/page-generique.php' ) ) || is_post_type_archive( array( 'webinaire', 'publication' ) ) || is_tax( 'departement' ) ) {
 		wp_enqueue_style(
 			'cerer-about',
 			get_stylesheet_directory_uri() . '/assets/css/about.css',
@@ -159,6 +160,7 @@ function cerer_enqueue_assets() {
 		'page-templates/formations.php',
 		'page-templates/departements.php',
 		'page-templates/donnees-outils.php',
+		'page-templates/stage-emploi.php',
 	);
 	// is_home() : la page "Actualités" (Réglages > Lecture > Page des
 	// articles) rend toujours via home.php, jamais via un modèle de page —
@@ -184,6 +186,30 @@ function cerer_enqueue_assets() {
 			get_stylesheet_directory_uri() . '/assets/css/archives.css',
 			array( 'cerer-pages' ),
 			cerer_asset_version( 'assets/css/archives.css' )
+		);
+	}
+
+	// Page de détail d'un département (PROMPT-22) — gabarit propre, chargé en
+	// dernier dans la chaîne pour pouvoir surcharger about.css/archives.css
+	// sans !important. Dépend aussi des bundles Blocksy ('ct-main-styles',
+	// 'ct-page-title-styles') quand ils sont enregistrés : ces bundles sont
+	// imprimés APRÈS les feuilles du thème enfant dans <head> (cf. leur ordre
+	// dans le <head> rendu), donc sans cette dépendance leurs règles
+	// l'emportent sur les nôtres à spécificité égale. wp_enqueue_style()
+	// ignore silencieusement un handle listé mais pas encore enregistré.
+	if ( is_tax( 'departement' ) ) {
+		wp_enqueue_style(
+			'cerer-departement-detail',
+			get_stylesheet_directory_uri() . '/assets/css/departement-detail.css',
+			array( 'cerer-archives', 'ct-main-styles', 'ct-page-title-styles' ),
+			cerer_asset_version( 'assets/css/departement-detail.css' )
+		);
+		wp_enqueue_script(
+			'cerer-departement-detail',
+			get_stylesheet_directory_uri() . '/assets/js/departement-detail.js',
+			array(),
+			cerer_asset_version( 'assets/js/departement-detail.js' ),
+			true
 		);
 	}
 
@@ -224,6 +250,26 @@ function cerer_enqueue_assets() {
 			array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'cerer_contact_form' ),
+			)
+		);
+	}
+
+	if ( is_page_template( 'page-templates/stage-emploi.php' ) ) {
+		wp_enqueue_script(
+			'cerer-stage-form',
+			get_stylesheet_directory_uri() . '/assets/js/stage-form.js',
+			array(),
+			cerer_asset_version( 'assets/js/stage-form.js' ),
+			true
+		);
+		wp_localize_script(
+			'cerer-stage-form',
+			'cererStage',
+			array(
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'nonce'        => wp_create_nonce( 'cerer_stage_request' ),
+				'i18nRequired' => __( 'Merci de remplir les champs obligatoires (*).', 'cerer-child' ),
+				'i18nError'    => __( 'Une erreur est survenue, réessayez.', 'cerer-child' ),
 			)
 		);
 	}

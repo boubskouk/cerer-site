@@ -180,16 +180,6 @@
 	background: #E9F7E7;
 }
 
-/* Pastilles pastel trop claires sur fond sombre — assombries plutôt que
-   redéfinies en variable (couleur de statut fixe, pas un token de thème). */
-body.dark-mode .cerer-form:not(.cerer-form--on-dark) .cerer-form__feedback.is-error {
-	background: rgba(179, 38, 30, .18);
-}
-
-body.dark-mode .cerer-form:not(.cerer-form--on-dark) .cerer-form__feedback.is-success {
-	background: rgba(46, 125, 42, .2);
-}
-
 /* --- Colonnes contact (formulaire + coordonnées) --- */
 
 .cerer-contact-layout {
@@ -230,6 +220,39 @@ body.dark-mode .cerer-form:not(.cerer-form--on-dark) .cerer-form__feedback.is-su
 	gap: 6px;
 }
 
+/* Liste d'étapes numérotées (panneau latéral, page Stage & emploi) — mêmes
+   tokens que l'adresse ci-dessus, avec des puces numérotées teintées plutôt
+   que la numérotation native du navigateur. */
+.cerer-contact-sidebar__steps {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	counter-reset: cerer-step;
+}
+
+.cerer-contact-sidebar__steps li {
+	display: flex;
+	gap: 10px;
+	font-size: 14px;
+	color: var(--cerer-ink-2);
+	counter-increment: cerer-step;
+}
+
+.cerer-contact-sidebar__steps li::before {
+	content: counter(cerer-step);
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: var(--cerer-green-soft);
+	color: var(--cerer-green-hover);
+	font-size: 12px;
+	font-weight: 600;
+}
+
 .cerer-contact-map {
 	margin-top: 40px;
 	aspect-ratio: 16 / 6;
@@ -251,19 +274,23 @@ body.dark-mode .cerer-form:not(.cerer-form--on-dark) .cerer-form__feedback.is-su
 	display: block;
 }
 
-/* --- Services transversaux (page Départements) --- */
+/* Services transversaux (page Départements) : rendu avec
+   template-parts/carte-service.php (.cerer-card--theme, déjà stylée en
+   components.css) — plus de règles dédiées ici. */
 
-.cerer-services-list {
-	display: grid;
-	gap: 12px;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	margin-top: 16px;
+/* --- État vide "Aucune offre" (page Stage & emploi) --- */
+
+.cerer-empty-note {
+	padding: 20px 24px;
+	background: var(--cerer-tint-bg);
+	border-radius: var(--cerer-radius-card);
+	color: var(--cerer-ink-2);
+	font-size: 15px;
+	max-width: 640px;
 }
 
-.cerer-services-list li {
-	padding: 16px;
-	background: var(--cerer-bg);
-	border-radius: var(--cerer-radius-control);
-	font-weight: 500;
-	font-size: 14px;
+/* Section pleine largeur en fond teinté, pour alterner avec le blanc sur ces
+   pages simples (même teinte que about.css .cerer-about-section--tint). */
+.cerer-section--tint {
+	background: var(--cerer-tint-bg);
 }

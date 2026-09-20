@@ -199,6 +199,50 @@ function cerer_register_post_types() {
 		)
 	);
 
+	// Offres de stage/emploi et sujets de thèse — PROMPT-22, encart "Rejoindre
+	// l'équipe" de la sidebar département : le nombre affiché "se compte
+	// automatiquement", donc un CPT filtrable par "departement" plutôt qu'un
+	// champ numérique saisi à la main. Pas d'archive dédiée pour l'instant
+	// (hors périmètre de ce prompt) : has_archive sert seulement à donner un
+	// lien de secours au décompte tant qu'aucune page de détail n'existe.
+	register_post_type(
+		'offre_stage',
+		array(
+			'label'        => __( 'Offres de stage & emploi', 'cerer-child' ),
+			'labels'       => array(
+				'name'          => __( 'Offres de stage & emploi', 'cerer-child' ),
+				'singular_name' => __( 'Offre de stage', 'cerer-child' ),
+				'add_new_item'  => __( 'Ajouter une offre', 'cerer-child' ),
+				'edit_item'     => __( "Modifier l'offre", 'cerer-child' ),
+			),
+			'public'       => true,
+			'has_archive'  => true,
+			'show_in_rest' => true,
+			'menu_icon'    => 'dashicons-portfolio',
+			'supports'     => array( 'title', 'editor' ),
+			'rewrite'      => array( 'slug' => 'offres-de-stage' ),
+		)
+	);
+
+	register_post_type(
+		'sujet_these',
+		array(
+			'label'        => __( 'Sujets de thèse', 'cerer-child' ),
+			'labels'       => array(
+				'name'          => __( 'Sujets de thèse', 'cerer-child' ),
+				'singular_name' => __( 'Sujet de thèse', 'cerer-child' ),
+				'add_new_item'  => __( 'Ajouter un sujet', 'cerer-child' ),
+				'edit_item'     => __( 'Modifier le sujet', 'cerer-child' ),
+			),
+			'public'       => true,
+			'has_archive'  => true,
+			'show_in_rest' => true,
+			'menu_icon'    => 'dashicons-welcome-write-blog',
+			'supports'     => array( 'title', 'editor' ),
+			'rewrite'      => array( 'slug' => 'sujets-de-these' ),
+		)
+	);
+
 	// Vidéos de la page "Qui sommes-nous" (galerie filtrable) — README
 	// n'en parlait pas en Phase 1, ajouté sur demande pour rester gérable
 	// depuis l'admin (ACF) sans toucher au code.

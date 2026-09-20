@@ -1,120 +1,498 @@
 {
-	"key": "group_cerer_page_generique",
-	"title": "Page générique — contenu",
-	"fields": [
-		{
-			"key": "field_cerer_pg_notice",
-			"label": "",
-			"name": "",
-			"type": "message",
-			"message": "Cette page utilise un gabarit personnalisé (même style visuel que « Qui sommes-nous ») : tout son contenu se modifie ici, PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal).",
-			"esc_html": 0
-		},
-		{
-			"key": "field_cerer_pg_titre",
-			"label": "Titre affiché (H1)",
-			"name": "titre_page",
-			"type": "text",
-			"instructions": "Laisser vide pour reprendre le titre WordPress de la page."
-		},
-		{
-			"key": "field_cerer_pg_chapo",
-			"label": "Chapô (sous le titre, fond bleu)",
-			"name": "chapo_page",
-			"type": "textarea",
-			"rows": 2
-		},
-		{
-			"key": "field_cerer_pg_brochure_url",
-			"label": "Brochure téléchargeable — Fichier ou lien",
-			"name": "brochure_url",
-			"type": "url",
-			"instructions": "URL d'un PDF déjà en médiathèque (copier son \"Lien du fichier\") ou lien externe. Laisser vide pour masquer le bouton de téléchargement dans l'en-tête."
-		},
-		{
-			"key": "field_cerer_pg_brochure_label",
-			"label": "Brochure téléchargeable — Libellé du bouton",
-			"name": "brochure_label",
-			"type": "text",
-			"default_value": "Télécharger la brochure",
-			"conditional_logic": [
-				[
-					{
-						"field": "field_cerer_pg_brochure_url",
-						"operator": "!=empty"
-					}
-				]
-			]
-		},
-		{
-			"key": "field_cerer_pg_contenu",
-			"label": "Contenu principal",
-			"name": "contenu",
-			"type": "wysiwyg",
-			"tabs": "all",
-			"toolbar": "basic",
-			"media_upload": 0,
-			"instructions": "Si la zone ne réagit pas au clavier, l'onglet « Texte » (en haut à droite du champ) accepte la saisie sans mise en forme visuelle."
-		},
-
-		{
-			"key": "field_cerer_pg_points_titre",
-			"label": "Titre — liste à puces (optionnel)",
-			"name": "points_cles_titre",
-			"type": "text",
-			"instructions": "Laisser vide pour masquer entièrement ce bloc (titre ET tous les points vides)."
-		},
-		{ "key": "field_cerer_pg_point_1", "label": "Point 1", "name": "points_cles_1", "type": "text" },
-		{ "key": "field_cerer_pg_point_2", "label": "Point 2", "name": "points_cles_2", "type": "text" },
-		{ "key": "field_cerer_pg_point_3", "label": "Point 3", "name": "points_cles_3", "type": "text" },
-		{ "key": "field_cerer_pg_point_4", "label": "Point 4", "name": "points_cles_4", "type": "text" },
-		{ "key": "field_cerer_pg_point_5", "label": "Point 5", "name": "points_cles_5", "type": "text" },
-		{ "key": "field_cerer_pg_point_6", "label": "Point 6", "name": "points_cles_6", "type": "text" },
-
-		{
-			"key": "field_cerer_pg_cta_titre",
-			"label": "Bloc d'appel à l'action — Titre (optionnel)",
-			"name": "cta_titre",
-			"type": "text",
-			"instructions": "Laisser vide pour masquer entièrement ce bloc."
-		},
-		{
-			"key": "field_cerer_pg_cta_texte",
-			"label": "Bloc d'appel à l'action — Texte",
-			"name": "cta_texte",
-			"type": "textarea",
-			"rows": 2
-		},
-		{
-			"key": "field_cerer_pg_cta_label",
-			"label": "Bloc d'appel à l'action — Libellé du bouton",
-			"name": "cta_bouton_label",
-			"type": "text",
-			"default_value": "Nous contacter"
-		},
-		{
-			"key": "field_cerer_pg_cta_url",
-			"label": "Bloc d'appel à l'action — Lien du bouton",
-			"name": "cta_bouton_url",
-			"type": "url"
-		}
-	],
-	"location": [
-		[
-			{
-				"param": "page_template",
-				"operator": "==",
-				"value": "page-templates/page-generique.php"
-			}
-		]
-	],
-	"menu_order": 0,
-	"position": "acf_after_title",
-	"style": "default",
-	"label_placement": "top",
-	"instruction_placement": "label",
-	"hide_on_screen": "",
-	"active": true,
-	"description": "",
-	"show_in_rest": 1
+    "key": "group_cerer_page_generique",
+    "title": "Page générique — contenu",
+    "fields": [
+        {
+            "key": "field_cerer_pg_notice",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "message": "Cette page utilise un gabarit personnalisé (même style visuel que « Qui sommes-nous ») : tout son contenu se modifie ici, PAS dans l'éditeur de blocs juste en dessous (qui peut rester vide, c'est normal).",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cerer_pg_titre",
+            "label": "Titre affiché (H1)",
+            "name": "titre_page",
+            "type": "text",
+            "instructions": "Laisser vide pour reprendre le titre WordPress de la page."
+        },
+        {
+            "key": "field_cerer_pg_chapo",
+            "label": "Chapô (sous le titre, fond bleu)",
+            "name": "chapo_page",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_cerer_pg_brochure_url",
+            "label": "Brochure téléchargeable — Fichier ou lien",
+            "name": "brochure_url",
+            "type": "url",
+            "instructions": "URL d'un PDF déjà en médiathèque (copier son \"Lien du fichier\") ou lien externe. Laisser vide pour masquer le bouton de téléchargement dans l'en-tête."
+        },
+        {
+            "key": "field_cerer_pg_brochure_label",
+            "label": "Brochure téléchargeable — Libellé du bouton",
+            "name": "brochure_label",
+            "type": "text",
+            "default_value": "Télécharger la brochure",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_cerer_pg_brochure_url",
+                        "operator": "!=empty"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_cerer_pg_contenu",
+            "label": "Contenu principal",
+            "name": "contenu",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "instructions": "Si la zone ne réagit pas au clavier, l'onglet « Texte » (en haut à droite du champ) accepte la saisie sans mise en forme visuelle."
+        },
+        {
+            "key": "field_cerer_pg_points_titre",
+            "label": "Titre — liste à puces (optionnel)",
+            "name": "points_cles_titre",
+            "type": "text",
+            "instructions": "Laisser vide pour masquer entièrement ce bloc (titre ET tous les points vides)."
+        },
+        {
+            "key": "field_cerer_pg_point_1",
+            "label": "Point 1",
+            "name": "points_cles_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_point_2",
+            "label": "Point 2",
+            "name": "points_cles_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_point_3",
+            "label": "Point 3",
+            "name": "points_cles_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_point_4",
+            "label": "Point 4",
+            "name": "points_cles_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_point_5",
+            "label": "Point 5",
+            "name": "points_cles_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_point_6",
+            "label": "Point 6",
+            "name": "points_cles_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_cta_titre",
+            "label": "Bloc d'appel à l'action — Titre (optionnel)",
+            "name": "cta_titre",
+            "type": "text",
+            "instructions": "Laisser vide pour masquer entièrement ce bloc."
+        },
+        {
+            "key": "field_cerer_pg_cta_texte",
+            "label": "Bloc d'appel à l'action — Texte",
+            "name": "cta_texte",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_cerer_pg_cta_label",
+            "label": "Bloc d'appel à l'action — Libellé du bouton",
+            "name": "cta_bouton_label",
+            "type": "text",
+            "default_value": "Nous contacter"
+        },
+        {
+            "key": "field_cerer_pg_cta_url",
+            "label": "Bloc d'appel à l'action — Lien du bouton",
+            "name": "cta_bouton_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cerer_pg_services_notice",
+            "label": "",
+            "name": "msg_services",
+            "type": "message",
+            "message": "Section « Services par département » — cartes avec icône/couleur du département, liste de services en badges et lien vers sa fiche. Une carte disparaît si aucun service n'est renseigné pour elle. Jusqu'à 12 services par département, 8 pour le bloc transversal."
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_1",
+            "label": "Photovoltaïque — Service 1",
+            "name": "services_photovoltaique_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_2",
+            "label": "Photovoltaïque — Service 2",
+            "name": "services_photovoltaique_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_3",
+            "label": "Photovoltaïque — Service 3",
+            "name": "services_photovoltaique_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_4",
+            "label": "Photovoltaïque — Service 4",
+            "name": "services_photovoltaique_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_5",
+            "label": "Photovoltaïque — Service 5",
+            "name": "services_photovoltaique_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_6",
+            "label": "Photovoltaïque — Service 6",
+            "name": "services_photovoltaique_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_7",
+            "label": "Photovoltaïque — Service 7",
+            "name": "services_photovoltaique_7",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_8",
+            "label": "Photovoltaïque — Service 8",
+            "name": "services_photovoltaique_8",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_9",
+            "label": "Photovoltaïque — Service 9",
+            "name": "services_photovoltaique_9",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_10",
+            "label": "Photovoltaïque — Service 10",
+            "name": "services_photovoltaique_10",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_11",
+            "label": "Photovoltaïque — Service 11",
+            "name": "services_photovoltaique_11",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_photovoltaique_12",
+            "label": "Photovoltaïque — Service 12",
+            "name": "services_photovoltaique_12",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_1",
+            "label": "Biomasse — Service 1",
+            "name": "services_biomasse_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_2",
+            "label": "Biomasse — Service 2",
+            "name": "services_biomasse_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_3",
+            "label": "Biomasse — Service 3",
+            "name": "services_biomasse_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_4",
+            "label": "Biomasse — Service 4",
+            "name": "services_biomasse_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_5",
+            "label": "Biomasse — Service 5",
+            "name": "services_biomasse_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_6",
+            "label": "Biomasse — Service 6",
+            "name": "services_biomasse_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_7",
+            "label": "Biomasse — Service 7",
+            "name": "services_biomasse_7",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_8",
+            "label": "Biomasse — Service 8",
+            "name": "services_biomasse_8",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_9",
+            "label": "Biomasse — Service 9",
+            "name": "services_biomasse_9",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_10",
+            "label": "Biomasse — Service 10",
+            "name": "services_biomasse_10",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_11",
+            "label": "Biomasse — Service 11",
+            "name": "services_biomasse_11",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_biomasse_12",
+            "label": "Biomasse — Service 12",
+            "name": "services_biomasse_12",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_1",
+            "label": "Éolien — Service 1",
+            "name": "services_eolien_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_2",
+            "label": "Éolien — Service 2",
+            "name": "services_eolien_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_3",
+            "label": "Éolien — Service 3",
+            "name": "services_eolien_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_4",
+            "label": "Éolien — Service 4",
+            "name": "services_eolien_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_5",
+            "label": "Éolien — Service 5",
+            "name": "services_eolien_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_6",
+            "label": "Éolien — Service 6",
+            "name": "services_eolien_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_7",
+            "label": "Éolien — Service 7",
+            "name": "services_eolien_7",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_8",
+            "label": "Éolien — Service 8",
+            "name": "services_eolien_8",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_9",
+            "label": "Éolien — Service 9",
+            "name": "services_eolien_9",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_10",
+            "label": "Éolien — Service 10",
+            "name": "services_eolien_10",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_11",
+            "label": "Éolien — Service 11",
+            "name": "services_eolien_11",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_eolien_12",
+            "label": "Éolien — Service 12",
+            "name": "services_eolien_12",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_1",
+            "label": "Thermique — Service 1",
+            "name": "services_thermique_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_2",
+            "label": "Thermique — Service 2",
+            "name": "services_thermique_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_3",
+            "label": "Thermique — Service 3",
+            "name": "services_thermique_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_4",
+            "label": "Thermique — Service 4",
+            "name": "services_thermique_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_5",
+            "label": "Thermique — Service 5",
+            "name": "services_thermique_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_6",
+            "label": "Thermique — Service 6",
+            "name": "services_thermique_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_7",
+            "label": "Thermique — Service 7",
+            "name": "services_thermique_7",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_8",
+            "label": "Thermique — Service 8",
+            "name": "services_thermique_8",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_9",
+            "label": "Thermique — Service 9",
+            "name": "services_thermique_9",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_10",
+            "label": "Thermique — Service 10",
+            "name": "services_thermique_10",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_11",
+            "label": "Thermique — Service 11",
+            "name": "services_thermique_11",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_thermique_12",
+            "label": "Thermique — Service 12",
+            "name": "services_thermique_12",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_titre",
+            "label": "Bloc transversal — Titre",
+            "name": "services_transversaux_titre",
+            "type": "text",
+            "default_value": "Autres services transversaux"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_1",
+            "label": "Transversal — Service 1",
+            "name": "services_transversaux_1",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_2",
+            "label": "Transversal — Service 2",
+            "name": "services_transversaux_2",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_3",
+            "label": "Transversal — Service 3",
+            "name": "services_transversaux_3",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_4",
+            "label": "Transversal — Service 4",
+            "name": "services_transversaux_4",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_5",
+            "label": "Transversal — Service 5",
+            "name": "services_transversaux_5",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_6",
+            "label": "Transversal — Service 6",
+            "name": "services_transversaux_6",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_7",
+            "label": "Transversal — Service 7",
+            "name": "services_transversaux_7",
+            "type": "text"
+        },
+        {
+            "key": "field_cerer_pg_svc_transversaux_8",
+            "label": "Transversal — Service 8",
+            "name": "services_transversaux_8",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/page-generique.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1
 }

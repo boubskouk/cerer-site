@@ -15,7 +15,9 @@
 defined( 'ABSPATH' ) || exit;
 
 function cerer_register_taxonomies() {
-	$content_types = array( 'publication', 'webinaire', 'projet', 'soutenance', 'formation_session', 'chercheur' );
+	// "offre_stage" et "sujet_these" (PROMPT-22, encart "Rejoindre l'équipe")
+	// rejoignent la liste pour que leur décompte par département fonctionne.
+	$content_types = array( 'publication', 'webinaire', 'projet', 'soutenance', 'formation_session', 'chercheur', 'offre_stage', 'sujet_these' );
 
 	register_taxonomy(
 		'thematique',

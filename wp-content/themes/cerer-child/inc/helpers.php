@@ -30,19 +30,19 @@ function cerer_brand_shine_color() {
 
 	if ( is_tax( 'departement' ) ) {
 		$term = get_queried_object();
-		$map  = array(
-			'Photovoltaïque'        => 'green',
-			'Biomasse & Bioénergie' => 'blue',
-			'Éolien'                => 'blue',
-			'Thermique'             => 'green',
-			// Termes anglais (Polylang).
-			'Photovoltaic'          => 'green',
-			'Biomass & Bioenergy'   => 'blue',
-			'Wind'                  => 'blue',
-			'Thermal'               => 'green',
+		// Clé par ID du terme FRANÇAIS (stable dans les deux langues, cf.
+		// front-page.php $dept_class_map) plutôt que par nom affiché : le nom
+		// change (PROMPT-22, "Photovoltaïque" → "Energie Solaire
+		// Photovoltaïque") sans que l'association de couleur doive suivre.
+		$fr_term_id = function_exists( 'pll_get_term' ) ? ( pll_get_term( $term->term_id, 'fr' ) ?: $term->term_id ) : $term->term_id;
+		$map        = array(
+			9  => 'green', // Photovoltaïque
+			10 => 'blue',  // Biomasse & Bioénergie
+			11 => 'blue',  // Éolien
+			12 => 'green', // Thermique
 		);
-		if ( isset( $term->name, $map[ $term->name ] ) ) {
-			return $map[ $term->name ];
+		if ( isset( $map[ $fr_term_id ] ) ) {
+			return $map[ $fr_term_id ];
 		}
 	}
 
@@ -229,4 +229,58 @@ function cerer_page_url( $fr_page_id ) {
 		}
 	}
 	return get_permalink( $fr_page_id ) ?: home_url( '/' );
+}
+
+/**
+ * Adresse e-mail de réception des notifications de formulaire (contact,
+ * inscription webinaire, demande de stage…). Fixe plutôt que
+ * get_option('admin_email') : cette dernière pointe vers l'adresse du
+ * compte WordPress (dev/hébergeur), pas forcément celle que le CERER
+ * surveille — cf. demande explicite du client, toutes les demandes doivent
+ * arriver sur cerer@ucad.edu.sn quel que soit l'admin_email configuré.
+ *
+ * @return string
+ */
+function cerer_notification_email() {
+	return 'cerer@ucad.edu.sn';
+}
+
+/**
+ * Un champ ACF est-il réellement renseigné ? Un true_false jamais enregistré
+ * renvoie NULL (cf. mémoire "ACF default_value not returned"), donc 0/false
+ * explicitement saisi compte comme une valeur ; seuls NULL, '' et [] comptent
+ * comme vides.
+ *
+ * @param mixed $value
+ * @return bool
+ */
+function cerer_field_has_value( $value ) {
+	if ( is_array( $value ) ) {
+		return ! empty( $value );
+	}
+	return null !== $value && '' !== $value;
+}
+
+/**
+ * Champ ACF d'un terme de taxonomie, avec repli langue : lit d'abord le
+ * terme de la langue courante ($current_term_id), et retombe sur le terme
+ * FRANÇAIS ($fr_term_id) si ce champ y est vide — utile tant que l'équipe du
+ * CERER n'a traduit qu'une partie des champs d'un terme (taxonomy-departement.php,
+ * PROMPT-22) : mieux vaut du contenu français que rien, mais le contenu
+ * anglais déjà saisi doit être prioritaire dès qu'il existe.
+ *
+ * @param string $field_name
+ * @param int    $current_term_id ID du terme dans la langue affichée.
+ * @param int    $fr_term_id      ID du terme français (repli).
+ * @param string $taxonomy        Nom de la taxonomie (défaut : "departement").
+ * @return mixed
+ */
+function cerer_term_field( $field_name, $current_term_id, $fr_term_id, $taxonomy = 'departement' ) {
+	if ( $current_term_id !== $fr_term_id ) {
+		$value = get_field( $field_name, $taxonomy . '_' . $current_term_id );
+		if ( cerer_field_has_value( $value ) ) {
+			return $value;
+		}
+	}
+	return get_field( $field_name, $taxonomy . '_' . $fr_term_id );
 }

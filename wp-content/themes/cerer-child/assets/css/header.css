@@ -333,6 +333,7 @@ html.is-scrolled .cerer-topbar {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: center;
 	gap: 2px;
 	padding-block: 8px;
 }
@@ -517,6 +518,7 @@ html.is-scrolled .cerer-topbar {
 	.cerer-nav__list {
 		flex-direction: column;
 		align-items: stretch;
+		justify-content: flex-start;
 		gap: 0;
 		padding-block: 8px;
 	}

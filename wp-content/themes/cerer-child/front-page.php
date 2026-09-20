@@ -5,8 +5,8 @@
  * réglé sur une page statique ou les derniers articles.
  *
  * Structure inspirée de la page d'accueil de l'ANER (aner.sn) : Hero →
- * Chiffres clés (avec intro + CTA) → Projets phares → Départements →
- * Agenda (webinaires) → Actualités → Partenaires. Contenu et visuels
+ * Chiffres clés (avec intro + CTA) → Actualités → Projets phares →
+ * Départements → Agenda (webinaires) → Partenaires. Contenu et visuels
  * restent propres au CERER ; seul l'enchaînement des blocs est repris.
  *
  * @package cerer-child
@@ -142,7 +142,7 @@ $partenaires_accueil = get_posts(
 	array(
 		'post_type'      => 'partenaire',
 		'posts_per_page' => -1,
-		'orderby'        => 'title',
+		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
 	)
 );
@@ -254,6 +254,43 @@ $stats_defaults = array(
 		</div>
 	</div>
 </section>
+
+<!-- Dernières actualités — PROMPT-14 (déplacée juste après Chiffres clés) -->
+<?php if ( $actualites_has_any ) : ?>
+<?php
+$news_eyebrow = get_field( 'home_news_eyebrow' ) ?: __( 'Actualités', 'cerer-child' );
+$news_title   = get_field( 'home_news_title' ) ?: __( 'Dernières actualités', 'cerer-child' );
+$news_intro   = get_field( 'home_news_intro' );
+?>
+<section class="cerer-news">
+	<div class="cerer-news__blob" aria-hidden="true"></div>
+	<div class="cerer-container cerer-news__inner">
+		<div class="cerer-projects__head">
+			<div class="cerer-projects__head-text">
+				<p class="cerer-stats__eyebrow"><span class="cerer-stats__eyebrow-rule" aria-hidden="true"></span><?php echo esc_html( $news_eyebrow ); ?></p>
+				<h2><?php echo esc_html( $news_title ); ?></h2>
+				<?php if ( $news_intro ) : ?>
+					<p class="cerer-stats__chapo"><?php echo esc_html( $news_intro ); ?></p>
+				<?php endif; ?>
+			</div>
+			<a href="<?php echo esc_url( cerer_page_url( 80 ) ); ?>" class="cerer-projects__all"><?php esc_html_e( 'Toutes les actualités', 'cerer-child' ); ?></a>
+		</div>
+
+		<?php if ( $actualites_categories ) : ?>
+			<div class="cerer-news__filters" role="group" aria-label="<?php esc_attr_e( "Filtrer les actualités par catégorie", 'cerer-child' ); ?>">
+				<button type="button" class="cerer-news__pill is-active" data-categorie="" aria-pressed="true"><?php esc_html_e( 'Toutes', 'cerer-child' ); ?></button>
+				<?php foreach ( $actualites_categories as $cat ) : ?>
+					<button type="button" class="cerer-news__pill" data-categorie="<?php echo esc_attr( $cat->slug ); ?>" aria-pressed="false"><?php echo esc_html( $cat->name ); ?></button>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+
+		<div class="cerer-news__grid" id="cerer-news-grid">
+			<?php echo cerer_render_actualites_grid( '' ); // phpcs:ignore -- gabarit interne, déjà échappé. ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
 
 <!-- Projets phares — PROMPT-12 -->
 <?php if ( $projets_phares ) : ?>
@@ -402,43 +439,6 @@ $webinars_intro   = get_field( 'home_webinars_intro' );
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
-	</div>
-</section>
-<?php endif; ?>
-
-<!-- Dernières actualités — PROMPT-14 -->
-<?php if ( $actualites_has_any ) : ?>
-<?php
-$news_eyebrow = get_field( 'home_news_eyebrow' ) ?: __( 'Actualités', 'cerer-child' );
-$news_title   = get_field( 'home_news_title' ) ?: __( 'Dernières actualités', 'cerer-child' );
-$news_intro   = get_field( 'home_news_intro' );
-?>
-<section class="cerer-news">
-	<div class="cerer-news__blob" aria-hidden="true"></div>
-	<div class="cerer-container cerer-news__inner">
-		<div class="cerer-projects__head">
-			<div class="cerer-projects__head-text">
-				<p class="cerer-stats__eyebrow"><span class="cerer-stats__eyebrow-rule" aria-hidden="true"></span><?php echo esc_html( $news_eyebrow ); ?></p>
-				<h2><?php echo esc_html( $news_title ); ?></h2>
-				<?php if ( $news_intro ) : ?>
-					<p class="cerer-stats__chapo"><?php echo esc_html( $news_intro ); ?></p>
-				<?php endif; ?>
-			</div>
-			<a href="<?php echo esc_url( cerer_page_url( 80 ) ); ?>" class="cerer-projects__all"><?php esc_html_e( 'Toutes les actualités', 'cerer-child' ); ?></a>
-		</div>
-
-		<?php if ( $actualites_categories ) : ?>
-			<div class="cerer-news__filters" role="group" aria-label="<?php esc_attr_e( "Filtrer les actualités par catégorie", 'cerer-child' ); ?>">
-				<button type="button" class="cerer-news__pill is-active" data-categorie="" aria-pressed="true"><?php esc_html_e( 'Toutes', 'cerer-child' ); ?></button>
-				<?php foreach ( $actualites_categories as $cat ) : ?>
-					<button type="button" class="cerer-news__pill" data-categorie="<?php echo esc_attr( $cat->slug ); ?>" aria-pressed="false"><?php echo esc_html( $cat->name ); ?></button>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
-
-		<div class="cerer-news__grid" id="cerer-news-grid">
-			<?php echo cerer_render_actualites_grid( '' ); // phpcs:ignore -- gabarit interne, déjà échappé. ?>
-		</div>
 	</div>
 </section>
 <?php endif; ?>

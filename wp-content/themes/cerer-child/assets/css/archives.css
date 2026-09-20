@@ -31,6 +31,126 @@
 	margin-top: 16px;
 }
 
+/* --- Publications : étiquette de département + bloc auteur --- */
+/* "informations sur celui qui publie" (départements/chercheurs/étudiants) —
+   la carte affiche toujours qui publie, avec ou sans fiche chercheur liée. */
+
+.cerer-card--document .cerer-card__tags {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.cerer-pub-dept-tag {
+	padding: 3px 10px;
+	border-radius: var(--cerer-radius-pill);
+	background: color-mix(in srgb, var(--cerer-pub-dept-color, var(--cerer-blue)) 12%, white);
+	color: var(--cerer-pub-dept-color, var(--cerer-blue));
+	font-size: 11px;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.cerer-pub-dept-tag:hover,
+.cerer-pub-dept-tag:focus-visible {
+	text-decoration: underline;
+}
+
+.cerer-pub-author {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 16px;
+	padding-top: 14px;
+	border-top: 1px solid var(--cerer-border);
+}
+
+.cerer-pub-author__photo {
+	flex: none;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	overflow: hidden;
+	background: var(--cerer-bg);
+}
+
+.cerer-pub-author__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cerer-pub-author__photo.is-placeholder {
+	background: repeating-linear-gradient(45deg, var(--cerer-bg), var(--cerer-bg) 5px, var(--cerer-border) 5px, var(--cerer-border) 10px);
+}
+
+.cerer-pub-author__body {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.35;
+	min-width: 0;
+}
+
+.cerer-pub-author__name {
+	font-size: 13.5px;
+	font-weight: 500;
+	color: var(--cerer-ink);
+	text-decoration: none;
+}
+
+a.cerer-pub-author__name:hover,
+a.cerer-pub-author__name:focus-visible {
+	text-decoration: underline;
+}
+
+.cerer-pub-author__role {
+	font-size: 12px;
+	color: var(--cerer-ink-2);
+}
+
+/* --- Barre de filtres (type + département) --- */
+
+.cerer-pub-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 9px;
+	margin-top: 24px;
+}
+
+.cerer-pub-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 16px;
+	border-radius: var(--cerer-radius-pill);
+	border: 1px solid var(--cerer-border);
+	background: var(--cerer-surface);
+	color: #3A4152;
+	font-size: 13.5px;
+	font-family: inherit;
+	cursor: pointer;
+	transition: var(--cerer-transition);
+}
+
+.cerer-pub-pill__dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--cerer-pub-dept-color, currentColor);
+}
+
+.cerer-pub-pill:hover {
+	border-color: var(--cerer-blue-dark);
+	color: var(--cerer-blue-dark);
+}
+
+.cerer-pub-pill.is-active {
+	background: var(--cerer-blue-dark);
+	border-color: var(--cerer-blue-dark);
+	color: #fff;
+}
+
 /* --- Carte chercheur (portrait) --- */
 
 .cerer-card--chercheur {
@@ -203,9 +323,6 @@
 	background: #E7F2FB;
 }
 
-body.dark-mode .cerer-dept-chef__linkedin:hover {
-	background: rgba(20, 86, 143, .35);
-}
 
 .cerer-dept-chef__body {
 	flex: 1 1 260px;

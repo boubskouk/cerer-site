@@ -51,6 +51,7 @@ $cerer_languages = cerer_get_language_switcher_items();
 				<?php esc_html_e( 'Rechercher', 'cerer-child' ); ?>
 			</button>
 
+			<!-- Contraste élevé désactivé temporairement — à reprendre avec le mode sombre. Logique intacte dans header.js et tokens.css.
 			<button
 				type="button"
 				class="cerer-topbar__action cerer-contrast-toggle"
@@ -59,15 +60,7 @@ $cerer_languages = cerer_get_language_switcher_items();
 			>
 				<?php esc_html_e( 'Contraste élevé', 'cerer-child' ); ?>
 			</button>
-
-			<button
-				type="button"
-				class="cerer-topbar__action cerer-dark-toggle"
-				id="cerer-dark-toggle"
-				aria-pressed="false"
-			>
-				<?php esc_html_e( 'Mode sombre', 'cerer-child' ); ?>
-			</button>
+			-->
 
 			<a href="<?php echo esc_url( cerer_page_url( 76 ) ); ?>" class="cerer-topbar__action cerer-topbar__contact">
 				<?php esc_html_e( 'Contact rapide', 'cerer-child' ); ?>
