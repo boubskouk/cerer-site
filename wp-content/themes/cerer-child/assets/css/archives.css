@@ -23,6 +23,28 @@
 	color: var(--cerer-ink-2);
 }
 
+/* Carte vide (aucune publication réelle encore déposée) — pointillés,
+   pas d'ombre au survol : ce n'est pas un contenu cliquable. */
+.cerer-card--empty {
+	background: transparent;
+	border: 1.5px dashed var(--cerer-border);
+}
+
+.cerer-card--empty:hover {
+	transform: none;
+	box-shadow: none;
+}
+
+.cerer-card--empty .cerer-eyebrow {
+	color: var(--cerer-ink-2);
+}
+
+.cerer-pub-empty-note {
+	max-width: 760px;
+	margin-bottom: 24px;
+	color: var(--cerer-ink-2);
+}
+
 .cerer-card__actions {
 	display: flex;
 	flex-wrap: wrap;

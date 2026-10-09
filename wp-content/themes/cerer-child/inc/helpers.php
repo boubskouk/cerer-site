@@ -284,3 +284,18 @@ function cerer_term_field( $field_name, $current_term_id, $fr_term_id, $taxonomy
 	}
 	return get_field( $field_name, $taxonomy . '_' . $fr_term_id );
 }
+
+/**
+ * Archive des publications filtrée par département : les départements n'ont pas de
+ * traduction Polylang, donc la redirection canonique renverrait la page anglaise
+ * vers la version française. On la désactive pour ce filtre.
+ */
+add_filter(
+	'pll_check_canonical_url',
+	function ( $redirect_url ) {
+		if ( is_post_type_archive( 'publication' ) && ! empty( $_GET['departement'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			return false;
+		}
+		return $redirect_url;
+	}
+);

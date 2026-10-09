@@ -608,6 +608,50 @@
 	color: var(--cerer-blue-2);
 }
 
+/* Emplacement vide (aucun projet "en avant" pour ce slot) — pointillés
+   plutôt que l'ombre/fond blanc des cartes réelles, pour ne pas laisser
+   croire qu'il s'agit d'un projet cliquable. */
+.cerer-project-card--empty {
+	background: transparent;
+	border: 1.5px dashed #C7CDD9;
+	box-shadow: none;
+	align-items: center;
+	justify-content: center;
+	min-height: 220px;
+}
+
+.cerer-project-card--empty:hover {
+	transform: none;
+	box-shadow: none;
+}
+
+.cerer-project-card--empty .cerer-project-card__body {
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
+.cerer-project-card--empty .cerer-project-card__empty-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1.5px dashed #C7CDD9;
+	color: var(--cerer-ink-2);
+	font-size: 18px;
+	line-height: 1;
+}
+
+.cerer-project-card--empty .cerer-project-card__body h3 {
+	color: var(--cerer-ink-2);
+}
+
+.cerer-project-card--empty .cerer-project-card__desc {
+	flex: 0 1 auto;
+}
+
 /* --- Nos départements de recherche (accueil) — PROMPT-11 départements-accueil --- */
 /* Même traitement visuel que Chiffres clés / Projets phares (fond vert
    clair, surtitre à filet, cartes blanches) : cohérence voulue entre les

@@ -36,9 +36,11 @@ $actualites_categories = cerer_get_actualites_categories();
 // langue courante (cerer_render_actualites_grid applique le même repli).
 $actualites_has_any = (bool) cerer_posts_with_fallback( array( 'post_type' => 'post', 'fields' => 'ids' ), 1 );
 
-// Projets phares (PROMPT-12) — les projets marqués "en_avant" (champ ACF
-// booléen), triés par date de début décroissante ; complétés par les plus
-// récents s'il y en a moins de 3.
+// Projets phares (PROMPT-12) — uniquement les projets marqués "en_avant"
+// (champ ACF booléen), triés par date de début décroissante. Pas de repli
+// sur les projets récents : tant qu'aucun n'est marqué "en avant", les
+// emplacements restent vides plutôt que de montrer un projet choisi au
+// hasard (contenu réel pas encore décidé).
 $projets_phares = get_posts(
 	array(
 		'post_type'      => 'projet',
@@ -56,20 +58,6 @@ usort(
 	}
 );
 $projets_phares = array_slice( $projets_phares, 0, 3 );
-
-if ( count( $projets_phares ) < 3 ) {
-	$exclude   = wp_list_pluck( $projets_phares, 'ID' );
-	$completer = get_posts(
-		array(
-			'post_type'      => 'projet',
-			'posts_per_page' => 3 - count( $projets_phares ),
-			'post__not_in'   => $exclude,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
-		)
-	);
-	$projets_phares = array_merge( $projets_phares, $completer );
-}
 
 // Couleur du bandeau/de la piste d'avancement par département (PROMPT-12) —
 // résolue via l'ID du terme FRANÇAIS (stable dans les deux langues, Polylang
@@ -292,8 +280,10 @@ $news_intro   = get_field( 'home_news_intro' );
 </section>
 <?php endif; ?>
 
-<!-- Projets phares — PROMPT-12 -->
-<?php if ( $projets_phares ) : ?>
+<!-- Projets phares — PROMPT-12. Toujours affichée, même sans aucun projet
+     "en avant" : les emplacements non pourvus montrent une carte vide
+     plutôt que de faire disparaître la section ou d'afficher un projet
+     choisi au hasard. -->
 <?php
 $projects_eyebrow = get_field( 'home_projects_eyebrow' ) ?: __( 'Projets & programmes', 'cerer-child' );
 $projects_title   = get_field( 'home_projects_title' ) ?: __( 'Nos projets phares', 'cerer-child' );
@@ -314,38 +304,42 @@ $projects_intro   = get_field( 'home_projects_intro' );
 		</div>
 
 		<div class="cerer-projects__grid">
-			<?php foreach ( $projets_phares as $post ) : ?>
-				<?php
-				$dept_terms = get_the_terms( $post->ID, 'departement' );
-				$dept_term  = ( $dept_terms && ! is_wp_error( $dept_terms ) ) ? $dept_terms[0] : null;
-				$dept_label = $dept_term ? $dept_term->name : '';
-				$dept_fr_id = $dept_term ? $dept_term->term_id : 0;
-				if ( $dept_term && function_exists( 'pll_get_term' ) ) {
-					$dept_fr_id = pll_get_term( $dept_term->term_id, 'fr' ) ?: $dept_term->term_id;
-				}
+			<?php for ( $i = 0; $i < 3; $i++ ) : ?>
+				<?php if ( isset( $projets_phares[ $i ] ) ) : ?>
+					<?php
+					$post       = $projets_phares[ $i ];
+					$dept_terms = get_the_terms( $post->ID, 'departement' );
+					$dept_term  = ( $dept_terms && ! is_wp_error( $dept_terms ) ) ? $dept_terms[0] : null;
+					$dept_label = $dept_term ? $dept_term->name : '';
+					$dept_fr_id = $dept_term ? $dept_term->term_id : 0;
+					if ( $dept_term && function_exists( 'pll_get_term' ) ) {
+						$dept_fr_id = pll_get_term( $dept_term->term_id, 'fr' ) ?: $dept_term->term_id;
+					}
 
-				get_template_part(
-					'template-parts/carte-projet-phare',
-					null,
-					array(
-						'url'         => get_permalink( $post ),
-						'title'       => get_the_title( $post ),
-						'description' => get_field( 'description', $post->ID ),
-						'statut'      => get_field( 'statut', $post->ID ) ?: 'en-cours',
-						'progression' => get_field( 'progression', $post->ID ),
-						'date_debut'  => get_field( 'date_debut', $post->ID ),
-						'date_fin'    => get_field( 'date_fin', $post->ID ),
-						'partenaires' => get_field( 'partenaires', $post->ID ),
-						'dept_label'  => $dept_label,
-						'dept_class'  => $dept_class_map[ $dept_fr_id ] ?? '',
-					)
-				);
-				?>
-			<?php endforeach; ?>
+					get_template_part(
+						'template-parts/carte-projet-phare',
+						null,
+						array(
+							'url'         => get_permalink( $post ),
+							'title'       => get_the_title( $post ),
+							'description' => get_field( 'description', $post->ID ),
+							'statut'      => get_field( 'statut', $post->ID ) ?: 'en-cours',
+							'progression' => get_field( 'progression', $post->ID ),
+							'date_debut'  => get_field( 'date_debut', $post->ID ),
+							'date_fin'    => get_field( 'date_fin', $post->ID ),
+							'partenaires' => get_field( 'partenaires', $post->ID ),
+							'dept_label'  => $dept_label,
+							'dept_class'  => $dept_class_map[ $dept_fr_id ] ?? '',
+						)
+					);
+					?>
+				<?php else : ?>
+					<?php get_template_part( 'template-parts/carte-projet-phare-vide' ); ?>
+				<?php endif; ?>
+			<?php endfor; ?>
 		</div>
 	</div>
 </section>
-<?php endif; ?>
 
 <!-- Départements de recherche — PROMPT-11 (départements-accueil) -->
 <?php

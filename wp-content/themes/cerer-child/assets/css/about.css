@@ -1077,3 +1077,82 @@
 	color: var(--cerer-ink-2);
 	max-width: 520px;
 }
+
+/* =========================================================
+   8. ORGANIGRAMME
+   ========================================================= */
+
+.cerer-org__media {
+	margin-top: 32px;
+	border: 1px solid var(--cerer-border);
+	border-radius: 12px;
+	overflow: hidden;
+	background: #fff;
+}
+
+.cerer-org__media img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.cerer-org__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.cerer-org__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 20px;
+	margin-top: 40px;
+}
+
+.cerer-org__card {
+	border: 1px solid var(--cerer-border);
+	border-radius: 12px;
+	padding: 24px;
+}
+
+.cerer-org__card h3 {
+	font-family: var(--cerer-font-heading);
+	font-weight: 600;
+	font-size: 17px;
+	color: var(--cerer-ink);
+}
+
+.cerer-org__card p {
+	margin-top: 8px;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--cerer-ink-2);
+}
+
+.cerer-org__list {
+	margin-top: 16px;
+	padding-top: 16px;
+	border-top: 1px solid var(--cerer-border);
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.cerer-org__list li {
+	font-size: 13.5px;
+	color: var(--cerer-ink);
+	padding-left: 14px;
+	position: relative;
+}
+
+.cerer-org__list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 8px;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--cerer-green);
+}

@@ -33,9 +33,27 @@ $page_title      = $page_for_posts ? get_the_title( $page_for_posts ) : __( 'Act
 	<?php if ( have_posts() ) : ?>
 		<div class="cerer-card-grid">
 			<?php
+			// Variante du badge dérivée du terme "categorie_actualite" réel
+			// (par nom, pas par slug : Polylang suffixe certains slugs pour
+			// éviter les collisions, ex. "publication-fr") plutôt qu'une
+			// meta "cerer_actu_tag" qui n'était jamais renseignée nulle part
+			// et faisait retomber chaque carte sur "Publication" par défaut.
+			$tag_variant_by_name = array(
+				'Publication' => 'publication',
+				'Partenariat' => 'partenariat',
+				'Partnership' => 'partenariat',
+				'Distinction' => 'distinction',
+				'Award'       => 'distinction',
+				'Événement'   => 'evenement',
+				'Event'       => 'evenement',
+				'Formation'   => 'formation',
+				'Training'    => 'formation',
+			);
 			while ( have_posts() ) :
 				the_post();
-				$tag = get_post_meta( get_the_ID(), 'cerer_actu_tag', true );
+				$cat_terms   = get_the_terms( get_the_ID(), 'categorie_actualite' );
+				$cat_term    = ( $cat_terms && ! is_wp_error( $cat_terms ) ) ? $cat_terms[0] : null;
+				$tag_variant = $cat_term ? ( $tag_variant_by_name[ $cat_term->name ] ?? 'publication' ) : 'publication';
 				get_template_part(
 					'template-parts/carte-actualite',
 					null,
@@ -44,7 +62,7 @@ $page_title      = $page_for_posts ? get_the_title( $page_for_posts ) : __( 'Act
 						'url'         => get_permalink(),
 						'image'       => get_the_post_thumbnail_url( get_the_ID(), 'medium' ) ?: '',
 						'date'        => get_the_date(),
-						'tag_variant' => $tag ?: 'publication',
+						'tag_variant' => $tag_variant,
 					)
 				);
 			endwhile;

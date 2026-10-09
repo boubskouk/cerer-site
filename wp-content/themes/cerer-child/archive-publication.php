@@ -21,7 +21,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$departement_terms = get_terms( array( 'taxonomy' => 'departement', 'hide_empty' => true ) );
+// 'lang' => '' : les départements n'ont pas de traduction Polylang, on les liste dans toutes les langues.
+$departement_terms = get_terms( array( 'taxonomy' => 'departement', 'hide_empty' => true, 'lang' => '' ) );
 if ( is_wp_error( $departement_terms ) ) {
 	$departement_terms = array();
 }
@@ -60,7 +61,7 @@ $archive_base_url  = get_post_type_archive_link( 'publication' );
 					style="--cerer-pub-dept-color: <?php echo esc_attr( $dept_color ); ?>"
 					<?php echo $is_active ? ' aria-current="true"' : ''; ?>
 				>
-					<span class="cerer-pub-pill__dot" aria-hidden="true"></span><?php echo esc_html( $dept->name ); ?>
+					<span class="cerer-pub-pill__dot" aria-hidden="true"></span><?php echo esc_html( translate( $dept->name, 'cerer-child' ) ); // phpcs:ignore WordPress.WP.I18n ?>
 				</a>
 			<?php endforeach; ?>
 		</nav>
@@ -128,14 +129,42 @@ $archive_base_url  = get_post_type_archive_link( 'publication' );
 			);
 			?>
 		</div>
+	<?php elseif ( $current_dept_slug ) : ?>
+		<p><?php esc_html_e( 'Aucune publication pour ce département pour le moment.', 'cerer-child' ); ?></p>
 	<?php else : ?>
-		<p>
-			<?php
-			echo $current_dept_slug
-				? esc_html__( 'Aucune publication pour ce département pour le moment.', 'cerer-child' )
-				: esc_html__( 'Aucune publication pour le moment.', 'cerer-child' );
-			?>
+		<!-- Aucune publication réelle n'a encore été déposée par le CERER :
+		     cartes vides à but explicatif (une par type ACF, cf.
+		     group_cerer_publication.json) plutôt qu'un simple message
+		     d'absence de contenu — pour présentation et recommandation,
+		     pas de contenu inventé. -->
+		<p class="cerer-pub-empty-note">
+			<?php esc_html_e( "Le CERER n'a pas encore déposé de publication sur le site. Cette page est prête à accueillir, au fur et à mesure, les travaux scientifiques du centre — chaque publication affichera son type, ses auteurs (chercheur, étudiant ou partenaire), son département, un résumé, et un lien vers le PDF ou le DOI quand disponible. Les quatre types prévus :", 'cerer-child' ); ?>
 		</p>
+		<div class="cerer-card-grid">
+			<?php
+			$types_attendus = array(
+				array(
+					'label'       => __( 'Article scientifique', 'cerer-child' ),
+					'description' => __( 'Publication dans une revue scientifique, avec résumé, DOI et lien vers le PDF.', 'cerer-child' ),
+				),
+				array(
+					'label'       => __( 'Rapport', 'cerer-child' ),
+					'description' => __( "Étude ou rapport technique produit par un chercheur ou un département du CERER.", 'cerer-child' ),
+				),
+				array(
+					'label'       => __( 'Actes de conférence', 'cerer-child' ),
+					'description' => __( 'Communication présentée lors d’un colloque ou d’une conférence.', 'cerer-child' ),
+				),
+				array(
+					'label'       => __( 'Thèse', 'cerer-child' ),
+					'description' => __( 'Thèse ou mémoire soutenu par un étudiant du CERER.', 'cerer-child' ),
+				),
+			);
+			foreach ( $types_attendus as $type ) {
+				get_template_part( 'template-parts/carte-publication-vide', null, $type );
+			}
+			?>
+		</div>
 	<?php endif; ?>
 </div>
 

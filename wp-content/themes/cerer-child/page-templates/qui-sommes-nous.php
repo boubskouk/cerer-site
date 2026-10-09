@@ -343,9 +343,93 @@ if ( $directeur_video_url ) {
 		<?php endif; ?>
 
 		<?php /* RESTE À TRAITER PLUS TARD (arbitrages de design non tranchés) :
-		<!-- Gouvernance : organigramme Direction / Départements / Services transversaux -->
 		<!-- Carte des partenaires mondiaux -->
 		*/ ?>
+	</div>
+</section>
+
+<!-- 8. ORGANIGRAMME (fond blanc) — schéma officiel UCAD-CERER (ID 362,
+     importé depuis "organigramme cerer/ChatGPT Image....png") + document
+     détaillé en PDF (ID 363, "organigramme cerer/Organigramme UCAD
+     CERER.pdf") : les 4 pôles et leurs unités reprennent le contenu exact
+     de ces deux fichiers, pas de contenu inventé. -->
+<?php
+$organigramme_image_url = wp_get_attachment_image_url( 362, 'large' );
+$organigramme_pdf_url   = wp_get_attachment_url( 363 );
+$organigramme_poles     = array(
+	array(
+		'titre'       => __( 'Direction', 'cerer-child' ),
+		'description' => __( 'Supervision stratégique, coordination académique et partenariats institutionnels.', 'cerer-child' ),
+		'unites'      => array(
+			__( 'Directeur', 'cerer-child' ),
+			__( 'Directeur Adjoint', 'cerer-child' ),
+			__( 'Secrétaire de Direction', 'cerer-child' ),
+		),
+	),
+	array(
+		'titre'       => __( 'Secrétariat & Services administratifs et financiers', 'cerer-child' ),
+		'description' => __( 'Gestion des ressources humaines, financières et infrastructures du centre.', 'cerer-child' ),
+		'unites'      => array(
+			__( 'Moyens généraux et infrastructures', 'cerer-child' ),
+			__( 'Comptabilité', 'cerer-child' ),
+			__( 'Chauffeur', 'cerer-child' ),
+			__( 'Archives', 'cerer-child' ),
+		),
+	),
+	array(
+		'titre'       => __( 'Services et pôles transversaux', 'cerer-child' ),
+		'description' => __( 'Support technique, systèmes d’information et valorisation de la recherche.', 'cerer-child' ),
+		'unites'      => array(
+			__( "Service du système d'information et du numérique", 'cerer-child' ),
+			__( 'Partenariat et valorisation de la recherche', 'cerer-child' ),
+			__( "Ateliers de maintenance de fabrication mécanique et d'électronique", 'cerer-child' ),
+		),
+	),
+	array(
+		'titre'       => __( 'Services de recherche', 'cerer-child' ),
+		'description' => __( 'Le cœur scientifique du centre, organisé par filière énergétique.', 'cerer-child' ),
+		'unites'      => array(
+			__( 'Service énergie solaire photovoltaïque', 'cerer-child' ),
+			__( 'Service biomasse environnement', 'cerer-child' ),
+			__( 'Service énergie solaire thermique', 'cerer-child' ),
+			__( 'Service énergie éolienne', 'cerer-child' ),
+		),
+	),
+);
+?>
+<section class="cerer-about-section">
+	<div class="cerer-container">
+		<p class="cerer-about__eyebrow"><span class="cerer-about__eyebrow-rule" aria-hidden="true"></span><?php esc_html_e( 'STRUCTURE ORGANISATIONNELLE', 'cerer-child' ); ?></p>
+		<h2><?php esc_html_e( 'Organigramme du CERER', 'cerer-child' ); ?></h2>
+		<p class="cerer-about__chapo"><?php esc_html_e( "Schéma officiel de l'organisation du centre, de la Direction aux quatre services de recherche, en passant par les services administratifs et les pôles transversaux.", 'cerer-child' ); ?></p>
+
+		<?php if ( $organigramme_image_url ) : ?>
+			<div class="cerer-org__media">
+				<a href="<?php echo esc_url( $organigramme_image_url ); ?>" target="_blank" rel="noopener noreferrer">
+					<img src="<?php echo esc_url( $organigramme_image_url ); ?>" alt="<?php echo esc_attr( wp_get_attachment_caption( 362 ) ?: get_post_meta( 362, '_wp_attachment_image_alt', true ) ); ?>" loading="lazy">
+				</a>
+			</div>
+			<div class="cerer-org__actions">
+				<a href="<?php echo esc_url( $organigramme_image_url ); ?>" target="_blank" rel="noopener noreferrer" class="cerer-btn cerer-btn--secondary cerer-btn--s"><?php esc_html_e( 'Voir le schéma en grand', 'cerer-child' ); ?> <span class="cerer-external-icon" aria-hidden="true">↗</span></a>
+				<?php if ( $organigramme_pdf_url ) : ?>
+					<?php cerer_external_link( $organigramme_pdf_url, __( 'Télécharger le document détaillé (PDF)', 'cerer-child' ), array( 'class' => 'cerer-btn cerer-btn--tertiary cerer-btn--s' ) ); ?>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+
+		<div class="cerer-org__grid">
+			<?php foreach ( $organigramme_poles as $pole ) : ?>
+				<div class="cerer-org__card">
+					<h3><?php echo esc_html( $pole['titre'] ); ?></h3>
+					<p><?php echo esc_html( $pole['description'] ); ?></p>
+					<ul class="cerer-org__list">
+						<?php foreach ( $pole['unites'] as $unite ) : ?>
+							<li><?php echo esc_html( $unite ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </section>
 
