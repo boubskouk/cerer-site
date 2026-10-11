@@ -1,8 +1,7 @@
 <?php
 /**
- * Bouton flottant WhatsApp — visible sur tout le site, à côté de la bulle
- * de l'Assistant CERER (cf. template-parts/chatbot.php, injecté juste après
- * dans footer.php). Message pré-rempli, envoyé au numéro du CERER.
+ * Bouton flottant WhatsApp — visible sur tout le site, en bas à gauche.
+ * Message pré-rempli, envoyé au numéro du CERER.
  *
  * @package cerer-child
  */

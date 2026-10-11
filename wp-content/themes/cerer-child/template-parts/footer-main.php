@@ -112,6 +112,11 @@ $cerer_social_links = array(
 				?>
 			</p>
 			<p><?php esc_html_e( 'By Service informatique du C.E.R.E.R', 'cerer-child' ); ?></p>
+			<p>
+				<a class="cerer-footer__portal-link" href="https://portail-cerer-878.netlify.app/" target="_blank" rel="noopener noreferrer">
+					<?php esc_html_e( 'Espace Portail CERER', 'cerer-child' ); ?>
+				</a>
+			</p>
 		</div>
 	</div>
 </footer>

@@ -1,0 +1,25 @@
+name: Déploiement Hostinger (thème cerer-child)
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'wp-content/themes/cerer-child/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Déploie le thème via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+        with:
+          server: ${{ secrets.HOSTINGER_SFTP_HOST }}
+          port: ${{ secrets.HOSTINGER_SFTP_PORT }}
+          username: ${{ secrets.HOSTINGER_SFTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_SFTP_PASSWORD }}
+          local_path: './wp-content/themes/cerer-child/*'
+          remote_path: ${{ secrets.HOSTINGER_REMOTE_PATH }}
+          sftpArgs: '-o ConnectTimeout=30'

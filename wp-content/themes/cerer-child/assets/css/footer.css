@@ -199,16 +199,25 @@
 	}
 }
 
+.cerer-footer__portal-link {
+	font-size: 13px;
+	color: rgba(255, 255, 255, .55);
+	text-decoration: underline;
+	text-decoration-color: rgba(255, 255, 255, .3);
+}
+
+.cerer-footer__portal-link:hover {
+	color: rgba(255, 255, 255, .8);
+}
+
 /* =========================================================
-   BOUTON FLOTTANT WHATSAPP — à côté de la bulle Assistant CERER,
-   même taille/position verticale, décalé à gauche de celle-ci.
+   BOUTON FLOTTANT WHATSAPP
    ========================================================= */
 
 .cerer-whatsapp-float {
 	position: fixed;
 	bottom: 24px;
-	/* 24px (marge de .cerer-chatbot) + 58px (sa largeur) + 12px d'écart. */
-	right: 94px;
+	left: 24px;
 	z-index: 200;
 	width: 58px;
 	height: 58px;
@@ -227,143 +236,14 @@
 }
 
 @media (max-width: 480px) {
-	/* Deux bulles de 58px côte à côte peuvent déborder sur les très petits
-	   écrans : on réduit et on resserre l'écart plutôt que d'empiler
-	   verticalement (empêcherait de voir le contenu en bas de page). */
-	.cerer-whatsapp-float,
-	.cerer-chatbot__bubble {
+	.cerer-whatsapp-float {
 		width: 48px;
 		height: 48px;
-	}
-
-	.cerer-whatsapp-float {
-		right: 78px;
-	}
-
-	.cerer-chatbot {
-		right: 16px;
+		left: 16px;
 	}
 
 	.cerer-whatsapp-float svg {
 		width: 22px;
 		height: 22px;
 	}
-}
-
-/* =========================================================
-   CHATBOT FAQ — §4.9
-   ========================================================= */
-
-.cerer-chatbot {
-	position: fixed;
-	bottom: 24px;
-	right: 24px;
-	z-index: 200;
-}
-
-.cerer-chatbot__bubble {
-	width: 58px;
-	height: 58px;
-	border-radius: 50%;
-	background: var(--cerer-green);
-	border: none;
-	box-shadow: 0 6px 18px rgba(76, 184, 72, .35);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transition: var(--cerer-transition);
-}
-
-.cerer-chatbot__bubble:hover {
-	background: var(--cerer-green-hover);
-}
-
-.cerer-chatbot__panel {
-	position: absolute;
-	bottom: 72px;
-	right: 0;
-	width: min(340px, calc(100vw - 48px));
-	max-height: min(480px, calc(100vh - 140px));
-	display: flex;
-	flex-direction: column;
-	background: var(--cerer-surface);
-	border-radius: var(--cerer-radius-card);
-	box-shadow: var(--cerer-shadow-menu);
-	overflow: hidden;
-}
-
-/* Bug corrigé : `display:flex` ci-dessus (origine "author") l'emportait
-   sur la règle UA `[hidden]{display:none}` (origine "user-agent"), donc
-   l'attribut hidden posé par le JS n'avait plus aucun effet visuel — le
-   panneau restait affiché en permanence, même "fermé". */
-.cerer-chatbot__panel[hidden] {
-	display: none;
-}
-
-.cerer-chatbot__header {
-	background: var(--cerer-blue);
-	color: #fff;
-	padding: 16px;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 12px;
-}
-
-.cerer-chatbot__header h2 {
-	font-size: 16px;
-	color: #fff;
-}
-
-.cerer-chatbot__header p {
-	font-size: 13px;
-	color: rgba(255, 255, 255, .8);
-	margin-top: 2px;
-}
-
-.cerer-chatbot__close {
-	background: none;
-	border: none;
-	color: #fff;
-	font-size: 20px;
-	line-height: 1;
-	cursor: pointer;
-	padding: 4px;
-}
-
-.cerer-chatbot__body {
-	overflow-y: auto;
-	padding: 12px;
-}
-
-.cerer-chatbot__questions {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
-
-.cerer-chatbot__question {
-	width: 100%;
-	text-align: left;
-	background: var(--cerer-surface);
-	border: 1px solid var(--cerer-border);
-	border-radius: var(--cerer-radius-control);
-	padding: 10px 12px;
-	font: inherit;
-	font-size: 14px;
-	color: var(--cerer-ink);
-	cursor: pointer;
-	transition: var(--cerer-transition);
-	min-height: 44px;
-}
-
-.cerer-chatbot__question:hover {
-	border-color: var(--cerer-blue);
-}
-
-.cerer-chatbot__answer {
-	padding: 10px 4px 4px;
-	font-size: 14px;
-	color: var(--cerer-ink-2);
 }

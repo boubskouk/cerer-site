@@ -504,6 +504,12 @@ html.is-scrolled .cerer-topbar {
 
 	.cerer-burger {
 		display: inline-flex;
+		/* La margin-left:auto de la règle de base aspire tout l'espace libre du
+		   conteneur vers le burger (3e flex item réel ici, logos compris) et
+		   colle les deux logos l'un contre l'autre à gauche. On la neutralise
+		   pour que justify-content:space-between répartisse normalement entre
+		   les 3 éléments (logo gauche / logo droit / burger). */
+		margin-left: 0;
 	}
 
 	.cerer-nav {

@@ -1,8 +1,8 @@
 <?php
 /**
  * Pied de page CERER — remplace footer.php de Blocksy pour livrer le
- * bandeau newsletter (§4.7), le footer (§4.8) et le chatbot (§4.9), à la
- * place de blocksy_output_footer(). Ferme exactement les mêmes balises que
+ * bandeau newsletter (§4.7) et le footer (§4.8), à la place de
+ * blocksy_output_footer(). Ferme exactement les mêmes balises que
  * le parent (</main>, </div>#main-container), pour rester cohérent avec le
  * header.php du thème enfant.
  *
@@ -28,7 +28,6 @@ do_action( 'blocksy:content:bottom' );
 </div>
 
 <?php get_template_part( 'template-parts/whatsapp-button' ); ?>
-<?php get_template_part( 'template-parts/chatbot' ); ?>
 
 <?php wp_footer(); ?>
 

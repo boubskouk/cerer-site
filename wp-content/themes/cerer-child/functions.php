@@ -11,7 +11,6 @@ require_once get_stylesheet_directory() . '/inc/class-cerer-nav-walker.php';
 require_once get_stylesheet_directory() . '/inc/menus.php';
 require_once get_stylesheet_directory() . '/inc/block-patterns.php';
 require_once get_stylesheet_directory() . '/inc/newsletter.php';
-require_once get_stylesheet_directory() . '/inc/chatbot.php';
 require_once get_stylesheet_directory() . '/inc/helpers.php';
 require_once get_stylesheet_directory() . '/inc/post-types.php';
 require_once get_stylesheet_directory() . '/inc/taxonomies.php';
