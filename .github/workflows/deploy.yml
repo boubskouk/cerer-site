@@ -13,13 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Déploie le thème via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+      - name: Déploie le thème via SSH (rsync, clé dédiée)
+        uses: easingthemes/ssh-deploy@v4
         with:
-          server: ${{ secrets.HOSTINGER_SFTP_HOST }}
-          port: ${{ secrets.HOSTINGER_SFTP_PORT }}
-          username: ${{ secrets.HOSTINGER_SFTP_USERNAME }}
-          password: ${{ secrets.HOSTINGER_SFTP_PASSWORD }}
-          local_path: './wp-content/themes/cerer-child/*'
-          remote_path: ${{ secrets.HOSTINGER_REMOTE_PATH }}
-          sftpArgs: '-o ConnectTimeout=30'
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          SOURCE: 'wp-content/themes/cerer-child/'
+          TARGET: ${{ secrets.REMOTE_PATH }}
+          ARGS: '-avzr --delete'
