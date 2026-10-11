@@ -1,10 +1,10 @@
 name: Déploiement Hostinger (thème cerer-child)
 
+# Déclenchement manuel uniquement — bouton "Run workflow" dans l'onglet
+# Actions de GitHub. Pas de trigger automatique sur push : l'utilisateur
+# garde le contrôle sur le moment de chaque déploiement.
 on:
-  push:
-    branches: [master]
-    paths:
-      - 'wp-content/themes/cerer-child/**'
+  workflow_dispatch: {}
 
 jobs:
   deploy:
